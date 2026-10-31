@@ -56,11 +56,11 @@ export function About() {
                 <img
                   src={about.portrait.src}
                   alt={about.portrait.alt}
-                  width={800}
-                  height={1000}
+                  width={900}
+                  height={1100}
                   loading="lazy"
                   decoding="async"
-                  className="aspect-[4/5] w-full object-cover"
+                  className="aspect-[9/11] w-full object-cover"
                 />
               </div>
             </div>

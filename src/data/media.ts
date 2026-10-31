@@ -3,6 +3,7 @@ import dockerCover from '@/assets/images/blog/docker.svg'
 import hooksCover from '@/assets/images/blog/react-hooks.svg'
 import scalableCover from '@/assets/images/blog/scalable-react.svg'
 import typescriptCover from '@/assets/images/blog/typescript-patterns.svg'
+import portraitPhoto from '@/assets/images/portrait-yanuararif.jpg'
 import fintrackCover from '@/assets/images/projects/fintrack-cover.svg'
 import fintrackDetail from '@/assets/images/projects/fintrack-detail.svg'
 import fitlifeCover from '@/assets/images/projects/fitlife-cover.svg'
@@ -13,10 +14,15 @@ import taskflowCover from '@/assets/images/projects/taskflow-cover.svg'
 import taskflowDetail from '@/assets/images/projects/taskflow-detail.svg'
 
 /**
- * Shared artwork. Both language versions of the content point at the same
+ * Shared media. Both language versions of the content point at the same
  * files, so the imports live here instead of being duplicated per locale.
+ *
+ * The portrait is the author's own 1885x2303 crop of
+ * profile-yanuararif-crop.jpg, resized to 900x1100 (9:11) with no further
+ * cropping. The stored pixels are already in display orientation, and all
+ * metadata, including GPS, is stripped.
  */
-export const portraitImage = new URL('../assets/images/portrait.svg', import.meta.url).href
+export const portraitImage = portraitPhoto
 
 export const projectMedia = {
   taskflow: { cover: taskflowCover, detail: taskflowDetail },

@@ -1,532 +1,596 @@
-import { projectMedia } from '@/data/media'
-import type { Project } from '@/types'
+import { projectMedia } from "@/data/media";
+import type { Project } from "@/types";
 
 /**
  * ─────────────────────────────────────────────────────────────
  *  FEATURED PROJECTS — INDONESIAN
- *  Terjemahan dari `projects.en.ts`. Nama produk, slug, tautan,
+ *  Padanan dari `projects.en.ts`. Nama produk, slug, tautan,
  *  dan nama teknologi sengaja tidak diterjemahkan.
  * ─────────────────────────────────────────────────────────────
  */
 export const projectsId: Project[] = [
   {
-    slug: 'taskflow',
-    name: 'TaskFlow',
-    category: 'SaaS · Produktivitas',
+    slug: "taskflow",
+    name: "TaskFlow",
+    category: "SaaS · Produktivitas",
     summary:
-      'Ruang kerja proyek yang lebih tenang untuk tim produk kecil, dibangun di sekitar papan yang mengutamakan keyboard dan log aktivitas yang transparan.',
+      "Ruang kerja proyek yang tidak bising untuk tim produk kecil, dibangun di sekitar papan yang bisa dikendalikan penuh lewat keyboard dan log aktivitas yang mudah dibaca.",
     description:
-      'TaskFlow adalah studi kasus SaaS manajemen proyek yang mencakup papan real-time, izin, drag-and-drop yang aksesibel, dan pendekatan sengaja untuk mengurangi kebisingan antarmuka.',
-    year: '2025',
-    role: 'Desain produk & rekayasa full-stack',
-    duration: '12 minggu',
+      "TaskFlow adalah studi kasus perangkat lunak manajemen proyek: papan real-time, izin akses, drag-and-drop yang aksesibel, dan usaha sengaja untuk menjaga antarmukanya tidak ramai.",
+    year: "2025",
+    role: "Desain produk & rekayasa full-stack",
+    duration: "12 minggu",
     thumbnail: projectMedia.taskflow.cover,
     thumbnailAlt:
-      'Antarmuka aplikasi TaskFlow menampilkan papan kanban dengan kolom sprint dan panel aktivitas',
+      "Antarmuka aplikasi TaskFlow menampilkan papan kanban dengan kolom sprint dan panel aktivitas",
     featured: true,
-    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Hono', 'PostgreSQL', 'Redis', 'Docker'],
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Hono",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+    ],
     features: [
       {
-        title: 'Papan yang mengutamakan keyboard',
+        title: "Papan yang mengutamakan keyboard",
         description:
-          'Buat, pindahkan, dan selesaikan tugas tanpa menyentuh mouse, dengan command palette untuk hal lainnya.',
+          "Buat, pindahkan, dan selesaikan tugas tanpa menyentuh mouse. Sisanya bisa dijangkau lewat command palette.",
       },
       {
-        title: 'Kolaborasi real-time yang tenang',
+        title: "Real-time tanpa tampilan yang loncat-loncat",
         description:
-          'Urutan yang ditentukan server dan pembaruan optimistis menjaga rekan tim tetap sinkron tanpa antarmuka yang melompat-lompat.',
+          "Server yang menentukan urutan dan klien memperbarui tampilan lebih dulu (optimistis), jadi rekan tim yang jauh tetap sinkron dan kartu tidak berpindah-pindah sendiri.",
       },
       {
-        title: 'Aktivitas yang menjelaskan dirinya',
+        title: "Aktivitas yang menjelaskan dirinya sendiri",
         description:
-          'Linimasa yang mudah dibaca mencatat keputusan dan perubahan kepemilikan, bukan hanya perubahan field.',
+          "Linimasa yang enak dibaca mencatat keputusan dan perpindahan kepemilikan, bukan hanya field mana yang diubah.",
       },
       {
-        title: 'Izin sesuai peran',
+        title: "Izin sesuai peran",
         description:
-          'Cakupan workspace, proyek, dan tugas ditegakkan dalam satu lapisan kebijakan yang dipakai semua endpoint.',
+          "Izin di tingkat workspace, proyek, dan tugas dijalankan di satu lapisan kebijakan yang dipakai semua endpoint.",
       },
       {
-        title: 'Tampilan untuk cara berpikir berbeda',
+        title: "Tampilan untuk gaya kerja yang berbeda",
         description:
-          'Tampilan papan, daftar, dan linimasa ringkas berbagi satu model filter dan menyimpan state di URL.',
+          "Tampilan papan, daftar, dan linimasa ringkas memakai satu model filter yang sama, dan statenya disimpan di URL.",
       },
       {
-        title: 'Data yang mudah dibawa',
+        title: "Data yang mudah dibawa pergi",
         description:
-          'Ekspor CSV dan JSON dihasilkan dari lapisan query bertipe, sehingga tim tidak pernah terkunci.',
+          "Ekspor CSV dan JSON dibuat dari lapisan query bertipe, jadi tim selalu bisa membawa datanya.",
       },
     ],
     links: {
-      demo: 'https://example.com/demo/taskflow',
-      repository: 'https://github.com/YanuarArif/taskflow',
+      demo: "https://example.com/demo/taskflow",
+      repository: "https://github.com/YanuarArif/taskflow",
     },
     caseStudy: {
       overview:
-        'TaskFlow adalah ruang kerja manajemen proyek yang dirancang untuk tim produk beranggotakan tiga hingga lima belas orang. Alih-alih bersaing pada jumlah fitur, produk ini fokus pada beberapa momen yang membuat papan berguna setiap hari: menangkap pekerjaan dengan cepat, memahami apa yang berubah, dan memindahkan tugas tanpa kehilangan konteks.',
+        "TaskFlow adalah ruang kerja proyek untuk tim produk beranggotakan tiga sampai lima belas orang. Produk ini tidak berusaha menang di jumlah fitur. Ia fokus pada beberapa momen yang membuat papan berguna setiap hari: mencatat pekerjaan dengan cepat, melihat apa yang berubah, dan memindahkan tugas tanpa kehilangan konteks.",
       problem:
-        'Tim kecil cenderung mengumpulkan alat, bukan menggantinya. Papan yang ada terlalu ringan untuk menjawab "siapa yang mengubah ini dan mengapa?" atau terlalu bisa dikonfigurasi sehingga merawat ruang kerja menjadi proyek tersendiri. Brief-nya adalah membangun ruang kerja harian yang andal, tetap cepat pada papan berisi ratusan tugas, sepenuhnya bisa dioperasikan dari keyboard, dan membuat perubahan mudah dipahami tanpa dashboard audit.',
+        'Tim kecil biasanya menambah alat, bukan menggantinya. Papan yang mereka pakai kalau tidak terlalu sederhana untuk menjawab "siapa yang mengubah ini, dan kenapa?", ya terlalu bisa diatur sampai merawat ruang kerjanya jadi proyek tersendiri. Permintaannya: ruang kerja harian yang bisa diandalkan, tetap cepat meski satu papan berisi ratusan tugas, bisa dipakai penuh lewat keyboard, dan membuat perubahan mudah diikuti tanpa dashboard audit terpisah.',
       solution:
-        'Saya merancang ruang kerja tiga panel yang ringkas — navigasi, papan, dan aktivitas — di sekitar model tugas yang otoritatif di server. Setiap mutasi melewati endpoint perintah bertipe, urutan tugas memakai indeks fraksional, dan event ditulis bersamaan dengan perubahan data. Hasilnya adalah papan yang bisa diperbarui secara optimistis namun tetap direkonsiliasi dengan rapi saat dua orang memindahkan kartu yang sama.',
+        "Saya merancang tata letak tiga panel yang ringkas (navigasi, papan, aktivitas) di sekitar model tugas yang keputusan akhirnya ada di server. Setiap perubahan lewat endpoint perintah bertipe, urutan tugas memakai indeks fraksional, dan event ditulis dalam langkah yang sama dengan perubahan datanya. Papan diperbarui lebih dulu di sisi klien, dan tetap bisa direkonsiliasi dengan rapi ketika dua orang memindahkan kartu yang sama.",
       stack: [
-        { label: 'Antarmuka', items: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Motion'] },
-        { label: 'Aplikasi', items: ['Hono', 'Zod', 'Node.js', 'REST API'] },
-        { label: 'Data & infrastruktur', items: ['PostgreSQL', 'Prisma', 'Redis', 'Docker'] },
+        {
+          label: "Antarmuka",
+          items: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "Motion"],
+        },
+        { label: "Aplikasi", items: ["Hono", "Zod", "Node.js", "REST API"] },
+        {
+          label: "Data & infrastruktur",
+          items: ["PostgreSQL", "Prisma", "Redis", "Docker"],
+        },
       ],
       process: [
         {
-          title: 'Memetakan ritual harian',
+          title: "Memetakan rutinitas harian",
           description:
-            'Saya mewawancarai empat tim produk kecil dan mengamati cara mereka memakai papan saat ini. Sebagian besar gesekan berasal dari rapat status dan kepemilikan yang tidak jelas, bukan fitur yang kurang.',
+            "Saya mewawancarai empat tim produk kecil dan mengamati cara mereka memakai papan yang ada. Sebagian besar gesekan datang dari rapat status dan kepemilikan yang tidak jelas, bukan dari fitur yang kurang.",
         },
         {
-          title: 'Merancang model informasi',
+          title: "Merancang model informasi",
           description:
-            'Workspace, proyek, tugas, komentar, dan event dimodelkan sebelum antarmuka. Izin dan riwayat aktivitas diperlakukan sebagai data kelas satu, bukan fitur yang ditambahkan belakangan.',
+            "Workspace, proyek, tugas, komentar, dan event saya modelkan sebelum menyentuh antarmuka. Izin dan riwayat aktivitas sudah jadi bagian dari data sejak awal, bukan fitur tambahan belakangan.",
         },
         {
-          title: 'Membangun potongan vertikal',
+          title: "Membangun per potongan vertikal",
           description:
-            'Setiap potongan dirilis menyeluruh — skema, endpoint, antarmuka, pengujian. Papan lebih dulu, lalu aktivitas, filter, dan ekspor. Ini menjaga masalah integrasi tetap terlihat sejak awal.',
+            "Setiap potongan dikerjakan sampai tuntas dari ujung ke ujung: skema, endpoint, antarmuka, tes. Papan dulu, lalu aktivitas, filter, dan ekspor. Dengan cara ini masalah integrasi ketahuan lebih awal.",
         },
         {
-          title: 'Menguji dengan kelompok beta kecil',
+          title: "Menguji dengan kelompok beta kecil",
           description:
-            'Tiga tim memakai produk selama dua minggu. Saya mengamati sesi, mengukur kondisi error, dan memangkas dua fitur yang menambah konfigurasi tanpa mengubah perilaku.',
+            "Tiga tim memakainya selama dua minggu. Saya mengamati sesi mereka, mencatat kondisi error, dan memangkas dua fitur rencana awal yang hanya menambah pengaturan tanpa mengubah cara siapa pun bekerja.",
         },
       ],
       challenges: [
         {
-          title: 'Memindahkan tanpa mouse',
+          title: "Memindahkan kartu tanpa mouse",
           problem:
-            'Papan yang hanya mendukung drag-and-drop pointer tidak bisa dipakai pengguna keyboard dan teknologi bantu. Event drag native juga sangat sedikit memberi informasi ke screen reader.',
+            "Papan yang hanya mendukung drag-and-drop dengan pointer tidak bisa dipakai pengguna keyboard dan teknologi bantu, dan event drag bawaan browser hampir tidak memberi informasi ke screen reader.",
           solution:
-            'Kartu menyediakan menu pindah dan pintasan keyboard khusus. Live region yang sopan mengumumkan kolom dan posisi baru setelah setiap pemindahan, dan API perintah yang sama menangani aksi pointer, keyboard, serta massal.',
+            "Setiap kartu punya menu pindah dan pintasan keyboard khusus. Live region yang tidak menyela mengumumkan kolom dan posisi baru setelah tiap perpindahan, dan API perintah yang sama dipakai untuk aksi lewat pointer, keyboard, maupun massal.",
         },
         {
-          title: 'Pengurutan ulang bersamaan',
+          title: "Pengurutan ulang yang terjadi bersamaan",
           problem:
-            'Dua orang memindahkan kartu pada saat yang sama menghasilkan posisi duplikat dan kadang pembaruan yang hilang. Menulis ulang setiap baris pada tiap pemindahan tidak akan diskalakan pada papan besar.',
+            "Kalau dua orang memindahkan kartu di waktu yang sama, posisi bisa kembar dan sesekali ada pembaruan yang hilang. Menulis ulang semua baris di setiap perpindahan juga tidak akan kuat untuk papan besar.",
           solution:
-            'Saya memakai indeks string fraksional dan field revisi per tugas. Pemindahan dikirim sebagai perintah "letakkan setelah tugas X", diselesaikan di server, dan klien hanya merekonsiliasi tugas yang revisinya berubah.',
+            'Saya memakai indeks string fraksional dan field revisi di tiap tugas. Perpindahan dikirim sebagai perintah "letakkan setelah tugas X", server yang menyelesaikannya, dan klien hanya merekonsiliasi tugas yang revisinya berubah.',
         },
         {
-          title: 'Membuat aktivitas mudah dibaca',
+          title: "Membuat aktivitas enak dibaca",
           problem:
-            'Log event bisa menjadi kebisingan. Mencatat setiap mutasi field membuat linimasa tak terpakai dalam sehari.',
+            "Log event gampang berubah jadi tumpukan noise. Mencatat setiap perubahan field membuat linimasa tidak terpakai dalam sehari.",
           solution:
-            'Event dimodelkan sebagai perintah bermakna — ditugaskan, dipindahkan, diblokir, diselesaikan — dan suntingan berurutan oleh orang yang sama dikelompokkan. UI menampilkan kalimat, pelaku, dan waktu relatif alih-alih diff JSON.',
+            "Event dimodelkan sebagai aksi yang punya arti (ditugaskan, dipindahkan, diblokir, diselesaikan), dan suntingan beruntun dari orang yang sama digabung. UI menampilkan satu kalimat, siapa pelakunya, dan waktu relatif, bukan diff JSON.",
         },
       ],
       results: [
-        'Kelompok beta menggantikan alat pelacak kedua untuk perencanaan sprint, mengurangi pembaruan ganda dalam tinjauan mingguan mereka.',
-        'Pembuatan dan pemindahan tugas lewat keyboard teruji lebih cepat daripada interaksi pointer bagi pengguna lama.',
-        'Papan besar hasil seed (800 tugas) tetap responsif selama uji pengurutan ulang, tanpa perintah yang hilang di simulasi sesi bersamaan.',
-        'Linimasa aktivitas menjadi panel sekunder yang paling sering dipakai dalam sesi beta, terutama untuk menyelesaikan pertanyaan kepemilikan.',
+        "Kelompok beta berhenti memakai alat pelacak kedua untuk perencanaan sprint, sehingga pembaruan ganda di tinjauan mingguan mereka berkurang.",
+        "Bagi pengguna yang kembali, membuat dan memindahkan tugas lewat keyboard terbukti lebih cepat daripada lewat pointer.",
+        "Papan berisi 800 tugas hasil seed tetap responsif di uji pengurutan ulang, tanpa perintah yang hilang di simulasi sesi bersamaan.",
+        "Linimasa aktivitas jadi panel samping yang paling sering dibuka di sesi beta, terutama untuk memastikan siapa yang memegang apa.",
       ],
       lessons: [
-        'Antarmuka yang cepat biasanya hasil dari model data yang jelas, bukan komponen yang lebih cepat.',
-        'Batasan aksesibilitas justru memperbaiki desain interaksi untuk semua orang; alur keyboard akhirnya menjadi cara utama memindahkan tugas.',
-        'Memangkas konfigurasi lebih sulit daripada menambah fitur, tetapi itulah alasan utama ruang kerja ini terasa lebih tenang daripada alternatifnya.',
+        "Antarmuka yang cepat biasanya berasal dari model data yang jelas, bukan dari komponen yang lebih ngebut.",
+        "Batasan aksesibilitas ternyata memperbaiki interaksi untuk semua orang. Alur keyboard akhirnya jadi cara utama memindahkan tugas.",
+        "Memangkas pengaturan lebih susah daripada menambah fitur, tapi itulah alasan utama ruang kerja ini terasa lebih tenang dibanding alternatifnya.",
       ],
       screenshots: [
         {
           src: projectMedia.taskflow.detail,
-          alt: 'Linimasa aktivitas TaskFlow dan panel detail tugas dengan komentar bertipe serta riwayat status',
+          alt: "Linimasa aktivitas TaskFlow dan panel detail tugas dengan komentar bertipe serta riwayat status",
           caption:
-            'Detail tugas dan aktivitas disimpan dalam satu panel agar keputusan tetap menempel pada pekerjaannya.',
+            "Detail tugas dan aktivitas ada di satu panel, jadi keputusan tetap menempel pada pekerjaannya.",
         },
       ],
     },
   },
   {
-    slug: 'shopease',
-    name: 'ShopEase',
-    category: 'E-commerce',
+    slug: "shopease",
+    name: "ShopEase",
+    category: "E-commerce",
     summary:
-      'Storefront headless untuk merek perabot rumah independen, dengan penjelajahan editorial, pencarian instan, dan checkout yang tidak mengganggu.',
+      "Storefront headless untuk merek perabot rumah independen, dengan tampilan jelajah ala majalah, pencarian instan, dan checkout yang tidak menghalangi.",
     description:
-      'ShopEase adalah studi kasus platform e-commerce yang mencakup pencarian berfaset, performa katalog berat gambar, pemilihan produk yang aksesibel, dan keranjang yang tangguh.',
-    year: '2024',
-    role: 'Lead frontend & design system',
-    duration: '16 minggu',
+      "ShopEase adalah studi kasus e-commerce yang membahas pencarian berfaset, performa katalog yang penuh gambar, pemilihan produk yang aksesibel, dan keranjang yang tahan banting.",
+    year: "2024",
+    role: "Lead frontend & design system",
+    duration: "16 minggu",
     thumbnail: projectMedia.shopease.cover,
     thumbnailAlt:
-      'Storefront ShopEase dengan gambar produk besar, judul editorial, dan grid produk pilihan',
+      "Storefront ShopEase dengan gambar produk besar, judul editorial, dan grid produk pilihan",
     featured: true,
-    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'Stripe', 'Cloudflare'],
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "PostgreSQL",
+      "Stripe",
+      "Cloudflare",
+    ],
     features: [
       {
-        title: 'Halaman koleksi editorial',
+        title: "Halaman koleksi ala editorial",
         description:
-          'Tim merchandising menyusun cerita dari blok yang dapat dipakai ulang tanpa merusak tata letak atau anggaran performa.',
+          "Tim merchandising menyusun cerita dari blok yang bisa dipakai ulang tanpa merusak tata letak maupun anggaran performa.",
       },
       {
-        title: 'Pencarian berfaset instan',
+        title: "Pencarian berfaset instan",
         description:
-          'Filter berdasarkan material, warna, dan ketersediaan dengan state berbasis URL yang mudah dibagikan dan di-cache.',
+          "Filter berdasarkan material, warna, dan ketersediaan. Statenya ada di URL, jadi mudah dibagikan dan di-cache.",
       },
       {
-        title: 'Pengiriman gambar cepat',
+        title: "Pengiriman gambar yang cepat",
         description:
-          'Sumber responsif, format modern, dan placeholder blur-up mencegah foto produk besar mendominasi halaman.',
+          "Sumber gambar responsif, format modern, dan placeholder blur-up menjaga foto produk beresolusi besar tidak membebani halaman.",
       },
       {
-        title: 'Keranjang persisten',
+        title: "Keranjang yang tidak hilang",
         description:
-          'Keranjang berbasis server bertahan saat refresh, banyak tab, dan login tanpa menduplikasi item.',
+          "Keranjang berbasis server tetap utuh saat halaman di-refresh, dibuka di beberapa tab, atau saat login, tanpa item ganda.",
       },
       {
-        title: 'Pemilihan varian aksesibel',
+        title: "Pemilihan varian yang aksesibel",
         description:
-          'Pemilih warna dan ukuran menampilkan nama asli, ketersediaan, dan fokus keyboard alih-alih swatch dekoratif.',
+          "Pemilih warna dan ukuran menampilkan nama sebenarnya, ketersediaan, dan fokus keyboard, bukan swatch yang cuma hiasan.",
       },
       {
-        title: 'Pelacakan pesanan',
+        title: "Pelacakan pesanan",
         description:
-          'Tampilan pasca-pembelian sederhana menampilkan progres pemenuhan, bukti transaksi, dan kontak dukungan di satu tempat.',
+          "Halaman pasca-pembelian yang sederhana menampilkan progres pengiriman, bukti pembayaran, dan kontak dukungan di satu tempat.",
       },
     ],
     links: {
-      demo: 'https://example.com/demo/shopease',
-      repository: 'https://github.com/YanuarArif/shopease',
+      demo: "https://example.com/demo/shopease",
+      repository: "https://github.com/YanuarArif/shopease",
     },
     caseStudy: {
       overview:
-        'ShopEase adalah storefront headless yang dibangun untuk kumpulan merek perabot rumah independen. Brief desain meminta nuansa katalog cetak — fotografi yang lapang, tipografi yang matang, penjelajahan tanpa terburu-buru — tanpa mengorbankan kecepatan dan kejelasan yang diharapkan dari toko modern.',
+        "ShopEase adalah storefront headless untuk sekumpulan merek perabot rumah independen. Permintaan desainnya adalah nuansa katalog cetak (foto yang lapang, tipografi yang rapi, menjelajah tanpa terburu-buru) tanpa mengorbankan kecepatan dan kejelasan yang diharapkan dari toko online modern.",
       problem:
-        'Kumpulan merek ini memakai tema hosted yang terlihat layak di koneksi cepat dan terasa tak terpakai di ponsel. Halaman produk memuat lebih dari 4 MB gambar, filter memicu navigasi penuh, dan pemilihan warna bergantung pada swatch kecil tanpa label. Tim juga perlu menerbitkan edisi musiman tanpa developer.',
+        "Kumpulan merek ini memakai tema hosted yang terlihat wajar di koneksi cepat, tapi hampir tidak bisa dipakai di ponsel. Halaman produk memuat lebih dari 4 MB gambar, filter memicu muat ulang halaman penuh, dan pemilihan warna bergantung pada swatch kecil tanpa label. Tim mereka juga harus bisa menerbitkan edisi musiman tanpa bantuan developer.",
       solution:
-        'Saya membangun storefront React di atas API commerce kecil, dengan model konten berbasis blok untuk halaman editorial. Pencarian dan filter berada di URL, gambar dikirim responsif dari Cloudflare, dan keranjang direkonsiliasi di server pada setiap mutasi. Hasilnya storefront yang terasa editorial namun berperilaku seperti aplikasi.',
+        "Saya membangun storefront React di atas API commerce yang kecil, dengan model konten berbasis blok untuk halaman editorial. Pencarian dan filter ada di URL, gambar dikirim secara responsif dari Cloudflare, dan server merekonsiliasi keranjang di setiap perubahan. Hasilnya terasa seperti majalah, tapi berperilaku seperti aplikasi.",
       stack: [
-        { label: 'Antarmuka', items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'React Router'] },
-        { label: 'Commerce', items: ['Node.js', 'PostgreSQL', 'Stripe', 'Zod'] },
-        { label: 'Pengiriman', items: ['Cloudflare', 'GitHub Actions', 'Playwright'] },
+        {
+          label: "Antarmuka",
+          items: [
+            "React",
+            "TypeScript",
+            "Vite",
+            "Tailwind CSS",
+            "React Router",
+          ],
+        },
+        {
+          label: "Commerce",
+          items: ["Node.js", "PostgreSQL", "Stripe", "Zod"],
+        },
+        {
+          label: "Pengiriman",
+          items: ["Cloudflare", "GitHub Actions", "Playwright"],
+        },
       ],
       process: [
         {
-          title: 'Mengaudit katalog nyata',
+          title: "Mengaudit katalog yang sebenarnya",
           description:
-            'Saya memprofilkan toko yang ada dengan foto produk asli dan skrip pihak ketiga, lalu menetapkan anggaran performa untuk template daftar dan produk sebelum mendesain.',
+            "Saya memprofil toko yang ada dengan foto produk asli dan skrip pihak ketiganya, lalu menetapkan anggaran performa untuk template daftar dan halaman produk sebelum mulai mendesain.",
         },
         {
-          title: 'Merancang sistem blok',
+          title: "Merancang sistem blok",
           description:
-            'Halaman editorial dimodelkan sebagai kumpulan kecil blok dengan props terbatas. Tim merchandising bisa menyusun cerita dengan bebas tanpa menciptakan tata letak baru atau inline style.',
+            "Halaman editorial disusun dari sekumpulan kecil blok dengan props yang terbatas. Tim merchandising bebas mengatur cerita tanpa perlu membuat tata letak baru atau menulis inline style.",
         },
         {
-          title: 'Memprototipe jalur pembelian',
+          title: "Memprototipe jalur pembelian",
           description:
-            'Halaman produk, pemilih varian, drawer keranjang, dan checkout diprototipekan bersama. Kasus tepi seperti kombinasi tak tersedia dan perubahan harga ditangani di prototipe, bukan ditambal setelah rilis.',
+            "Halaman produk, pemilih varian, drawer keranjang, dan checkout saya buat prototipenya bersamaan. Kasus tepi seperti kombinasi yang habis dan perubahan harga diselesaikan di prototipe, bukan ditambal setelah rilis.",
         },
         {
-          title: 'Mengukur dan menyempurnakan',
+          title: "Mengukur dan menyempurnakan",
           description:
-            'Lighthouse, pengujian perangkat dengan throttle, dan pemeriksaan screen reader menjadi bagian setiap pull request. QA akhir mencakup lima viewport mobile paling umum dan dua perangkat Android lama.',
+            "Lighthouse, uji perangkat dengan throttling, dan pengecekan dengan screen reader jadi bagian dari setiap pull request. QA akhir mencakup lima ukuran layar mobile yang paling umum dan dua ponsel Android lama.",
         },
       ],
       challenges: [
         {
-          title: 'Gambar berat, anggaran kecil',
+          title: "Gambar berat, anggaran kecil",
           problem:
-            'Fotografi produk resolusi tinggi adalah inti merek, tetapi satu halaman koleksi mudah melewati beberapa megabyte gambar.',
+            "Foto produk beresolusi tinggi adalah inti merek ini, tapi satu halaman koleksi saja gampang melewati beberapa megabyte gambar.",
           solution:
-            'Art direction ditangani dengan sedikit preset rasio aspek dan sumber AVIF/WebP. Gambar di atas lipatan dimuat eager dengan dimensi yang sudah dipesan; sisanya lazy-load dengan placeholder kualitas rendah, menjaga layout shift mendekati nol.',
+            "Art direction memakai beberapa preset rasio aspek dan sumber AVIF/WebP. Gambar di bagian atas halaman dimuat langsung dengan dimensi yang sudah dipesan. Sisanya di-lazy-load dengan placeholder berkualitas rendah, sehingga layout shift nyaris nol.",
         },
         {
-          title: 'Keranjang melenceng antar tab',
+          title: "Keranjang tidak sinkron antar tab",
           problem:
-            'Pengguna sering menjelajah di beberapa tab. Keranjang yang hanya ada di klien menimpa perubahan terbaru dan kadang memunculkan lagi item yang sudah dihapus.',
+            "Orang sering menjelajah di beberapa tab. Keranjang yang hanya ada di klien menimpa perubahan yang lebih baru dan kadang memunculkan lagi item yang sudah dihapus.",
           solution:
-            'Keranjang menjadi sumber daya server dengan field versi. Setiap mutasi mengirim versi yang diharapkan, dan respons usang memicu pengambilan ulang alih-alih diterapkan. Broadcast channel ringan memperbarui tab lain di browser yang sama.',
+            "Keranjang dijadikan resource di server dengan field versi. Tiap perubahan mengirim versi yang diharapkan, dan respons yang sudah usang memicu pengambilan ulang, bukan diterapkan. Broadcast channel yang ringan memperbarui tab lain di browser yang sama.",
         },
         {
-          title: 'Pemilihan varian yang berfungsi untuk semua',
+          title: "Pemilihan varian yang bisa dipakai semua orang",
           problem:
-            'Swatch sebelumnya hanya menyampaikan warna secara visual dan menonaktifkan kombinasi tanpa menjelaskan alasannya.',
+            "Swatch lama hanya menyampaikan warna secara visual, dan menonaktifkan beberapa kombinasi tanpa memberi tahu alasannya.",
           solution:
-            'Setiap opsi punya label teks dan jumlah ketersediaan. Kombinasi tak tersedia tetap bisa difokuskan dengan alasan, dan memilih opsi memperbarui ringkasan live berisi nama produk lengkap, ukuran, harga, dan status stok.',
+            "Setiap opsi punya label teks dan jumlah stok. Kombinasi yang tidak tersedia tetap bisa difokuskan dan menjelaskan alasannya, dan memilih opsi memperbarui ringkasan langsung berisi nama produk lengkap, ukuran, harga, dan status stok.",
         },
       ],
       results: [
-        'Template koleksi yang didesain ulang memangkas berat gambar awal lebih dari setengah dalam perbandingan internal.',
-        'Interaksi filter menjadi instan dan mudah dibagikan; tim memakai state URL langsung dalam kampanye musiman.',
-        'Pengabaian checkout dalam pengujian kegunaan menurun setelah varian tak tersedia dijelaskan secara inline.',
-        'Suntingan merchandising yang dulu butuh developer kini terbit dari editor konten tanpa perubahan kode.',
+        "Dalam perbandingan internal, template koleksi yang didesain ulang memangkas bobot gambar awal lebih dari setengah.",
+        "Filter jadi instan dan mudah dibagikan, dan tim langsung memakai state URL itu di kampanye musiman.",
+        "Di uji kegunaan, lebih sedikit orang yang meninggalkan checkout setelah varian yang tidak tersedia dijelaskan langsung di tempatnya.",
+        "Suntingan merchandising yang dulu butuh developer sekarang bisa terbit dari editor konten, tanpa mengubah kode.",
       ],
       lessons: [
-        'Pekerjaan performa adalah pekerjaan desain: memilih rasio gambar lebih awal mencegah sebagian besar masalah mahal.',
-        'Model state URL bersama mengurangi bug sekaligus dokumentasi — setiap filter punya satu sumber kebenaran.',
-        'Perbaikan aksesibilitas terbaik juga menjadi interaksi paling jelas bagi semua orang.',
+        "Performa itu bagian dari desain. Menentukan rasio gambar sejak awal mencegah sebagian besar masalah yang mahal.",
+        "Model state URL yang dipakai bersama mengurangi bug dan dokumentasi, karena setiap filter punya satu sumber kebenaran.",
+        "Perbaikan aksesibilitas yang paling bagus ternyata juga jadi interaksi paling jelas buat semua orang.",
       ],
       screenshots: [
         {
           src: projectMedia.shopease.detail,
-          alt: 'Halaman produk ShopEase dengan detail material, pemilih warna dan ukuran aksesibel, serta panel tambah ke keranjang',
+          alt: "Halaman produk ShopEase dengan detail material, pemilih warna dan ukuran aksesibel, serta panel tambah ke keranjang",
           caption:
-            'Pilihan material, warna, dan ukuran tetap terlihat dan menjelaskan ketersediaan sebelum checkout.',
+            "Pilihan material, warna, dan ukuran tetap terlihat dan menjelaskan ketersediaan sebelum checkout.",
         },
       ],
     },
   },
   {
-    slug: 'fintrack',
-    name: 'FinTrack',
-    category: 'Fintech · Dashboard',
+    slug: "fintrack",
+    name: "FinTrack",
+    category: "Fintech · Dashboard",
     summary:
-      'Dashboard keuangan pribadi untuk freelancer: penghasilan tidak tetap, biaya berulang, dan proyeksi yang jujur soal ketidakpastian.',
+      "Dashboard keuangan pribadi untuk freelancer: penghasilan yang tidak tetap, biaya berulang, dan proyeksi yang terus terang soal ketidakpastiannya.",
     description:
-      'FinTrack adalah studi kasus dashboard keuangan pribadi yang mencakup deteksi transaksi berulang, visualisasi data aksesibel, impor CSV, dan desain yang peduli privasi.',
-    year: '2024',
-    role: 'Desain produk & rekayasa frontend',
-    duration: '10 minggu',
+      "FinTrack adalah studi kasus keuangan pribadi yang membahas deteksi transaksi berulang, visualisasi data yang aksesibel, impor CSV, dan desain yang menjaga privasi.",
+    year: "2024",
+    role: "Desain produk & rekayasa frontend",
+    duration: "10 minggu",
     thumbnail: projectMedia.fintrack.cover,
     thumbnailAlt:
-      'Dashboard FinTrack dengan grafik arus kas, rincian kategori, dan transaksi terbaru',
+      "Dashboard FinTrack dengan grafik arus kas, rincian kategori, dan transaksi terbaru",
     featured: true,
-    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'Redis'],
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+    ],
     features: [
       {
-        title: 'Proyeksi arus kas',
+        title: "Proyeksi arus kas",
         description:
-          'Menggabungkan biaya berulang yang diketahui dengan pandangan konservatif atas penghasilan tidak tetap, dipisahkan jelas dari nilai aktual.',
+          "Menggabungkan biaya berulang yang sudah diketahui dengan perkiraan hati-hati atas penghasilan yang tidak tetap, dan dipisahkan dengan jelas dari angka aktual.",
       },
       {
-        title: 'Deteksi transaksi berulang',
+        title: "Deteksi transaksi berulang",
         description:
-          'Menyarankan langganan dan tagihan dari irama transaksi, lalu membiarkan pengguna mengonfirmasi atau mengabaikannya.',
+          "Menyarankan langganan dan tagihan dari seberapa sering transaksi muncul, lalu pengguna bisa mengonfirmasi atau mengabaikannya.",
       },
       {
-        title: 'Kategori yang berguna',
+        title: "Kategori yang berguna",
         description:
-          'Aturan diprioritaskan di atas tebakan otomatis, dan setiap saran bisa dikoreksi dalam satu langkah.',
+          "Aturan didahulukan daripada tebakan otomatis, dan setiap saran bisa dikoreksi dalam satu langkah.",
       },
       {
-        title: 'Impor CSV',
+        title: "Impor CSV",
         description:
-          'Alur pemetaan kolom dengan pratinjau dan deteksi duplikat menangani ekspor dari berbagai bank.',
+          "Alur pemetaan kolom dengan pratinjau dan deteksi duplikat bisa menangani ekspor dari berbagai bank.",
       },
       {
-        title: 'Grafik aksesibel',
+        title: "Grafik yang aksesibel",
         description:
-          'Setiap grafik punya padanan tabel, ringkasan yang terbaca, dan titik data yang dapat diakses keyboard.',
+          "Setiap grafik disertai versi tabel, ringkasan yang bisa dibaca, dan titik data yang bisa dijangkau lewat keyboard.",
       },
       {
-        title: 'Privat secara bawaan',
+        title: "Privat sejak awal",
         description:
-          'Tanpa koneksi bank pada demonstrasi; semua data tetap di akun pengguna dan dapat diekspor atau dihapus.',
+          "Demo ini tidak terhubung ke bank mana pun. Semua data tetap di akun pengguna dan bisa diekspor atau dihapus.",
       },
     ],
     links: {
-      demo: 'https://example.com/demo/fintrack',
-      repository: 'https://github.com/YanuarArif/fintrack',
+      demo: "https://example.com/demo/fintrack",
+      repository: "https://github.com/YanuarArif/fintrack",
     },
     caseStudy: {
       overview:
-        'FinTrack adalah dashboard keuangan yang dirancang di sekitar masalah umum freelancer: penghasilan datang tidak merata, tetapi sewa, perangkat lunak, dan pajak tidak. Produk ini membantu orang melihat apa yang benar-benar terikat, apa yang kemungkinan besar, dan apa yang masih tidak pasti — tanpa berpura-pura proyeksi adalah jaminan.',
+        "FinTrack adalah dashboard keuangan yang dibangun dari masalah yang akrab bagi freelancer: penghasilan datang tidak merata, sementara sewa, langganan software, dan pajak tetap harus dibayar. Aplikasi ini membantu orang melihat apa yang sudah pasti keluar, apa yang kemungkinan besar terjadi, dan apa yang masih belum jelas, tanpa berpura-pura bahwa proyeksi adalah janji.",
       problem:
-        'Sebagian besar alat anggaran mengasumsikan gaji tetap. Freelancer akhirnya mengisi kategori secara manual atau mengabaikan dashboard sepenuhnya. Alat yang ada juga cenderung menyajikan proyeksi percaya diri dari data tipis, yang lebih buruk daripada tidak menampilkan proyeksi sama sekali.',
+        "Kebanyakan alat anggaran mengasumsikan gaji tetap, sehingga freelancer akhirnya mengisi kategori secara manual atau malah tidak membuka dashboard sama sekali. Banyak juga yang menampilkan proyeksi yang terlihat yakin padahal datanya sedikit, dan itu lebih buruk daripada tidak menampilkan proyeksi.",
       solution:
-        'Saya merancang model dua lapis: item berulang yang terkonfirmasi dan penghasilan historis yang teramati. Dashboard memisahkan arus kas terikat dari arus kas terproyeksi, menampilkan asumsi di balik setiap angka, dan mendorong pengguna mengoreksi kategori alih-alih diam-diam belajar dari kesalahan.',
+        "Saya merancang model dua lapis: item berulang yang sudah dikonfirmasi dan riwayat penghasilan yang teramati. Dashboard memisahkan arus kas yang sudah pasti dari arus kas hasil proyeksi, menampilkan asumsi di balik setiap angka, dan meminta pengguna mengoreksi kategori, bukan diam-diam belajar dari kesalahannya sendiri.",
       stack: [
-        { label: 'Antarmuka', items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Recharts'] },
-        { label: 'Aplikasi', items: ['Node.js', 'REST API', 'PostgreSQL', 'Redis'] },
-        { label: 'Kualitas', items: ['Vitest', 'Testing Library', 'Docker'] },
+        {
+          label: "Antarmuka",
+          items: ["React", "TypeScript", "Vite", "Tailwind CSS", "Recharts"],
+        },
+        {
+          label: "Aplikasi",
+          items: ["Node.js", "REST API", "PostgreSQL", "Redis"],
+        },
+        { label: "Kualitas", items: ["Vitest", "Testing Library", "Docker"] },
       ],
       process: [
         {
-          title: 'Berbicara dengan freelancer',
+          title: "Ngobrol dengan freelancer",
           description:
-            'Enam percakapan membuat satu hal jelas: pertanyaan yang berguna bukan "berapa yang saya belanjakan?" melainkan "berapa yang aman saya komit bulan depan?"',
+            'Enam percakapan membuat satu hal jelas. Pertanyaan yang berguna bukan "berapa yang sudah saya habiskan?", tapi "berapa yang aman saya tanggung bulan depan?"',
         },
         {
-          title: 'Mendefinisikan proyeksi secara jujur',
+          title: "Merumuskan proyeksi secara jujur",
           description:
-            'Saya menuliskan setiap asumsi — penghasilan tidak tetap, buffer, sisihan pajak, item berulang — dan membuat semuanya terlihat serta bisa diedit di antarmuka.',
+            "Saya menuliskan semua asumsi (penghasilan tidak tetap, dana cadangan, sisihan pajak, item berulang) dan membuat masing-masing terlihat serta bisa diedit di antarmuka.",
         },
         {
-          title: 'Membangun jalur data lebih dulu',
+          title: "Membangun jalur data lebih dulu",
           description:
-            'Ingesti CSV, deduplikasi, dan aturan kategori diimplementasikan sebelum grafik. Dashboard hanya sekuat alur impornya.',
+            "Ingesti CSV, deduplikasi, dan aturan kategori dikerjakan sebelum grafik. Dashboard hanya bisa dipercaya sejauh alur impornya bisa dipercaya.",
         },
         {
-          title: 'Mendesain dengan data nyata yang berantakan',
+          title: "Mendesain dengan data nyata yang berantakan",
           description:
-            'Pengujian memakai ekspor anonim dengan kolom hilang, baris duplikat, dan deskripsi yang tumpang tindih. Ini memunculkan kasus tepi yang akan disembunyikan data sintetis.',
+            "Saya menguji dengan ekspor yang sudah dianonimkan, lengkap dengan kolom yang hilang, baris ganda, dan deskripsi yang saling tumpang tindih. Dari situ muncul kasus tepi yang tidak akan terlihat kalau pakai data buatan.",
         },
       ],
       challenges: [
         {
-          title: 'Tanggal, zona waktu, dan tagihan berulang',
+          title: "Tanggal, zona waktu, dan tagihan berulang",
           problem:
-            'Tagihan yang ditagih pada hari terakhir bulan terus bergeser dalam proyeksi saat pengguna bepergian atau browser berjalan di zona waktu berbeda.',
+            "Tagihan yang jatuh di hari terakhir tiap bulan terus bergeser di proyeksi kalau pengguna sedang bepergian atau browsernya memakai zona waktu lain.",
           solution:
-            'Semua tanggal keuangan disimpan sebagai tanggal kalender murni tanpa komponen waktu. Aturan pengulangan diperluas di server memakai zona waktu akun, dan klien hanya memformat tanggal yang sudah terselesaikan.',
+            "Semua tanggal keuangan disimpan sebagai tanggal kalender biasa tanpa komponen jam. Aturan pengulangan dijabarkan di server memakai zona waktu akun, dan klien cuma memformat tanggal hasilnya.",
         },
         {
-          title: 'Grafik yang tidak bisa dibaca siapa pun',
+          title: "Grafik yang tidak terbaca oleh siapa pun",
           problem:
-            'Grafik arus kas pertama bergantung pada warna dan hover, gagal untuk pengguna screen reader, dan menyembunyikan perbedaan antara nilai aktual dan terproyeksi.',
+            "Grafik arus kas pertama bergantung pada warna dan hover, tidak bisa dipakai pengguna screen reader, dan menyembunyikan perbedaan antara nilai aktual dan proyeksi.",
           solution:
-            'Grafik kini menjadi salah satu representasi dari tabel ringkasan kecil. Nilai aktual memakai tanda solid, proyeksi memakai tanda bergaris, dan setiap bulan punya titik data yang dapat difokuskan dengan ringkasan teks lengkap. Tabel tersedia di balik disclosure, bukan terjebak di tooltip.',
+            "Sekarang grafik hanyalah salah satu cara menampilkan tabel ringkasan yang kecil. Nilai aktual memakai penanda penuh, proyeksi memakai penanda berongga, dan setiap bulan punya titik data yang bisa difokuskan lengkap dengan ringkasan teks. Tabelnya ada di balik disclosure, tidak terjebak di dalam tooltip.",
         },
         {
-          title: 'Ketidakkonsistenan impor',
+          title: "Impor yang tidak konsisten",
           problem:
-            'Ekspor CSV bank berbeda dalam delimiter, format tanggal, encoding, dan nama kolom. Impor awal membuat duplikat setiap kali pengguna mencoba ulang.',
+            "Ekspor CSV dari bank berbeda-beda dalam delimiter, format tanggal, encoding, dan nama kolom. Impor versi awal membuat duplikat setiap kali pengguna mengulang.",
           solution:
-            'Importer memisahkan parsing, pemetaan, dan normalisasi. Fingerprint deterministik dari tanggal, jumlah, dan deskripsi mencegah duplikat, dan setiap impor dipratinjau sebelum disimpan.',
+            "Importer memisahkan tahap parsing, pemetaan, dan normalisasi. Fingerprint deterministik dari tanggal, jumlah, dan deskripsi mencegah duplikat, dan setiap impor dipratinjau sebelum disimpan.",
         },
       ],
       results: [
-        'Kelompok kegunaan dapat mengidentifikasi biaya terikat versus penghasilan terproyeksi tanpa instruksi.',
-        'Deteksi duplikat bertahan pada impor berulang dengan rentang tanggal tumpang tindih dalam fixture pengujian.',
-        'Setiap grafik dashboard memperoleh tabel dan ringkasan teks setara, membuat informasi inti tersedia tanpa penglihatan atau input pointer.',
-        'Halaman asumsi proyeksi menjadi bagian onboarding yang disengaja, bukan pengaturan lanjutan.',
+        "Peserta uji bisa membedakan biaya yang sudah pasti dari penghasilan proyeksi tanpa diberi petunjuk.",
+        "Di fixture pengujian, deteksi duplikat tetap bertahan saat impor diulang dengan rentang tanggal yang tumpang tindih.",
+        "Setiap grafik di dashboard kini punya tabel dan ringkasan teks padanannya, jadi informasi intinya tidak bergantung pada penglihatan atau pointer.",
+        "Halaman asumsi proyeksi menjadi bagian onboarding yang disengaja, bukan pengaturan lanjutan.",
       ],
       lessons: [
-        'Kepercayaan adalah material desain. Menampilkan asumsi lebih berharga daripada menyempurnakan algoritma proyeksi.',
-        'Alur impor layak mendapat perhatian desain yang sama dengan dashboard; sebagian besar masalah data berasal dari sana.',
-        'Grafik aksesibel biasanya adalah grafik yang lebih jelas, karena memaksa Anda menyatakan apa yang dikatakan visualnya.',
+        "Kepercayaan adalah bahan desain. Menampilkan asumsi lebih berharga daripada memperhalus algoritma proyeksi.",
+        "Alur impor layak mendapat perhatian desain sebesar dashboard. Kebanyakan masalah data bermula di situ.",
+        "Grafik yang aksesibel biasanya juga lebih jelas, karena kita dipaksa menyebutkan apa sebenarnya yang ingin disampaikan gambarnya.",
       ],
       screenshots: [
         {
           src: projectMedia.fintrack.detail,
-          alt: 'Tampilan proyeksi FinTrack dengan arus kas aktual dan terproyeksi, kontrol asumsi, dan tabel data',
+          alt: "Tampilan proyeksi FinTrack dengan arus kas aktual dan terproyeksi, kontrol asumsi, dan tabel data",
           caption:
-            'Proyeksi bergaris dan berlabel, dengan tabel ringkasan tersedia di samping grafik.',
+            "Proyeksi diberi garis tepi dan label, dengan tabel ringkasan di samping grafik.",
         },
       ],
     },
   },
   {
-    slug: 'fitlife',
-    name: 'FitLife',
-    category: 'Kesehatan & Kebugaran',
+    slug: "fitlife",
+    name: "FitLife",
+    category: "Kesehatan & Kebugaran",
     summary:
-      'Pendamping latihan untuk orang yang berolahraga dalam jendela singkat dan tidak konsisten — offline-first, minim gesekan, dan jujur soal kemajuan.',
+      "Pendamping latihan untuk orang yang berolahraga di sela waktu singkat dan tidak teratur: offline-first, minim gesekan, dan apa adanya soal kemajuan.",
     description:
-      'FitLife adalah studi kasus aplikasi pelacak kebugaran yang mencakup arsitektur mobile offline-first, sinkronisasi latar belakang, grafik aktivitas aksesibel, dan performa pada perangkat sederhana.',
-    year: '2023',
-    role: 'Developer full-stack',
-    duration: '14 minggu',
+      "FitLife adalah studi kasus aplikasi pelacak kebugaran yang membahas arsitektur mobile offline-first, sinkronisasi di latar belakang, grafik aktivitas yang aksesibel, dan performa di perangkat sederhana.",
+    year: "2023",
+    role: "Developer full-stack",
+    duration: "14 minggu",
     thumbnail: projectMedia.fitlife.cover,
     thumbnailAlt:
-      'Layar aplikasi mobile FitLife menampilkan ring aktivitas, rencana latihan mingguan, dan ringkasan latihan',
+      "Layar aplikasi mobile FitLife menampilkan ring aktivitas, rencana latihan mingguan, dan ringkasan latihan",
     featured: true,
-    tech: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'Docker'],
+    tech: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+    ],
     features: [
       {
-        title: 'Latihan offline',
+        title: "Latihan offline",
         description:
-          'Sesi tercatat secara lokal dan tersinkron saat koneksi kembali, tanpa menghambat timer atau kehilangan set.',
+          "Sesi dicatat di perangkat dan disinkronkan saat koneksi kembali, tanpa mengganggu timer atau menghilangkan set.",
       },
       {
-        title: 'Rencana yang menyesuaikan',
+        title: "Rencana yang menyesuaikan",
         description:
-          'Rencana mingguan yang menjadwalkan ulang sesi terlewat alih-alih mengubah streak menjadi sumber rasa bersalah.',
+          "Rencana mingguan menjadwal ulang sesi yang terlewat, supaya streak tidak berubah jadi sumber rasa bersalah.",
       },
       {
-        title: 'Kemajuan yang bermakna',
+        title: "Kemajuan yang bermakna",
         description:
-          'Menyoroti konsistensi dan tren pribadi alih-alih membandingkan orang dengan papan peringkat sembarang.',
+          "Yang ditonjolkan adalah konsistensi dan tren pribadi, bukan peringkat orang di papan skor yang asal-asalan.",
       },
       {
-        title: 'Pencatatan minim gesekan',
+        title: "Pencatatan yang ringan",
         description:
-          'Latihan bisa dimulai dari rencana, rutinitas tersimpan, atau satu ketukan di layar utama — tanpa akun untuk memulai.',
+          "Mulai latihan dari rencana, rutinitas tersimpan, atau satu ketukan di layar utama. Tidak perlu akun untuk memulai.",
       },
       {
-        title: 'Ringkasan aksesibel',
+        title: "Ringkasan yang aksesibel",
         description:
-          'Grafik menyertakan ringkasan dan tampilan daftar, dengan teks yang dapat diskalakan dan dukungan reduced motion di seluruh aplikasi.',
+          "Grafik disertai ringkasan dan tampilan daftar, dan aplikasi mendukung teks yang bisa diperbesar serta reduced motion di semua layar.",
       },
       {
-        title: 'Lapisan sosial privat',
+        title: "Fitur sosial yang privat",
         description:
-          'Grup latihan opsional berbagi penyelesaian dan dukungan, tidak pernah metrik tubuh atau lokasi presisi.',
+          "Grup latihan bersifat opsional dan hanya membagikan latihan yang selesai serta dukungan semangat, tidak pernah data tubuh atau lokasi yang presisi.",
       },
     ],
     links: {
-      demo: 'https://example.com/demo/fitlife',
-      repository: 'https://github.com/YanuarArif/fitlife',
+      demo: "https://example.com/demo/fitlife",
+      repository: "https://github.com/YanuarArif/fitlife",
     },
     caseStudy: {
       overview:
-        'FitLife adalah pendamping latihan untuk orang yang tidak berlatih dengan jadwal sempurna. Dirancang di sekitar sesi singkat, minggu yang tak terduga, dan ponsel yang sering offline di gym atau ruang bawah tanah. Aplikasi memperlakukan sesi terlewat sebagai hal normal dan membuat melanjutkan jadi mudah.',
+        "FitLife adalah pendamping latihan untuk orang yang jadwalnya tidak selalu rapi. Aplikasi ini dirancang untuk sesi yang singkat, minggu yang sulit ditebak, dan ponsel yang sering offline di gym atau ruang bawah tanah. Sesi yang terlewat dianggap hal biasa, dan kembali berlatih dibuat semudah mungkin.",
       problem:
-        'Sebagian besar aplikasi kebugaran menghargai streak tanpa putus, sehingga minggu yang terputus terasa seperti kegagalan. Mereka juga membutuhkan koneksi untuk pencatatan dasar dan mengubur kemajuan berguna di balik perbandingan sosial. Brief-nya adalah membangun sesuatu yang tetap berguna di koneksi buruk dan minggu sibuk.',
+        "Kebanyakan aplikasi kebugaran memberi hadiah untuk streak yang tidak putus, jadi satu minggu yang terganggu terasa seperti kegagalan. Aplikasi semacam itu juga butuh koneksi untuk pencatatan dasar dan mengubur kemajuan yang berguna di bawah perbandingan sosial. Tugasnya adalah membuat sesuatu yang tetap berguna di koneksi jelek dan di minggu yang sibuk.",
       solution:
-        'Saya membangun klien mobile offline-first dengan antrean latihan lokal dan sinkronisasi deterministik. Rencana mingguan dihasilkan dari ketersediaan dan dihitung ulang saat sesi terlewat. Kemajuan dibingkai sebagai tren pribadi — konsistensi, volume, dan pemulihan — dengan ringkasan aksesibel alih-alih satu skor.',
+        "Saya membangun klien mobile offline-first dengan antrean latihan lokal dan sinkronisasi yang deterministik. Rencana mingguan dibuat dari hari-hari yang memang kosong dan dihitung ulang kalau ada sesi yang terlewat. Kemajuan ditampilkan sebagai tren pribadi (konsistensi, volume, dan pemulihan) dengan ringkasan yang aksesibel, bukan satu skor.",
       stack: [
-        { label: 'Mobile', items: ['React Native', 'Expo', 'TypeScript', 'SQLite'] },
-        { label: 'Backend', items: ['Node.js', 'PostgreSQL', 'Redis', 'Zod'] },
-        { label: 'Pengiriman', items: ['Docker', 'GitHub Actions', 'Sentry'] },
+        {
+          label: "Mobile",
+          items: ["React Native", "Expo", "TypeScript", "SQLite"],
+        },
+        { label: "Backend", items: ["Node.js", "PostgreSQL", "Redis", "Zod"] },
+        { label: "Pengiriman", items: ["Docker", "GitHub Actions", "Sentry"] },
       ],
       process: [
         {
-          title: 'Mengamati sesi nyata',
+          title: "Mengamati sesi yang sebenarnya",
           description:
-            'Saya mengikuti lima orang melalui latihan singkat dan mencatat setiap gangguan. Penanganan ponsel, timer istirahat, dan transisi offline lebih penting daripada pustaka latihan.',
+            "Saya mengikuti lima orang selama latihan singkat dan mencatat setiap gangguan. Cara memegang ponsel, timer istirahat, dan saat koneksi putus ternyata lebih penting daripada pustaka gerakan.",
         },
         {
-          title: 'Mendesain untuk minggu yang terputus',
+          title: "Mendesain untuk minggu yang terganggu",
           description:
-            'Perencana mingguan berbasis hari tersedia, bukan hari tetap. Sesi terlewat masuk ke backlog ringan yang bisa diabaikan tanpa penalti.',
+            "Perencana mingguan bekerja dari hari yang tersedia, bukan hari yang tetap. Sesi yang terlewat masuk ke backlog ringan yang bisa diabaikan tanpa penalti.",
         },
         {
-          title: 'Membangun sinkronisasi sebelum layar',
+          title: "Membangun sinkronisasi sebelum layar",
           description:
-            'Lapisan data local-first dan protokol sinkronisasi datang sebelum antarmuka yang dipoles, sehingga setiap layar diuji terhadap perilaku offline dan konflik nyata.',
+            "Lapisan data local-first dan protokol sinkronisasi dikerjakan sebelum antarmuka dipoles, jadi setiap layar diuji pada kondisi offline dan konflik yang sungguhan.",
         },
         {
-          title: 'Menguji di perangkat sederhana',
+          title: "Menguji di perangkat sederhana",
           description:
-            'Bulan terakhir fokus pada perangkat Android lama, pengaturan teks besar, dan reduced motion. Animasi dan rendering grafik disesuaikan berdasarkan pengukuran, bukan asumsi.',
+            "Bulan terakhir dipakai untuk ponsel Android lama, pengaturan teks besar, dan reduced motion. Animasi dan rendering grafik disetel berdasarkan hasil pengukuran, bukan tebakan.",
         },
       ],
       challenges: [
         {
-          title: 'Konflik offline',
+          title: "Konflik data saat offline",
           problem:
-            'Sebuah latihan bisa diedit di dua perangkat, atau sinkronisasi bisa mencoba ulang setelah server menerima sebagian sesi. Last-write-wins sederhana diam-diam membuang set.',
+            "Satu latihan bisa diedit di dua perangkat, atau sinkronisasi bisa mencoba lagi setelah server sudah menerima sebagian sesi. Aturan last-write-wins yang sederhana diam-diam membuang beberapa set.",
           solution:
-            'Setiap sesi adalah log event append-only dengan ID yang dibuat klien. Server menerima event idempoten dan menyelesaikan urutan berdasarkan timestamp plus urutan per perangkat. Suntingan yang berkonflik disimpan sebagai event terpisah alih-alih ditimpa.',
+            "Setiap sesi adalah log event append-only dengan ID yang dibuat di klien. Server menerima event yang idempoten dan mengurutkannya berdasarkan timestamp ditambah nomor urut per perangkat. Suntingan yang bentrok disimpan sebagai event terpisah, tidak ditimpa.",
         },
         {
-          title: 'Animasi di ponsel kelas bawah',
+          title: "Animasi di ponsel kelas bawah",
           problem:
-            'Ring aktivitas dan transisi kehilangan frame di perangkat Android lama dan mengabaikan preferensi reduced motion.',
+            "Ring aktivitas dan transisinya sering patah-patah di perangkat Android lama dan tidak menghormati pengaturan reduced motion.",
           solution:
-            'Saya mengganti animasi kontinu dengan satu ring gradien dan transform bergaya CSS yang murah bila memungkinkan, mengurangi jumlah elemen beranimasi, dan menghormati pengaturan gerak OS. Waktu frame terukur membaik signifikan di perangkat uji tertua.',
+            "Saya mengganti animasi yang terus berjalan dengan satu ring gradien, memakai transform yang murah bila memungkinkan, mengurangi jumlah elemen beranimasi, dan mengikuti pengaturan gerak dari sistem operasi. Waktu per frame yang terukur membaik cukup jauh di perangkat uji yang paling tua.",
         },
         {
-          title: 'Kemajuan tanpa tekanan',
+          title: "Kemajuan tanpa tekanan",
           problem:
-            'Penguji awal membaca skor aktivitas sebagai nilai rapor. Seminggu terlewat membuat mereka berhenti membuka aplikasi.',
+            "Penguji awal menganggap skor aktivitas sebagai nilai rapor. Setelah satu minggu terlewat, mereka berhenti membuka aplikasi.",
           solution:
-            'Skor dihapus. Layar utama kini menampilkan aksi berguna berikutnya, ringkasan penyelesaian mingguan sederhana, dan catatan saat rencana disesuaikan. Tren tetap tersedia tetapi tidak pernah dibingkai sebagai lulus/gagal.',
+            "Skornya saya hapus. Layar utama sekarang menampilkan langkah berguna berikutnya, ringkasan penyelesaian mingguan yang sederhana, dan catatan saat rencana disesuaikan. Tren masih ada, tapi tidak pernah diperlakukan sebagai lulus atau gagal.",
         },
       ],
       results: [
-        'Penguji beta menyelesaikan sesi offline tanpa kehilangan data saat koneksi diputus paksa.',
-        'Layar utama yang direvisi meningkatkan kunjungan kembali setelah minggu terlewat pada kelompok uji.',
-        'Layar inti lolos pemeriksaan teks besar dan reduced motion di perangkat tertua yang didukung.',
-        'Logika sinkronisasi tercakup oleh pengujian replay event deterministik, termasuk pengiriman duplikat dan di luar urutan.',
+        "Penguji beta menyelesaikan sesi offline tanpa kehilangan data, bahkan saat koneksi sengaja diputus.",
+        "Di kelompok uji, layar utama yang direvisi membuat lebih banyak orang kembali setelah melewatkan satu minggu.",
+        "Layar-layar inti lolos pemeriksaan teks besar dan reduced motion di perangkat tertua yang didukung.",
+        "Logika sinkronisasi dicakup oleh tes replay event yang deterministik, termasuk pengiriman ganda dan yang tidak berurutan.",
       ],
       lessons: [
-        'Dukungan offline adalah keputusan produk, bukan lapisan cache yang ditempel di akhir.',
-        'Menghapus skor bisa menjadi fitur ketika skor mengubah perilaku ke arah yang lebih buruk.',
-        'Anggaran performa di perangkat nyata lebih berguna daripada benchmark di mesin pengembangan.',
+        "Dukungan offline adalah keputusan produk, bukan lapisan cache yang ditambahkan di akhir.",
+        "Menghapus skor bisa menjadi fitur kalau skor itu mendorong perilaku ke arah yang salah.",
+        "Anggaran performa di perangkat sungguhan lebih menjelaskan banyak hal daripada benchmark di mesin pengembang.",
       ],
       screenshots: [
         {
           src: projectMedia.fitlife.detail,
-          alt: 'Layar sesi latihan FitLife dengan timer istirahat, pencatatan set, dan indikator sinkronisasi offline',
+          alt: "Layar sesi latihan FitLife dengan timer istirahat, pencatatan set, dan indikator sinkronisasi offline",
           caption:
-            'Sesi tetap sepenuhnya bisa dipakai offline; status sinkronisasi terlihat tetapi tidak pernah mengganggu latihan.',
+            "Sesi bisa dipakai penuh tanpa internet. Status sinkronisasi terlihat, tapi tidak pernah mengganggu latihan.",
         },
       ],
     },
   },
-]
+];
