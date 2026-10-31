@@ -96,9 +96,11 @@ form fields with inline errors wired through `aria-describedby` / `aria-invalid`
 status messages, keyboard-operable cards and navigation, and decorative artwork marked
 `aria-hidden`.
 
-**Performance** — self-hosted variable fonts (Inter, JetBrains Mono) via Fontsource with no
-render-blocking third-party requests, vector artwork (no raster payloads in the app), route-level
-code splitting, lazy section rendering below the fold, and vendor chunking in `vite.config.ts`.
+**Performance** — self-hosted fonts with no render-blocking third-party requests: the Poppins
+woff2 files live in `src/assets/fonts/` (latin + latin-ext, split by `unicode-range` so the browser
+fetches only the subset it needs), and JetBrains Mono is loaded for code blocks via Fontsource.
+Vector artwork (no raster payloads in the app), route-level code splitting, lazy section rendering
+below the fold, and vendor chunking in `vite.config.ts`.
 
 ---
 
@@ -113,6 +115,7 @@ code splitting, lazy section rendering below the fold, and vendor chunking in `v
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── src/
+│   ├── assets/fonts/         # self-hosted Poppins woff2 (latin, latin-ext) + OFL license
 │   ├── assets/images/        # local SVG artwork (portrait, projects, blog covers)
 │   ├── components/
 │   │   ├── blog/             # article-content, blog-card

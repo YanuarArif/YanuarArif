@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -167,7 +167,10 @@
 
 @utility container-page {
   width: 100%;
-  max-width: 74rem;
+  /* 80rem = 1280px, setara Tailwind max-w-7xl. Ditulis literal (bukan
+     var(--container-7xl)) karena Tailwind v4 tree-shake token @theme yang
+     tidak dipakai utility class, sehingga var-nya bisa kosong. */
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
 

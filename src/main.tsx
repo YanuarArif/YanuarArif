@@ -1,4 +1,4 @@
-import '@fontsource-variable/inter'
+import './assets/fonts/poppins.css'
 import '@fontsource-variable/jetbrains-mono'
 import './index.css'
 
