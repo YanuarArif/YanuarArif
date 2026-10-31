@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Avery Lindqvist — Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Avery Lindqvist is a full-stack developer in Copenhagen building fast, accessible web products with React, TypeScript, and Node.js."
+    />
+    <meta name="author" content="Avery Lindqvist" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://averylindqvist.dev/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Avery Lindqvist — Full-Stack Developer" />
+    <meta property="og:title" content="Avery Lindqvist — Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Fast, accessible products, built end to end. Explore selected projects, case studies, and writing on React, architecture, and the web."
+    />
+    <meta property="og:url" content="https://averylindqvist.dev/" />
+    <meta property="og:image" content="https://averylindqvist.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Avery Lindqvist — Full-Stack Developer portfolio" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Avery Lindqvist — Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Fast, accessible products, built end to end. Explore selected projects, case studies, and writing on React, architecture, and the web."
+    />
+    <meta name="twitter:image" content="https://averylindqvist.dev/og-image.png" />
+
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0c0d" media="(prefers-color-scheme: dark)" />
+
+    <script>
+      // Apply the saved or system theme before paint to avoid a flash.
+      ;(function () {
+        try {
+          var key = 'avery-portfolio-theme'
+          var stored = window.localStorage.getItem(key)
+          var isDark =
+            stored === 'dark' ||
+            (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.classList.toggle('dark', isDark)
+          document.documentElement.style.colorScheme = isDark ? 'dark' : 'light'
+        } catch (error) {
+          // Local storage can be unavailable; the default light theme is safe.
+        }
+      })()
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Avery Lindqvist",
+        "jobTitle": "Full-Stack Developer",
+        "description": "Full-stack developer building fast, accessible web products from database to interface.",
+        "url": "https://averylindqvist.dev/",
+        "email": "mailto:hello@averylindqvist.dev",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Copenhagen",
+          "addressCountry": "DK"
+        },
+        "sameAs": [
+          "https://github.com/averylindqvist",
+          "https://www.linkedin.com/in/averylindqvist"
+        ],
+        "knowsAbout": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "Web accessibility",
+          "Application architecture"
+        ]
+      }
+    </script>
+
+    <style>
+      html {
+        background-color: #fbfaf7;
+      }
+      html.dark {
+        background-color: #0a0c0d;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="max-width: 40rem; margin: 4rem auto; padding: 0 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6;">
+        <h1 style="font-size: 1.5rem;">Avery Lindqvist — Full-Stack Developer</h1>
+        <p>
+          This portfolio is a client-rendered React application and needs JavaScript enabled. You
+          can still reach me at
+          <a href="mailto:hello@averylindqvist.dev">hello@averylindqvist.dev</a>.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

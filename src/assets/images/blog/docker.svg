@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Docker for frontend developers cover</title>
+  <desc id="desc">An abstract slate illustration of stacked build layers and a repeatable pipeline.</desc>
+  <defs>
+    <radialGradient id="glow" cx="0.72" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#4aa8ff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0c1720" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="layer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d3648"/>
+      <stop offset="1" stop-color="#142634"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0b1720"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g stroke="#7fc4ff" stroke-opacity="0.06">
+    <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"/>
+    <path d="M150 0V630M300 0V630M450 0V630M600 0V630M750 0V630M900 0V630M1050 0V630"/>
+  </g>
+
+  <g>
+    <g transform="translate(680 168)">
+      <rect x="0" y="0" width="260" height="54" rx="10" fill="url(#layer)" stroke="#4c9bd8" stroke-opacity="0.5"/>
+      <rect x="26" y="16" width="38" height="22" rx="5" fill="none" stroke="#7fc4ff" stroke-opacity="0.6"/>
+      <text x="80" y="33" fill="#d7ecff" font-family="ui-monospace, monospace" font-size="12">FROM bun:1 AS build</text>
+
+      <rect x="20" y="70" width="260" height="54" rx="10" fill="url(#layer)" stroke="#4c9bd8" stroke-opacity="0.4"/>
+      <rect x="46" y="86" width="38" height="22" rx="5" fill="none" stroke="#7fc4ff" stroke-opacity="0.45"/>
+      <text x="100" y="103" fill="#b8d9f3" font-family="ui-monospace, monospace" font-size="12">bun install</text>
+
+      <rect x="40" y="140" width="260" height="54" rx="10" fill="url(#layer)" stroke="#4c9bd8" stroke-opacity="0.35"/>
+      <rect x="66" y="156" width="38" height="22" rx="5" fill="none" stroke="#7fc4ff" stroke-opacity="0.35"/>
+      <text x="120" y="173" fill="#a7cbeb" font-family="ui-monospace, monospace" font-size="12">bun run build</text>
+
+      <rect x="60" y="210" width="260" height="54" rx="10" fill="#133344" stroke="#4aa8ff" stroke-opacity="0.7"/>
+      <rect x="86" y="226" width="38" height="22" rx="5" fill="none" stroke="#8ed4ff" stroke-opacity="0.8"/>
+      <text x="140" y="243" fill="#e5f5ff" font-family="ui-monospace, monospace" font-size="12">static assets</text>
+
+      <path d="M130 258v42" stroke="#4aa8ff" stroke-opacity="0.6"/>
+      <path d="M122 292l8 10 8-10" fill="none" stroke="#4aa8ff" stroke-opacity="0.6"/>
+      <text x="130" y="322" fill="#5b8faf" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9">nginx:alpine</text>
+    </g>
+
+    <path d="M618 250h-56" stroke="#4aa8ff" stroke-opacity="0.5" stroke-dasharray="4 5"/>
+    <circle cx="618" cy="250" r="4" fill="#4aa8ff" fill-opacity="0.7"/>
+
+    <g transform="translate(430 168)">
+      <rect x="0" y="0" width="132" height="300" rx="14" fill="#0e1f2b" stroke="#2c4c60"/>
+      <text x="18" y="30" fill="#5f8ca6" font-family="ui-monospace, monospace" font-size="9" letter-spacing="1">BUILD</text>
+      <rect x="18" y="52" width="96" height="8" rx="4" fill="#1b3849"/>
+      <rect x="18" y="72" width="66" height="8" rx="4" fill="#1b3849"/>
+      <rect x="18" y="92" width="82" height="8" rx="4" fill="#1b3849"/>
+      <text x="18" y="134" fill="#5f8ca6" font-family="ui-monospace, monospace" font-size="9" letter-spacing="1">RUNTIME</text>
+      <rect x="18" y="156" width="96" height="60" rx="8" fill="#143547" stroke="#3d718c"/>
+      <path d="M46 186h40M46 196h26" stroke="#7fc4ff" stroke-opacity="0.5" stroke-width="3"/>
+      <text x="18" y="252" fill="#426c84" font-family="ui-monospace, monospace" font-size="8">reproducible</text>
+      <text x="18" y="268" fill="#426c84" font-family="ui-monospace, monospace" font-size="8">small</text>
+      <text x="18" y="284" fill="#426c84" font-family="ui-monospace, monospace" font-size="8">portable</text>
+    </g>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <text x="72" y="90" fill="#66c0ff" font-size="12" font-weight="600" letter-spacing="3">DEVOPS · FRONTEND</text>
+    <text x="72" y="168" fill="#eef7ff" font-size="52" font-weight="600" letter-spacing="-1.8">Same build,</text>
+    <text x="72" y="224" fill="#eef7ff" font-size="52" font-weight="600" letter-spacing="-1.8">every machine.</text>
+    <text x="72" y="276" fill="#7d9fb4" font-size="15">A small Dockerfile for a Vite app.</text>
+    <line x1="72" y1="512" x2="152" y2="512" stroke="#4aa8ff" stroke-width="2"/>
+    <text x="72" y="546" fill="#587d92" font-family="ui-monospace, monospace" font-size="10" letter-spacing="2">AVERY LINDQVIST / JOURNAL</text>
+  </g>
+</svg>

@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">TaskFlow project board interface</title>
+  <desc id="desc">A dark project management app showing three kanban columns with typed task cards.</desc>
+  <defs>
+    <radialGradient id="glow" cx="0.8" cy="0.1" r="0.8">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#0b1110" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#111a18"/>
+      <stop offset="1" stop-color="#0d1413"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <clipPath id="windowClip"><rect x="64" y="48" width="1072" height="654" rx="24"/></clipPath>
+  </defs>
+
+  <rect width="1200" height="750" fill="#0a100f"/>
+  <rect width="1200" height="750" fill="url(#glow)"/>
+  <g stroke="#5eead4" stroke-opacity="0.06">
+    <path d="M0 150H1200M0 300H1200M0 450H1200M0 600H1200"/>
+    <path d="M150 0V750M300 0V750M450 0V750M600 0V750M750 0V750M900 0V750M1050 0V750"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="48" width="1072" height="654" rx="24" fill="url(#window)" stroke="#26332f"/>
+  </g>
+
+  <g clip-path="url(#windowClip)">
+    <rect x="64" y="48" width="1072" height="57" fill="#0b1211"/>
+    <circle cx="98" cy="77" r="5.5" fill="#3b4a46"/>
+    <circle cx="118" cy="77" r="5.5" fill="#3b4a46"/>
+    <circle cx="138" cy="77" r="5.5" fill="#3b4a46"/>
+    <rect x="430" y="63" width="340" height="28" rx="14" fill="#131d1b" stroke="#22302d"/>
+    <circle cx="449" cy="77" r="4" fill="#2dd4bf" opacity="0.7"/>
+    <text x="462" y="82" fill="#6e827d" font-family="ui-monospace, monospace" font-size="11">taskflow.app/workspace/sprint-24</text>
+
+    <rect x="64" y="105" width="212" height="597" fill="#0c1513"/>
+    <line x1="276" y1="105" x2="276" y2="702" stroke="#1d2a27"/>
+    <rect x="88" y="131" width="28" height="28" rx="8" fill="#0f5f58"/>
+    <path d="M97 145l6-5 6 5v7h-12Z" fill="#7ff0dd"/>
+    <text x="128" y="151" fill="#e9f0ed" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="600">TaskFlow</text>
+
+    <rect x="88" y="186" width="164" height="34" rx="8" fill="#13211e"/>
+    <rect x="98" y="198" width="10" height="10" rx="3" fill="#2dd4bf"/>
+    <text x="120" y="208" fill="#c7d5d0" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Board</text>
+    <g fill="#6c7d78" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">
+      <text x="120" y="251">Timeline</text>
+      <text x="120" y="289">Activity</text>
+      <text x="120" y="327">Reports</text>
+      <text x="120" y="365">Members</text>
+    </g>
+    <g fill="#3b4c47">
+      <rect x="98" y="241" width="10" height="10" rx="2"/>
+      <rect x="98" y="279" width="10" height="10" rx="2"/>
+      <rect x="98" y="317" width="10" height="10" rx="2"/>
+      <rect x="98" y="355" width="10" height="10" rx="2"/>
+    </g>
+
+    <rect x="88" y="606" width="164" height="64" rx="12" fill="#111c19" stroke="#1f2e2a"/>
+    <circle cx="108" cy="630" r="12" fill="#0f766e"/>
+    <text x="108" y="634" fill="#d9fffa" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600">AL</text>
+    <text x="128" y="626" fill="#d6e2de" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">Avery Lindqvist</text>
+    <text x="128" y="642" fill="#63756f" font-family="ui-monospace, monospace" font-size="9">workspace admin</text>
+
+    <text x="308" y="152" fill="#f0f5f2" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="600">Sprint 24</text>
+    <text x="308" y="175" fill="#6c7d78" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">12 tasks · ends Friday, 24 Oct</text>
+    <g>
+      <circle cx="836" cy="155" r="13" fill="#1c3a34"/>
+      <circle cx="856" cy="155" r="13" fill="#2b3524"/>
+      <circle cx="876" cy="155" r="13" fill="#3a2d24"/>
+      <text x="842" y="159" fill="#88e5d5" font-family="ui-sans-serif, system-ui, sans-serif" font-size="9">MK</text>
+      <text x="861" y="159" fill="#d6d68b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="9">JS</text>
+      <text x="881" y="159" fill="#ddb18b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="9">NT</text>
+    </g>
+    <rect x="962" y="137" width="142" height="34" rx="8" fill="#0f5f58"/>
+    <text x="1033" y="159" fill="#eafffa" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="500">+ New task</text>
+
+    <line x1="276" y1="198" x2="1136" y2="198" stroke="#1b2825"/>
+
+    <g font-family="ui-sans-serif, system-ui, sans-serif">
+      <text x="308" y="236" fill="#92a29d" font-size="12" font-weight="600" letter-spacing="1">BACKLOG</text>
+      <text x="374" y="236" fill="#4c5f59" font-size="11">4</text>
+      <text x="596" y="236" fill="#92a29d" font-size="12" font-weight="600" letter-spacing="1">IN PROGRESS</text>
+      <text x="692" y="236" fill="#4c5f59" font-size="11">3</text>
+      <text x="884" y="236" fill="#92a29d" font-size="12" font-weight="600" letter-spacing="1">DONE</text>
+      <text x="936" y="236" fill="#4c5f59" font-size="11">5</text>
+
+      <rect x="308" y="256" width="252" height="112" rx="12" fill="#15211e" stroke="#23332f"/>
+      <rect x="324" y="272" width="52" height="18" rx="9" fill="#1f3a33"/>
+      <text x="350" y="285" fill="#6ee7d4" text-anchor="middle" font-size="9">RESEARCH</text>
+      <text x="324" y="315" fill="#dfe8e4" font-size="13" font-weight="500">Refine onboarding flow</text>
+      <text x="324" y="335" fill="#687c76" font-size="10">4 subtasks · 1 comment</text>
+      <circle cx="530" cy="316" r="10" fill="#2b3524"/>
+      <text x="530" y="320" fill="#d6d68b" text-anchor="middle" font-size="8">JS</text>
+
+      <rect x="308" y="380" width="252" height="104" rx="12" fill="#15211e" stroke="#23332f"/>
+      <rect x="324" y="396" width="40" height="18" rx="9" fill="#3c2f1f"/>
+      <text x="344" y="409" fill="#f4c67c" text-anchor="middle" font-size="9">DESIGN</text>
+      <text x="324" y="439" fill="#dfe8e4" font-size="13" font-weight="500">Empty states for filters</text>
+      <text x="324" y="459" fill="#687c76" font-size="10">Due Thu · design review</text>
+      <circle cx="530" cy="440" r="10" fill="#3a2d24"/>
+      <text x="530" y="444" fill="#ddb18b" text-anchor="middle" font-size="8">NT</text>
+
+      <rect x="308" y="496" width="252" height="92" rx="12" fill="#15211e" stroke="#23332f"/>
+      <text x="324" y="527" fill="#dfe8e4" font-size="13" font-weight="500">Export audit log</text>
+      <text x="324" y="547" fill="#687c76" font-size="10">Backlog · no estimate</text>
+      <rect x="324" y="560" width="34" height="14" rx="7" fill="#1c2825"/>
+      <text x="341" y="570" fill="#6c7d78" text-anchor="middle" font-size="8">API</text>
+
+      <rect x="596" y="256" width="252" height="124" rx="12" fill="#17251f" stroke="#2e443b"/>
+      <rect x="612" y="272" width="66" height="18" rx="9" fill="#1f3a33"/>
+      <text x="645" y="285" fill="#6ee7d4" text-anchor="middle" font-size="9">ACCESSIBILITY</text>
+      <text x="612" y="315" fill="#f0f7f3" font-size="13" font-weight="500">Keyboard shortcut map</text>
+      <text x="612" y="335" fill="#7a918a" font-size="10">2 of 3 subtasks complete</text>
+      <rect x="612" y="348" width="150" height="4" rx="2" fill="#253c35"/>
+      <rect x="612" y="348" width="100" height="4" rx="2" fill="#2dd4bf"/>
+      <circle cx="818" cy="316" r="10" fill="#1c3a34"/>
+      <text x="818" y="320" fill="#88e5d5" text-anchor="middle" font-size="8">MK</text>
+
+      <rect x="596" y="392" width="252" height="112" rx="12" fill="#15211e" stroke="#23332f"/>
+      <rect x="612" y="408" width="44" height="18" rx="9" fill="#22303c"/>
+      <text x="634" y="421" fill="#9dc3dc" text-anchor="middle" font-size="9">BUG</text>
+      <text x="612" y="451" fill="#dfe8e4" font-size="13" font-weight="500">Fix board jump on clipboard</text>
+      <text x="612" y="471" fill="#687c76" font-size="10">Reported in beta · high</text>
+      <circle cx="818" cy="452" r="10" fill="#3a2d24"/>
+      <text x="818" y="456" fill="#ddb18b" text-anchor="middle" font-size="8">NT</text>
+
+      <rect x="596" y="516" width="252" height="88" rx="12" fill="#15211e" stroke="#23332f"/>
+      <text x="612" y="547" fill="#dfe8e4" font-size="13" font-weight="500">Presence throttling</text>
+      <text x="612" y="567" fill="#687c76" font-size="10">In progress · 2 files</text>
+
+      <rect x="884" y="256" width="252" height="100" rx="12" fill="#141f1c" stroke="#22312d"/>
+      <text x="900" y="285" fill="#a8b8b3" font-size="13" font-weight="500">Fractional reordering</text>
+      <text x="900" y="305" fill="#5d716b" font-size="10">Merged 2 days ago</text>
+      <circle cx="1106" cy="285" r="10" fill="#1c3a34"/>
+      <text x="1106" y="289" fill="#88e5d5" text-anchor="middle" font-size="8">MK</text>
+
+      <rect x="884" y="368" width="252" height="100" rx="12" fill="#141f1c" stroke="#22312d"/>
+      <text x="900" y="397" fill="#a8b8b3" font-size="13" font-weight="500">Revision-aware updates</text>
+      <text x="900" y="417" fill="#5d716b" font-size="10">Merged 3 days ago</text>
+      <circle cx="1106" cy="397" r="10" fill="#2b3524"/>
+      <text x="1106" y="401" fill="#d6d68b" text-anchor="middle" font-size="8">JS</text>
+
+      <rect x="884" y="480" width="252" height="100" rx="12" fill="#141f1c" stroke="#22312d"/>
+      <text x="900" y="509" fill="#a8b8b3" font-size="13" font-weight="500">CSV export endpoint</text>
+      <text x="900" y="529" fill="#5d716b" font-size="10">Merged 4 days ago</text>
+      <circle cx="1106" cy="509" r="10" fill="#3a2d24"/>
+      <text x="1106" y="513" fill="#ddb18b" text-anchor="middle" font-size="8">NT</text>
+    </g>
+
+    <rect x="64" y="702" width="1072" height="0" fill="#0d1513"/>
+  </g>
+</svg>

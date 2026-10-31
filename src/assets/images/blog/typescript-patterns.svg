@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">TypeScript patterns cover</title>
+  <desc id="desc">An abstract navy illustration of intersecting type shapes and narrowing branches.</desc>
+  <defs>
+    <radialGradient id="glow" cx="0.75" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#5b8def" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#111a33" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shape" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a3d70" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#1a2a51" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#101a33"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g stroke="#9db9f5" stroke-opacity="0.08">
+    <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"/>
+    <path d="M150 0V630M300 0V630M450 0V630M600 0V630M750 0V630M900 0V630M1050 0V630"/>
+  </g>
+
+  <g>
+    <circle cx="812" cy="282" r="168" fill="url(#shape)" stroke="#7fa4f0" stroke-opacity="0.5"/>
+    <rect x="664" y="150" width="288" height="264" rx="26" fill="none" stroke="#9db9f5" stroke-opacity="0.28"/>
+    <path d="M700 380L812 170L924 380Z" fill="#142447" fill-opacity="0.5" stroke="#76e4c9" stroke-opacity="0.55"/>
+    <text x="812" y="336" fill="#f1f5ff" text-anchor="middle" font-family="ui-monospace, monospace" font-size="26">A | B</text>
+    <text x="812" y="362" fill="#8aa5dc" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10">narrow at the edges</text>
+
+    <path d="M704 440h216" stroke="#7e9bd8" stroke-width="1"/>
+    <path d="M730 460l47 56M812 460v56M894 460l-47 56" stroke="#7e9bd8" stroke-opacity="0.65"/>
+    <rect x="700" y="516" width="62" height="30" rx="15" fill="#1b2e55" stroke="#5b8def" stroke-opacity="0.5"/>
+    <text x="731" y="536" fill="#a9c3f7" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10">success</text>
+    <rect x="780" y="516" width="62" height="30" rx="15" fill="#1b2e55" stroke="#5b8def" stroke-opacity="0.5"/>
+    <text x="811" y="536" fill="#a9c3f7" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10">error</text>
+    <rect x="860" y="516" width="62" height="30" rx="15" fill="#1b2e55" stroke="#5b8def" stroke-opacity="0.5"/>
+    <text x="891" y="536" fill="#a9c3f7" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10">idle</text>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <text x="72" y="90" fill="#7fb7f2" font-size="12" font-weight="600" letter-spacing="3">TYPESCRIPT · DAILY USE</text>
+    <text x="72" y="168" fill="#f3f7ff" font-size="52" font-weight="600" letter-spacing="-1.8">Make states</text>
+    <text x="72" y="224" fill="#f3f7ff" font-size="52" font-weight="600" letter-spacing="-1.8">impossible to mix.</text>
+    <text x="72" y="276" fill="#8fa5cf" font-size="15">Five patterns I reach for every day.</text>
+    <line x1="72" y1="512" x2="152" y2="512" stroke="#76e4c9" stroke-width="2"/>
+    <text x="72" y="546" fill="#738ab8" font-family="ui-monospace, monospace" font-size="10" letter-spacing="2">AVERY LINDQVIST / JOURNAL</text>
+  </g>
+</svg>

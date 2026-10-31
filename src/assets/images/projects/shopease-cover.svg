@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">ShopEase homeware storefront</title>
+  <desc id="desc">A warm editorial product page for a lounge chair with colour swatches and an add-to-bag button.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf7ef"/>
+      <stop offset="1" stop-color="#f4eee3"/>
+    </linearGradient>
+    <linearGradient id="studio" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7ddcc"/>
+      <stop offset="1" stop-color="#d8ccb8"/>
+    </linearGradient>
+    <linearGradient id="chair" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b65e37"/>
+      <stop offset="1" stop-color="#8f4326"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#5b4a36" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="#ede7dc"/>
+  <g stroke="#a18f78" stroke-opacity="0.12">
+    <path d="M0 125H1200M0 250H1200M0 375H1200M0 500H1200M0 625H1200"/>
+    <path d="M150 0V750M300 0V750M450 0V750M600 0V750M750 0V750M900 0V750M1050 0V750"/>
+  </g>
+
+  <g filter="url(#soft)">
+    <rect x="56" y="44" width="1088" height="662" rx="18" fill="url(#page)" stroke="#d8cfc0"/>
+  </g>
+
+  <rect x="56" y="44" width="1088" height="52" rx="18" fill="#f2ece1"/>
+  <rect x="56" y="78" width="1088" height="18" fill="#f2ece1"/>
+  <circle cx="84" cy="70" r="4.5" fill="#c5b8a6"/>
+  <circle cx="101" cy="70" r="4.5" fill="#c5b8a6"/>
+  <circle cx="118" cy="70" r="4.5" fill="#c5b8a6"/>
+  <rect x="468" y="58" width="264" height="24" rx="12" fill="#e9e1d4"/>
+  <text x="600" y="75" fill="#8b7a64" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10">shopease.store/forma-lounge-chair</text>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <text x="92" y="142" fill="#24211c" font-size="15" font-weight="700" letter-spacing="3.4">SHOPEASE</text>
+    <text x="790" y="140" fill="#5f574d" font-size="11">Furniture</text>
+    <text x="856" y="140" fill="#5f574d" font-size="11">Lighting</text>
+    <text x="918" y="140" fill="#5f574d" font-size="11">Objects</text>
+    <text x="976" y="140" fill="#5f574d" font-size="11">Journal</text>
+    <circle cx="1082" cy="135" r="15" fill="none" stroke="#b9ad9c"/>
+    <path d="M1076 131h12l-1.5 10h-9Z" fill="none" stroke="#5f574d" stroke-width="1.2"/>
+    <path d="M1079 131a3 3 0 0 1 6 0" fill="none" stroke="#5f574d" stroke-width="1.2"/>
+
+    <line x1="92" y1="164" x2="1108" y2="164" stroke="#dfd6c7"/>
+
+    <rect x="92" y="190" width="588" height="466" rx="10" fill="url(#studio)"/>
+    <circle cx="386" cy="354" r="196" fill="#c9bca6" opacity="0.36"/>
+    <ellipse cx="388" cy="554" rx="192" ry="24" fill="#9b876d" opacity="0.2"/>
+
+    <g>
+      <path d="M298 328c-30-38-22-82 12-96 38-16 80 2 98 32l-38 186h-46Z" fill="url(#chair)"/>
+      <path d="M268 390c84-26 178-26 258 0l32 118c2 10-6 18-16 18H254c-10 0-18-8-16-18Z" fill="#a95330"/>
+      <path d="M274 388c80-22 170-22 246 0" fill="none" stroke="#d58a5f" stroke-width="2" opacity="0.55"/>
+      <path d="M420 306c22-34 64-42 92-20 28 22 28 64-2 88l-132-8Z" fill="#b75d36"/>
+      <path d="M284 524l-18 50M492 524l18 50" stroke="#6d4b2d" stroke-width="9" stroke-linecap="round"/>
+      <path d="M256 576h42M474 576h42" stroke="#6d4b2d" stroke-width="7" stroke-linecap="round"/>
+      <ellipse cx="394" cy="422" rx="86" ry="24" fill="#8a3e23" opacity="0.28"/>
+    </g>
+
+    <rect x="118" y="216" width="92" height="27" rx="13.5" fill="#f5eee3" opacity="0.92"/>
+    <text x="164" y="234" fill="#725c42" text-anchor="middle" font-size="9" letter-spacing="1.4">NEW SEASON</text>
+
+    <text x="724" y="226" fill="#a06440" font-size="10" font-weight="600" letter-spacing="2.4">FORMA COLLECTION</text>
+    <text x="724" y="276" fill="#24211c" font-size="38" font-weight="600" letter-spacing="-1.2">The lounge chair,</text>
+    <text x="724" y="318" fill="#24211c" font-size="38" font-weight="600" letter-spacing="-1.2">rethought.</text>
+    <text x="724" y="356" fill="#6d6559" font-size="12.5">Solid oak frame, wool bouclé upholstery, and a seat</text>
+    <text x="724" y="376" fill="#6d6559" font-size="12.5">depth that actually supports an afternoon of reading.</text>
+    <text x="724" y="412" fill="#24211c" font-size="21" font-weight="600">€1,290</text>
+    <text x="794" y="412" fill="#918674" font-size="11">incl. VAT</text>
+
+    <text x="724" y="456" fill="#5f574d" font-size="10" letter-spacing="1.1">COLOUR — TERRACOTTA</text>
+    <g>
+      <circle cx="734" cy="480" r="12" fill="#b65e37" stroke="#24211c" stroke-width="1.5"/>
+      <circle cx="766" cy="480" r="12" fill="#5f6c55"/>
+      <circle cx="798" cy="480" r="12" fill="#c8b59a"/>
+      <circle cx="830" cy="480" r="12" fill="#3f4440"/>
+    </g>
+
+    <rect x="724" y="512" width="290" height="46" rx="6" fill="#1f2f2a"/>
+    <text x="869" y="540" fill="#f5f1e8" text-anchor="middle" font-size="12" font-weight="500">Add to bag — €1,290</text>
+    <rect x="1026" y="512" width="46" height="46" rx="6" fill="none" stroke="#c9bfb0"/>
+    <path d="M1044 530c3-5 11-5 13 0 3 5-6 12-6.5 12s-9.5-7-6.5-12Z" fill="none" stroke="#5f574d" stroke-width="1.2"/>
+
+    <line x1="724" y1="586" x2="1072" y2="586" stroke="#ddd3c4"/>
+    <g fill="#6d6559" font-size="10.5">
+      <text x="724" y="610">Made to order in 4–6 weeks</text>
+      <text x="724" y="630">Free delivery within the EU</text>
+      <text x="724" y="650">30-day returns</text>
+    </g>
+    <g stroke="#a88c6d" stroke-width="1.2">
+      <path d="M724 601h8M724 621h8M724 641h8"/>
+    </g>
+  </g>
+</svg>

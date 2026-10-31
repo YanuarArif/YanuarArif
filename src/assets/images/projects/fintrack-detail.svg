@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">FinTrack forecast and assumptions view</title>
+  <desc id="desc">A forecast screen comparing actual and projected cash flow with editable assumptions and a committed costs table.</desc>
+  <defs>
+    <radialGradient id="glow" cx="0.85" cy="0.9" r="0.8">
+      <stop offset="0" stop-color="#0f766e" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0a1012" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="barActual" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="22" stdDeviation="28" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="#0a1012"/>
+  <rect width="1200" height="750" fill="url(#glow)"/>
+  <g stroke="#5eead4" stroke-opacity="0.05">
+    <path d="M0 150H1200M0 300H1200M0 450H1200M0 600H1200"/>
+    <path d="M150 0V750M300 0V750M450 0V750M600 0V750M750 0V750M900 0V750M1050 0V750"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="42" width="1072" height="666" rx="20" fill="#0e1517" stroke="#25312f"/>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <text x="100" y="94" fill="#f0f5f3" font-size="22" font-weight="600">November forecast</text>
+    <text x="100" y="116" fill="#71847f" font-size="11">Updated after importing 3 accounts · assumptions are editable</text>
+    <rect x="962" y="72" width="142" height="34" rx="8" fill="#111b1d" stroke="#22302f"/>
+    <text x="1033" y="94" fill="#a8b8b3" text-anchor="middle" font-size="11">Export report</text>
+
+    <rect x="100" y="150" width="624" height="250" rx="12" fill="#0f181a" stroke="#22302f"/>
+    <text x="120" y="178" fill="#e8efec" font-size="12" font-weight="600">Cash flow outlook</text>
+    <g font-size="9" fill="#6e817d">
+      <rect x="720" y="170" width="8" height="8" rx="2" fill="#2dd4bf"/>
+      <text x="734" y="178">Actual</text>
+      <rect x="784" y="170" width="8" height="8" rx="2" fill="none" stroke="#f4c67c"/>
+      <text x="798" y="178">Projected</text>
+    </g>
+    <g stroke="#263231" stroke-dasharray="3 4">
+      <path d="M150 230H700M150 280H700M150 330H700"/>
+    </g>
+    <g fill="#4f615d" font-family="ui-monospace, monospace" font-size="8">
+      <text x="120" y="233">8k</text>
+      <text x="120" y="283">5k</text>
+      <text x="120" y="333">2k</text>
+    </g>
+
+    <g>
+      <rect x="166" y="276" width="38" height="76" rx="4" fill="url(#barActual)"/>
+      <rect x="262" y="248" width="38" height="104" rx="4" fill="url(#barActual)"/>
+      <rect x="358" y="292" width="38" height="60" rx="4" fill="url(#barActual)"/>
+      <rect x="454" y="224" width="38" height="128" rx="4" fill="url(#barActual)"/>
+      <rect x="550" y="262" width="38" height="90" rx="4" fill="url(#barActual)"/>
+      <rect x="646" y="210" width="38" height="142" rx="4" fill="url(#barActual)"/>
+
+      <rect x="262" y="230" width="38" height="18" rx="4" fill="#0f181a" stroke="#f4c67c" stroke-dasharray="3 3"/>
+      <rect x="454" y="206" width="38" height="18" rx="4" fill="#0f181a" stroke="#f4c67c" stroke-dasharray="3 3"/>
+      <path d="M282 238h14" stroke="#f4c67c" stroke-width="1.2"/>
+    </g>
+    <g fill="#6e817d" font-family="ui-monospace, monospace" font-size="8" text-anchor="middle">
+      <text x="185" y="372">JUN</text>
+      <text x="281" y="372">JUL</text>
+      <text x="377" y="372">AUG</text>
+      <text x="473" y="372">SEP</text>
+      <text x="569" y="372">OCT</text>
+      <text x="665" y="372">NOV</text>
+    </g>
+    <line x1="120" y1="388" x2="704" y2="388" stroke="#1d2a28"/>
+    <text x="120" y="382" fill="#61736e" font-size="8">Projected values assume no new client work and include confirmed recurring costs.</text>
+
+    <rect x="744" y="150" width="360" height="250" rx="12" fill="#0f181a" stroke="#22302f"/>
+    <text x="764" y="178" fill="#e8efec" font-size="12" font-weight="600">Assumptions</text>
+    <text x="764" y="196" fill="#6e817d" font-size="9">Change these to see the forecast update.</text>
+
+    <g>
+      <rect x="764" y="216" width="320" height="48" rx="8" fill="#111c1e" stroke="#22302f"/>
+      <text x="778" y="235" fill="#8b9b97" font-size="9">MONTHLY BUFFER</text>
+      <text x="778" y="253" fill="#e4ece9" font-size="12">€1,500</text>
+      <rect x="1014" y="228" width="56" height="22" rx="6" fill="#172726"/>
+      <text x="1042" y="243" fill="#8af0df" text-anchor="middle" font-size="9">Edit</text>
+
+      <rect x="764" y="272" width="320" height="48" rx="8" fill="#111c1e" stroke="#22302f"/>
+      <text x="778" y="291" fill="#8b9b97" font-size="9">TAX SET-ASIDE</text>
+      <text x="778" y="309" fill="#e4ece9" font-size="12">28% of income</text>
+      <rect x="1014" y="284" width="56" height="22" rx="6" fill="#172726"/>
+      <text x="1042" y="299" fill="#8af0df" text-anchor="middle" font-size="9">Edit</text>
+
+      <rect x="764" y="328" width="320" height="48" rx="8" fill="#111c1e" stroke="#22302f"/>
+      <text x="778" y="347" fill="#8b9b97" font-size="9">INCOME CONFIDENCE</text>
+      <text x="778" y="365" fill="#e4ece9" font-size="12">Conservative</text>
+      <rect x="1014" y="340" width="56" height="22" rx="6" fill="#172726"/>
+      <text x="1042" y="355" fill="#8af0df" text-anchor="middle" font-size="9">Edit</text>
+    </g>
+
+    <text x="100" y="442" fill="#e8efec" font-size="12" font-weight="600">Committed costs</text>
+    <text x="724" y="442" fill="#7a8d88" font-size="9">6 items · €3,860 / month</text>
+    <line x1="100" y1="458" x2="1104" y2="458" stroke="#1e2b2c"/>
+    <g font-size="10">
+      <text x="100" y="484" fill="#61736e" font-size="8" letter-spacing="1">ITEM</text>
+      <text x="580" y="484" fill="#61736e" font-size="8" letter-spacing="1">CADENCE</text>
+      <text x="820" y="484" fill="#61736e" font-size="8" letter-spacing="1">NEXT CHARGE</text>
+      <text x="1104" y="484" fill="#61736e" font-size="8" letter-spacing="1" text-anchor="end">AMOUNT</text>
+      <line x1="100" y1="496" x2="1104" y2="496" stroke="#172321"/>
+
+      <text x="100" y="522" fill="#cdd9d5">Rent — Østerbro</text>
+      <text x="580" y="522" fill="#7a8d88">Monthly</text>
+      <text x="820" y="522" fill="#7a8d88">1 Nov</text>
+      <text x="1104" y="522" fill="#e3ebe7" text-anchor="end">€1,780.00</text>
+      <line x1="100" y1="536" x2="1104" y2="536" stroke="#162220"/>
+
+      <text x="100" y="562" fill="#cdd9d5">Tax set-aside</text>
+      <text x="580" y="562" fill="#7a8d88">Monthly</text>
+      <text x="820" y="562" fill="#7a8d88">5 Nov</text>
+      <text x="1104" y="562" fill="#e3ebe7" text-anchor="end">€980.00</text>
+      <line x1="100" y1="576" x2="1104" y2="576" stroke="#162220"/>
+
+      <text x="100" y="602" fill="#cdd9d5">Health insurance</text>
+      <text x="580" y="602" fill="#7a8d88">Monthly</text>
+      <text x="820" y="602" fill="#7a8d88">12 Nov</text>
+      <text x="1104" y="602" fill="#e3ebe7" text-anchor="end">€214.00</text>
+      <line x1="100" y1="616" x2="1104" y2="616" stroke="#162220"/>
+
+      <text x="100" y="642" fill="#cdd9d5">Software subscriptions</text>
+      <text x="580" y="642" fill="#7a8d88">Monthly</text>
+      <text x="820" y="642" fill="#7a8d88">18 Nov</text>
+      <text x="1104" y="642" fill="#e3ebe7" text-anchor="end">€186.00</text>
+    </g>
+
+    <rect x="100" y="668" width="1004" height="24" rx="6" fill="#101d1a"/>
+    <text x="116" y="684" fill="#6e817d" font-size="9">Forecast uses confirmed recurring items only. New client invoices are deliberately excluded until they appear in your account.</text>
+  </g>
+</svg>

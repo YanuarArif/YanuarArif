@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">ShopEase cart and checkout panel</title>
+  <desc id="desc">A storefront product grid with an open shopping bag panel showing a lounge chair, variant details, and totals.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf8f1"/>
+      <stop offset="1" stop-color="#f1ebdf"/>
+    </linearGradient>
+    <linearGradient id="item" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e5dac8"/>
+      <stop offset="1" stop-color="#d6c7b1"/>
+    </linearGradient>
+    <filter id="panelShadow" x="-30%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="-18" dy="0" stdDeviation="30" flood-color="#5b4a36" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="750" fill="#e9e2d6"/>
+  <g stroke="#a18f78" stroke-opacity="0.12">
+    <path d="M0 125H1200M0 250H1200M0 375H1200M0 500H1200M0 625H1200"/>
+    <path d="M150 0V750M300 0V750M450 0V750M600 0V750M750 0V750M900 0V750M1050 0V750"/>
+  </g>
+
+  <rect x="42" y="42" width="1116" height="666" rx="18" fill="url(#paper)" stroke="#d8cfc0"/>
+  <rect x="42" y="42" width="1116" height="50" rx="18" fill="#f2ece1"/>
+  <rect x="42" y="76" width="1116" height="16" fill="#f2ece1"/>
+  <circle cx="68" cy="67" r="4" fill="#c5b8a6"/>
+  <circle cx="84" cy="67" r="4" fill="#c5b8a6"/>
+  <circle cx="100" cy="67" r="4" fill="#c5b8a6"/>
+  <text x="76" y="128" fill="#24211c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="3">SHOPEASE</text>
+  <text x="700" y="128" fill="#6d6559" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10">Free EU delivery over €150 · 30-day returns</text>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <text x="76" y="176" fill="#2b2822" font-size="21" font-weight="600" letter-spacing="-0.4">Objects for slower rooms</text>
+    <text x="76" y="198" fill="#8b7d6a" font-size="11">18 pieces · curated by the ShopEase studio</text>
+
+    <g>
+      <rect x="76" y="222" width="236" height="182" rx="8" fill="url(#item)"/>
+      <path d="M134 340c3-42 20-75 54-77 34-2 54 31 56 77Z" fill="#b65e37"/>
+      <rect x="184" y="262" width="24" height="50" rx="12" fill="#b65e37"/>
+      <rect x="76" y="416" width="120" height="8" rx="4" fill="#cfc3b0"/>
+      <rect x="76" y="432" width="72" height="8" rx="4" fill="#ded4c3"/>
+
+      <rect x="332" y="222" width="236" height="182" rx="8" fill="#dfe3d7"/>
+      <path d="M412 356V278c0-28 22-50 50-50s50 22 50 50v78Z" fill="#7b8a6c" opacity="0.8"/>
+      <ellipse cx="462" cy="354" rx="70" ry="14" fill="#a9b39a" opacity="0.5"/>
+      <rect x="332" y="416" width="120" height="8" rx="4" fill="#cfc3b0"/>
+      <rect x="332" y="432" width="72" height="8" rx="4" fill="#ded4c3"/>
+
+      <rect x="588" y="222" width="236" height="182" rx="8" fill="#e4dcd2"/>
+      <path d="M660 352l38-60 34 44 20-24 30 40Z" fill="#a77254" opacity="0.75"/>
+      <circle cx="730" cy="278" r="22" fill="#e8c79e"/>
+      <rect x="588" y="416" width="120" height="8" rx="4" fill="#cfc3b0"/>
+      <rect x="588" y="432" width="72" height="8" rx="4" fill="#ded4c3"/>
+
+      <rect x="76" y="474" width="236" height="132" rx="8" fill="#e6ddd0"/>
+      <circle cx="194" cy="540" r="42" fill="#c9a984" opacity="0.7"/>
+      <rect x="76" y="622" width="120" height="8" rx="4" fill="#cfc3b0"/>
+      <rect x="332" y="474" width="236" height="132" rx="8" fill="#dfe0d5"/>
+      <path d="M400 590c0-40 30-70 50-70s50 30 50 70Z" fill="#8c967d" opacity="0.6"/>
+      <rect x="332" y="622" width="120" height="8" rx="4" fill="#cfc3b0"/>
+    </g>
+
+    <g filter="url(#panelShadow)">
+      <rect x="806" y="42" width="352" height="666" rx="18" fill="#fdfbf6" stroke="#dcd3c4"/>
+    </g>
+    <text x="838" y="108" fill="#24211c" font-size="18" font-weight="600">Your bag</text>
+    <text x="838" y="130" fill="#8b7d6a" font-size="10">2 items · reserved for 30 minutes</text>
+    <line x1="838" y1="152" x2="1126" y2="152" stroke="#e4dbcc"/>
+
+    <rect x="838" y="176" width="88" height="100" rx="6" fill="url(#item)"/>
+    <path d="M864 250c1-24 12-43 32-44 20-1 31 19 32 44Z" fill="#b65e37"/>
+    <text x="944" y="198" fill="#2b2822" font-size="12" font-weight="600">Forma Lounge Chair</text>
+    <text x="944" y="216" fill="#8b7d6a" font-size="10">Terracotta · Oak</text>
+    <text x="944" y="246" fill="#2b2822" font-size="12">€1,290</text>
+    <rect x="1060" y="184" width="66" height="24" rx="12" fill="#f2ece1"/>
+    <text x="1093" y="200" fill="#6d6559" text-anchor="middle" font-size="9">Qty 1</text>
+    <line x1="838" y1="296" x2="1126" y2="296" stroke="#ece3d4"/>
+
+    <rect x="838" y="314" width="64" height="64" rx="6" fill="#dfe3d7"/>
+    <circle cx="870" cy="346" r="20" fill="#8c967d" opacity="0.6"/>
+    <text x="918" y="332" fill="#2b2822" font-size="12" font-weight="600">Aalto Table Lamp</text>
+    <text x="918" y="350" fill="#8b7d6a" font-size="10">Sage · Linen shade</text>
+    <text x="918" y="370" fill="#2b2822" font-size="11">€185</text>
+
+    <line x1="838" y1="404" x2="1126" y2="404" stroke="#e4dbcc"/>
+    <text x="838" y="436" fill="#8b7d6a" font-size="10">Gift note</text>
+    <rect x="838" y="448" width="288" height="48" rx="6" fill="#f8f3e9" stroke="#ded4c3"/>
+    <text x="852" y="476" fill="#b3a692" font-size="10">Add a handwritten note…</text>
+
+    <text x="838" y="532" fill="#8b7d6a" font-size="10">Subtotal</text>
+    <text x="1126" y="532" fill="#2b2822" text-anchor="end" font-size="11">€1,475</text>
+    <text x="838" y="556" fill="#8b7d6a" font-size="10">Delivery</text>
+    <text x="1126" y="556" fill="#4d7c5c" text-anchor="end" font-size="11">Free</text>
+    <line x1="838" y1="578" x2="1126" y2="578" stroke="#e4dbcc"/>
+    <text x="838" y="606" fill="#2b2822" font-size="12" font-weight="600">Total</text>
+    <text x="1126" y="606" fill="#2b2822" text-anchor="end" font-size="17" font-weight="600">€1,475</text>
+    <rect x="838" y="628" width="288" height="44" rx="6" fill="#1f2f2a"/>
+    <text x="982" y="655" fill="#f5f1e8" text-anchor="middle" font-size="11" font-weight="500">Continue to checkout</text>
+    <rect x="838" y="684" width="288" height="1" fill="#ece3d4"/>
+    <text x="982" y="700" fill="#a49783" text-anchor="middle" font-size="8.5">Taxes calculated at checkout</text>
+  </g>
+</svg>
