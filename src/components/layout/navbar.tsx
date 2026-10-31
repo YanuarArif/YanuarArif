@@ -3,19 +3,24 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { Logo } from '@/components/layout/logo'
 import { MobileNav } from '@/components/layout/mobile-nav'
+import { LanguageToggle } from '@/components/ui/language-toggle'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
-import { profile } from '@/data/profile'
+import { profileContent } from '@/data/profile'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
 import { useScrollSpy } from '@/hooks/use-scroll-spy'
-import { homeSectionIds, navItems } from '@/lib/navigation'
+import { homeSectionIds, navItemsContent, type NavItem } from '@/lib/navigation'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
   const { pathname, hash } = useLocation()
   const activeSection = useScrollSpy(homeSectionIds)
+  const profile = useLocalized(profileContent)
+  const navItems = useLocalized(navItemsContent)
+  const copy = useUICopy()
 
   const isHome = pathname === '/'
 
-  const isActive = (item: (typeof navItems)[number]): boolean => {
+  const isActive = (item: NavItem): boolean => {
     if (item.href === '/blog') {
       return (
         pathname === '/blog' ||
@@ -56,7 +61,7 @@ export function Navbar() {
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Logo />
 
-        <nav aria-label="Primary" className="hidden lg:flex lg:items-center lg:gap-0.5">
+        <nav aria-label={copy.nav.primary} className="hidden lg:flex lg:items-center lg:gap-0.5">
           {navItems.map((item) => {
             const active = isActive(item)
             return (
@@ -94,8 +99,9 @@ export function Navbar() {
               <span className="absolute inline-flex size-full animate-pulse-soft rounded-full bg-primary" />
               <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
             </span>
-            {profile.availability.available ? 'Open to work' : 'Currently booked'}
+            {profile.availability.available ? copy.nav.openToWork : copy.nav.currentlyBooked}
           </Link>
+          <LanguageToggle />
           <ThemeToggle />
           <MobileNav activeLabel={currentLabel} />
         </div>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://averylindqvist.dev/sitemap.xml
+Sitemap: https://yanuararif.vercel.app/sitemap.xml

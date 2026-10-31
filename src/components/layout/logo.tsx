@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import { profile } from '@/data/profile'
+import { profileContent } from '@/data/profile'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
@@ -10,10 +11,13 @@ interface LogoProps {
 }
 
 export function Logo({ className, showName = true, size = 'default' }: LogoProps) {
+  const profile = useLocalized(profileContent)
+  const copy = useUICopy()
+
   return (
     <Link
       to="/"
-      aria-label={`${profile.name} — home`}
+      aria-label={`${profile.name} — ${copy.nav.home}`}
       className={cn(
         'group inline-flex items-center gap-2.5 rounded-lg focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none',
         className,

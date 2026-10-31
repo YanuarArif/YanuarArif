@@ -78,7 +78,7 @@
 
     <circle cx="900" cy="234" r="7" fill="#3d514b"/>
     <line x1="900" y1="241" x2="900" y2="318" stroke="#2a3a35"/>
-    <text x="918" y="232" fill="#dfe8e4" font-size="12" font-weight="500">Assigned to Avery</text>
+    <text x="918" y="232" fill="#dfe8e4" font-size="12" font-weight="500">Assigned to Yanuar</text>
     <text x="918" y="250" fill="#61756f" font-size="10">You · 38 minutes ago</text>
 
     <circle cx="900" cy="344" r="7" fill="#3d514b"/>

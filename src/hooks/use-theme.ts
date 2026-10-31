@@ -10,7 +10,7 @@ export interface ThemeContextValue {
 
 export const ThemeContext = createContext<ThemeContextValue | null>(null)
 
-export const THEME_STORAGE_KEY = 'avery-portfolio-theme'
+export const THEME_STORAGE_KEY = 'yanuar-portfolio-theme'
 
 export function useTheme(): ThemeContextValue {
   const context = useContext(ThemeContext)

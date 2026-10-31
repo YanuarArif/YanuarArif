@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom'
 
 import { SectionHeading } from '@/components/sections/section-heading'
 import { Reveal } from '@/components/ui/reveal'
-import { about, profile } from '@/data/profile'
+import { aboutContent, profileContent } from '@/data/profile'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
 import { cn } from '@/lib/utils'
 import type { AboutHighlight } from '@/types'
 
@@ -23,6 +24,10 @@ const highlightIcons = {
 } satisfies Record<AboutHighlight['icon'], typeof Compass>
 
 export function About() {
+  const about = useLocalized(aboutContent)
+  const profile = useLocalized(profileContent)
+  const copy = useUICopy()
+
   return (
     <section
       id="about"
@@ -34,9 +39,9 @@ export function About() {
           <SectionHeading
             id="about-title"
             index="02"
-            label="About"
-            title="A developer who cares about the whole product."
-            description="Not just the component in the middle of the screen — the data behind it, the person using it, and the team who has to maintain it next year."
+            label={copy.about.label}
+            title={copy.about.title}
+            description={copy.about.description}
           />
         </Reveal>
 
@@ -64,19 +69,19 @@ export function About() {
               <dl className="space-y-3.5">
                 <div className="flex items-start justify-between gap-6">
                   <dt className="font-mono text-[0.625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                    Based in
+                    {copy.about.basedIn}
                   </dt>
                   <dd className="text-right text-xs font-medium">{profile.location}</dd>
                 </div>
                 <div className="flex items-start justify-between gap-6 border-t border-border/70 pt-3.5">
                   <dt className="font-mono text-[0.625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                    Focus
+                    {copy.about.focus}
                   </dt>
-                  <dd className="text-right text-xs font-medium">Full-stack product engineering</dd>
+                  <dd className="text-right text-xs font-medium">{copy.about.focusValue}</dd>
                 </div>
                 <div className="flex items-start justify-between gap-6 border-t border-border/70 pt-3.5">
                   <dt className="font-mono text-[0.625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                    Status
+                    {copy.about.status}
                   </dt>
                   <dd className="flex items-center gap-1.5 text-right text-xs font-medium">
                     <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
@@ -126,7 +131,7 @@ export function About() {
               <div className="mt-10 rounded-2xl border border-border bg-muted/30 p-5 sm:p-6">
                 <div className="flex items-center gap-2">
                   <BookOpen className="size-4 text-primary" aria-hidden="true" />
-                  <h3 className="text-sm font-semibold">Currently learning</h3>
+                  <h3 className="text-sm font-semibold">{copy.about.currentlyLearning}</h3>
                 </div>
                 <ul className="mt-4 divide-y divide-border/70">
                   {about.learning.map((item, index) => (
@@ -152,7 +157,7 @@ export function About() {
           <Reveal>
             <h3 className="flex items-center gap-2 text-sm font-semibold">
               <Sparkles className="size-4 text-primary" aria-hidden="true" />
-              Things I keep coming back to
+              {copy.about.interestsTitle}
             </h3>
             <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
               {about.interests.map((interest) => (
@@ -170,7 +175,7 @@ export function About() {
           <Reveal delay={0.06}>
             <h3 className="flex items-center gap-2 text-sm font-semibold">
               <Target className="size-4 text-primary" aria-hidden="true" />
-              Where I&rsquo;m headed
+              {copy.about.goalsTitle}
             </h3>
             <ol className="mt-4 space-y-3">
               {about.goals.map((goal, index) => (
@@ -186,7 +191,7 @@ export function About() {
               to="/#contact"
               className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
             >
-              Work with me
+              {copy.about.workWithMe}
               <ArrowUpRight className="size-3" aria-hidden="true" />
             </Link>
           </Reveal>

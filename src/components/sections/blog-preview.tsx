@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom'
 import { BlogCard } from '@/components/blog/blog-card'
 import { SectionHeading } from '@/components/sections/section-heading'
 import { Reveal } from '@/components/ui/reveal'
+import { useLocale, useUICopy } from '@/hooks/use-locale'
 import { getLatestPosts } from '@/lib/blog'
 
 export function BlogPreview() {
-  const posts = getLatestPosts(3)
+  const { locale } = useLocale()
+  const copy = useUICopy()
+  const posts = getLatestPosts(3, locale)
 
   return (
     <section
@@ -21,15 +24,15 @@ export function BlogPreview() {
             <SectionHeading
               id="blog-title"
               index="06"
-              label="Journal"
-              title="Notes on building for the web."
-              description="Practical write-ups about React, architecture, accessibility, and the small decisions that make software easier to live with."
+              label={copy.blog.label}
+              title={copy.blog.title}
+              description={copy.blog.description}
             />
             <Link
               to="/blog"
               className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none md:pb-1"
             >
-              All articles
+              {copy.blog.allArticles}
               <ArrowRight
                 className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 aria-hidden="true"

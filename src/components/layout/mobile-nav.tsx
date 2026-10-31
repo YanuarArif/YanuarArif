@@ -9,10 +9,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { LanguageToggle } from '@/components/ui/language-toggle'
 import { SocialIcon } from '@/components/ui/social-icon'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
-import { profile } from '@/data/profile'
-import { navItems } from '@/lib/navigation'
+import { profileContent } from '@/data/profile'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
+import { navItemsContent } from '@/lib/navigation'
 import { cn } from '@/lib/utils'
 
 interface MobileNavProps {
@@ -21,13 +23,16 @@ interface MobileNavProps {
 
 export function MobileNav({ activeLabel }: MobileNavProps) {
   const [open, setOpen] = useState(false)
+  const profile = useLocalized(profileContent)
+  const navItems = useLocalized(navItemsContent)
+  const copy = useUICopy()
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <button
           type="button"
-          aria-label="Open navigation menu"
+          aria-label={copy.nav.openMenu}
           className="inline-flex size-10 items-center justify-center rounded-full border border-transparent text-muted-foreground transition-colors hover:border-border hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none lg:hidden"
         >
           <Menu className="size-5" aria-hidden="true" />
@@ -38,9 +43,9 @@ export function MobileNav({ activeLabel }: MobileNavProps) {
         className="dialog-content top-0 right-0 left-auto h-dvh w-[min(23rem,calc(100vw-1.5rem))] max-w-none translate-x-0 translate-y-0 gap-0 rounded-none border-y-0 border-r-0 border-l bg-background p-0"
         aria-describedby="mobile-nav-description"
       >
-        <DialogTitle className="sr-only">Site navigation</DialogTitle>
+        <DialogTitle className="sr-only">{copy.nav.siteNavigation}</DialogTitle>
         <DialogDescription id="mobile-nav-description" className="sr-only">
-          Navigate to sections of the portfolio or open the blog.
+          {copy.nav.mobileDescription}
         </DialogDescription>
 
         <div className="flex h-full flex-col overflow-y-auto px-6 pt-20 pb-8">
@@ -52,9 +57,10 @@ export function MobileNav({ activeLabel }: MobileNavProps) {
               {profile.initials}
             </span>
             <span className="text-sm font-semibold">{profile.name}</span>
+            <LanguageToggle className="ml-auto" />
           </div>
 
-          <nav aria-label="Mobile" className="flex flex-col">
+          <nav aria-label={copy.nav.mobile} className="flex flex-col">
             {navItems.map((item, index) => {
               const isActive = activeLabel === item.label
               return (
@@ -99,7 +105,7 @@ export function MobileNav({ activeLabel }: MobileNavProps) {
                 onClick={() => setOpen(false)}
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary underline-offset-4 hover:underline"
               >
-                Start a conversation
+                {copy.nav.startConversation}
                 <ArrowUpRight className="size-3.5" aria-hidden="true" />
               </Link>
             </div>

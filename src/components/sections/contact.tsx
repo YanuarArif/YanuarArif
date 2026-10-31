@@ -14,16 +14,11 @@ import { SectionHeading } from '@/components/sections/section-heading'
 import { Button } from '@/components/ui/button'
 import { FieldError, Input, Label, Textarea } from '@/components/ui/form-fields'
 import { SocialIcon } from '@/components/ui/social-icon'
-import { profile } from '@/data/profile'
+import { profileContent } from '@/data/profile'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
+import type { ContactValues, UICopy } from '@/types'
 
 const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT?.trim() || undefined
-
-interface ContactValues {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
 
 type FieldName = keyof ContactValues
 type FormErrors = Partial<Record<FieldName, string>>
@@ -43,29 +38,31 @@ const fieldIds: Record<FieldName, string> = {
   message: 'contact-message',
 }
 
-function validate(values: ContactValues): FormErrors {
+function validate(values: ContactValues, messages: UICopy['contact']['errors']): FormErrors {
   const errors: FormErrors = {}
 
   if (values.name.trim().length < 2) {
-    errors.name = 'Please enter your name.'
+    errors.name = messages.name
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email.trim())) {
-    errors.email = 'Enter a valid email address so I can reply.'
+    errors.email = messages.email
   }
 
   if (values.subject.trim().length < 3) {
-    errors.subject = 'Add a short subject line.'
+    errors.subject = messages.subject
   }
 
   if (values.message.trim().length < 20) {
-    errors.message = 'A little more detail helps — at least 20 characters.'
+    errors.message = messages.message
   }
 
   return errors
 }
 
 export function Contact() {
+  const profile = useLocalized(profileContent)
+  const copy = useUICopy()
   const [values, setValues] = useState<ContactValues>(emptyValues)
   const [errors, setErrors] = useState<FormErrors>({})
   const [status, setStatus] = useState<SubmitState>('idle')
@@ -98,7 +95,7 @@ export function Contact() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const nextErrors = validate(values)
+    const nextErrors = validate(values, copy.contact.errors)
     setErrors(nextErrors)
 
     const firstError = (Object.keys(nextErrors) as FieldName[])[0]
@@ -159,9 +156,9 @@ export function Contact() {
                 <SectionHeading
                   id="contact-title"
                   index="07"
-                  label="Contact"
-                  title="Let's build something clear and useful."
-                  description="Have a product to improve, a team to join, or a problem worth untangling? Tell me a little about it. I usually reply within two business days."
+                  label={copy.contact.label}
+                  title={copy.contact.title}
+                  description={copy.contact.description}
                 />
 
                 <div className="mt-8 space-y-5">
@@ -174,7 +171,7 @@ export function Contact() {
                     </span>
                     <span>
                       <span className="block font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                        Email
+                        {copy.contact.email}
                       </span>
                       <span className="mt-0.5 flex items-center gap-1.5 text-sm font-medium underline decoration-border underline-offset-4 transition-colors group-hover:decoration-foreground">
                         {profile.email}
@@ -189,11 +186,11 @@ export function Contact() {
                     </span>
                     <span>
                       <span className="block font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                        Location
+                        {copy.contact.location}
                       </span>
                       <span className="mt-0.5 block text-sm font-medium">{profile.location}</span>
                       <span className="mt-0.5 block text-[0.6875rem] text-muted-foreground">
-                        {profile.timezone} · remote-friendly
+                        {profile.timezone} · {copy.contact.remoteFriendly}
                       </span>
                     </span>
                   </div>
@@ -239,10 +236,11 @@ export function Contact() {
                   <span className="grid size-12 place-items-center rounded-full bg-accent text-accent-foreground">
                     <CheckCircle2 className="size-6" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.02em]">Message sent</h3>
+                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.02em]">
+                    {copy.contact.messageSent}
+                  </h3>
                   <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                    Thanks for reaching out. Your message was accepted by the contact endpoint, and
-                    I&rsquo;ll get back to you as soon as I can.
+                    {copy.contact.messageSentBody}
                   </p>
                   <Button
                     type="button"
@@ -250,15 +248,15 @@ export function Contact() {
                     className="mt-6"
                     onClick={() => setStatus('idle')}
                   >
-                    Send another message
+                    {copy.contact.sendAnother}
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
                   <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-sm font-semibold">Send a message</h3>
+                    <h3 className="text-sm font-semibold">{copy.contact.sendMessage}</h3>
                     <span className="font-mono text-[0.5625rem] tracking-[0.08em] text-muted-foreground uppercase">
-                      All fields required
+                      {copy.contact.allFieldsRequired}
                     </span>
                   </div>
 
@@ -267,33 +265,32 @@ export function Contact() {
                       <Info className="mt-0.5 size-3.5 shrink-0 text-primary" aria-hidden="true" />
                       <p>
                         <span className="font-medium text-foreground">
-                          Form integration placeholder.
+                          {copy.contact.placeholderTitle}
                         </span>{' '}
-                        This template is not connected to an email service, so messages are not
-                        delivered. Set{' '}
+                        {copy.contact.placeholderBefore}{' '}
                         <code className="rounded bg-card px-1 py-0.5 font-mono text-[0.625rem]">
                           VITE_CONTACT_ENDPOINT
                         </code>{' '}
-                        to enable the form, or email me directly at{' '}
+                        {copy.contact.placeholderAfter}{' '}
                         <a
                           href={`mailto:${profile.email}`}
                           className="font-medium text-foreground underline decoration-border underline-offset-2 hover:decoration-foreground"
                         >
                           {profile.email}
                         </a>
-                        .
+                        {copy.contact.placeholderEnd}
                       </p>
                     </div>
                   ) : null}
 
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
                     <div className="space-y-1.5">
-                      <Label htmlFor={fieldIds.name}>Name</Label>
+                      <Label htmlFor={fieldIds.name}>{copy.contact.name}</Label>
                       <Input
                         id={fieldIds.name}
                         name="name"
                         autoComplete="name"
-                        placeholder="Your name"
+                        placeholder={copy.contact.namePlaceholder}
                         value={values.name}
                         onChange={handleChange('name')}
                         aria-required="true"
@@ -305,13 +302,13 @@ export function Contact() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <Label htmlFor={fieldIds.email}>Email</Label>
+                      <Label htmlFor={fieldIds.email}>{copy.contact.emailLabel}</Label>
                       <Input
                         id={fieldIds.email}
                         name="email"
                         type="email"
                         autoComplete="email"
-                        placeholder="you@company.com"
+                        placeholder={copy.contact.emailPlaceholder}
                         value={values.email}
                         onChange={handleChange('email')}
                         aria-required="true"
@@ -323,11 +320,11 @@ export function Contact() {
                     </div>
 
                     <div className="space-y-1.5 sm:col-span-2">
-                      <Label htmlFor={fieldIds.subject}>Subject</Label>
+                      <Label htmlFor={fieldIds.subject}>{copy.contact.subject}</Label>
                       <Input
                         id={fieldIds.subject}
                         name="subject"
-                        placeholder="What would you like to talk about?"
+                        placeholder={copy.contact.subjectPlaceholder}
                         value={values.subject}
                         onChange={handleChange('subject')}
                         aria-required="true"
@@ -339,11 +336,11 @@ export function Contact() {
                     </div>
 
                     <div className="space-y-1.5 sm:col-span-2">
-                      <Label htmlFor={fieldIds.message}>Message</Label>
+                      <Label htmlFor={fieldIds.message}>{copy.contact.message}</Label>
                       <Textarea
                         id={fieldIds.message}
                         name="message"
-                        placeholder="A little context, goals, and timeline…"
+                        placeholder={copy.contact.messagePlaceholder}
                         value={values.message}
                         onChange={handleChange('message')}
                         aria-required="true"
@@ -357,17 +354,17 @@ export function Contact() {
 
                   <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <p className="max-w-xs text-[0.6875rem] leading-relaxed text-muted-foreground/80">
-                      Your details are only used to reply to this message.
+                      {copy.contact.privacy}
                     </p>
                     <Button type="submit" disabled={status === 'submitting'} className="sm:min-w-36">
                       {status === 'submitting' ? (
                         <>
                           <LoaderCircle className="animate-spin" aria-hidden="true" />
-                          Sending
+                          {copy.contact.sending}
                         </>
                       ) : (
                         <>
-                          Send message
+                          {copy.contact.send}
                           <Send aria-hidden="true" />
                         </>
                       )}
@@ -382,15 +379,15 @@ export function Contact() {
                       >
                         <TriangleAlert className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
                         <p>
-                          Something went wrong and your message was <strong>not</strong> sent.
-                          Please try again, or email me directly at{' '}
+                          {copy.contact.errorBefore}{' '}
+                          <strong>{copy.contact.errorStrong}</strong> {copy.contact.errorAfter}{' '}
                           <a
                             href={`mailto:${profile.email}`}
                             className="font-medium underline underline-offset-2"
                           >
                             {profile.email}
                           </a>
-                          .
+                          {copy.contact.errorEnd}
                         </p>
                       </div>
                     ) : null}
@@ -402,15 +399,16 @@ export function Contact() {
                       >
                         <Info className="mt-0.5 size-3.5 shrink-0 text-primary" aria-hidden="true" />
                         <p>
-                          This form is not connected to an email service, so your message was{' '}
-                          <strong>not</strong> sent. Please email me at{' '}
+                          {copy.contact.unconfiguredBefore}{' '}
+                          <strong>{copy.contact.unconfiguredStrong}</strong>{' '}
+                          {copy.contact.unconfiguredAfter}{' '}
                           <a
                             href={`mailto:${profile.email}`}
                             className="font-medium text-foreground underline underline-offset-2"
                           >
                             {profile.email}
                           </a>{' '}
-                          instead.
+                          {copy.contact.unconfiguredEnd}
                         </p>
                       </div>
                     ) : null}

@@ -2,9 +2,11 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
+import { useUICopy } from '@/hooks/use-locale'
 
 export function NotFoundContent() {
   const { pathname } = useLocation()
+  const copy = useUICopy()
 
   return (
     <div className="relative overflow-hidden">
@@ -14,29 +16,28 @@ export function NotFoundContent() {
       />
       <div className="container-page relative flex flex-col items-center py-32 text-center md:py-40">
         <p className="font-mono text-[0.625rem] tracking-[0.18em] text-primary uppercase">
-          Error / 404
+          {copy.notFound.error}
         </p>
         <h1 className="mt-5 text-[clamp(4.5rem,14vw,8rem)] leading-none font-semibold tracking-[-0.07em]">
           404<span className="text-primary">.</span>
         </h1>
         <h2 className="mt-6 text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
-          This page took a wrong turn.
+          {copy.notFound.title}
         </h2>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          The link may be outdated, or the page may have moved. The useful parts of the portfolio
-          are still where you left them.
+          {copy.notFound.description}
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button asChild size="lg">
             <Link to="/">
               <ArrowLeft aria-hidden="true" />
-              Back home
+              {copy.notFound.backHome}
             </Link>
           </Button>
           <Button asChild variant="secondary" size="lg">
             <Link to="/#projects">
-              Browse projects
+              {copy.notFound.browseProjects}
               <ArrowUpRight aria-hidden="true" />
             </Link>
           </Button>
@@ -60,9 +61,7 @@ export function NotFoundContent() {
               <span className="text-[#b42318] dark:text-[#f97066]">404</span>{' '}
               <span className="text-muted-foreground">Not Found</span>
               {'\n\n'}
-              <span className="text-muted-foreground/60">
-                {'// try / or /blog instead'}
-              </span>
+              <span className="text-muted-foreground/60">{copy.notFound.logComment}</span>
             </code>
           </pre>
         </div>

@@ -5,10 +5,13 @@ import { Experience } from '@/components/sections/experience'
 import { Hero } from '@/components/sections/hero'
 import { Projects } from '@/components/sections/projects'
 import { Skills } from '@/components/sections/skills'
-import { profile } from '@/data/profile'
+import { profileContent } from '@/data/profile'
+import { useLocalized } from '@/hooks/use-locale'
 import { useSEO } from '@/hooks/use-seo'
 
 export default function HomePage() {
+  const profile = useLocalized(profileContent)
+
   useSEO({
     title: `${profile.name} — ${profile.role}`,
     description: profile.seoDescription,

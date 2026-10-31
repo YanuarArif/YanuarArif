@@ -10,7 +10,8 @@ import {
 import { SectionHeading } from '@/components/sections/section-heading'
 import { Reveal } from '@/components/ui/reveal'
 import { TechIcon } from '@/components/ui/tech-icon'
-import { skillGroups } from '@/data/skills'
+import { skillGroupsContent } from '@/data/skills'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
 import { cn } from '@/lib/utils'
 import type { SkillGroupIcon, SkillLevel } from '@/types'
 
@@ -30,6 +31,9 @@ const levelStyles: Record<SkillLevel, string> = {
 }
 
 export function Skills() {
+  const skillGroups = useLocalized(skillGroupsContent)
+  const copy = useUICopy()
+
   return (
     <section
       id="skills"
@@ -42,9 +46,9 @@ export function Skills() {
             <SectionHeading
               id="skills-title"
               index="03"
-              label="Skills"
-              title="A toolkit built for shipping."
-              description="The technologies I reach for most often, grouped by the part of the product they serve. Levels are qualitative — no imaginary percentage bars."
+              label={copy.skills.label}
+              title={copy.skills.title}
+              description={copy.skills.description}
             />
             <div className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-2 md:pb-1">
               {(['Advanced', 'Proficient', 'Working knowledge'] as const).map((level) => (
@@ -61,7 +65,7 @@ export function Skills() {
                     aria-hidden="true"
                   />
                   <span className="font-mono text-[0.5625rem] tracking-[0.08em] text-muted-foreground uppercase">
-                    {level}
+                    {copy.skills.levels[level]}
                   </span>
                 </span>
               ))}
@@ -106,7 +110,7 @@ export function Skills() {
                             levelStyles[skill.level],
                           )}
                         >
-                          {skill.level}
+                          {copy.skills.levels[skill.level]}
                         </span>
                       </li>
                     ))}

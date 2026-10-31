@@ -1,6 +1,8 @@
 import { Check, Lightbulb, Target, Wrench } from 'lucide-react'
 import type { ReactNode } from 'react'
 
+import { useUICopy } from '@/hooks/use-locale'
+import { interpolate } from '@/lib/utils'
 import type { Project } from '@/types'
 
 interface CaseSectionProps {
@@ -27,22 +29,23 @@ interface CaseStudyProps {
 
 export function CaseStudy({ project }: CaseStudyProps) {
   const { caseStudy } = project
+  const copy = useUICopy()
 
   return (
     <div className="space-y-9">
-      <CaseSection index="01" title="Project overview">
+      <CaseSection index="01" title={copy.caseStudy.overview}>
         <p className="text-[0.9375rem] leading-[1.85] text-foreground/80">{caseStudy.overview}</p>
       </CaseSection>
 
-      <CaseSection index="02" title="Problem statement">
+      <CaseSection index="02" title={copy.caseStudy.problemStatement}>
         <p className="text-sm leading-[1.85] text-muted-foreground">{caseStudy.problem}</p>
       </CaseSection>
 
-      <CaseSection index="03" title="Proposed solution">
+      <CaseSection index="03" title={copy.caseStudy.proposedSolution}>
         <p className="text-sm leading-[1.85] text-muted-foreground">{caseStudy.solution}</p>
       </CaseSection>
 
-      <CaseSection index="04" title="Main features">
+      <CaseSection index="04" title={copy.caseStudy.mainFeatures}>
         <div className="grid gap-3 sm:grid-cols-2">
           {project.features.map((feature) => (
             <div key={feature.title} className="rounded-xl border border-border bg-card p-4">
@@ -58,7 +61,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
         </div>
       </CaseSection>
 
-      <CaseSection index="05" title="Technology stack">
+      <CaseSection index="05" title={copy.caseStudy.technologyStack}>
         <div className="space-y-3">
           {caseStudy.stack.map((group) => (
             <div
@@ -83,7 +86,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
         </div>
       </CaseSection>
 
-      <CaseSection index="06" title="Development process">
+      <CaseSection index="06" title={copy.caseStudy.developmentProcess}>
         <ol className="space-y-5">
           {caseStudy.process.map((step, index) => (
             <li key={step.title} className="flex gap-4">
@@ -101,7 +104,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
         </ol>
       </CaseSection>
 
-      <CaseSection index="07" title="Technical challenges">
+      <CaseSection index="07" title={copy.caseStudy.technicalChallenges}>
         <div className="space-y-3">
           {caseStudy.challenges.map((challenge) => (
             <div key={challenge.title} className="rounded-xl border border-border bg-card p-4">
@@ -112,7 +115,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-lg bg-muted/50 p-3">
                   <p className="font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                    Problem
+                    {copy.caseStudy.problem}
                   </p>
                   <p className="mt-1.5 text-[0.75rem] leading-relaxed text-muted-foreground">
                     {challenge.problem}
@@ -121,7 +124,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
                 <div className="rounded-lg bg-accent/40 p-3">
                   <p className="flex items-center gap-1.5 font-mono text-[0.5625rem] tracking-[0.1em] text-accent-foreground uppercase">
                     <Wrench className="size-2.5" aria-hidden="true" />
-                    Decision
+                    {copy.caseStudy.decision}
                   </p>
                   <p className="mt-1.5 text-[0.75rem] leading-relaxed text-foreground/75">
                     {challenge.solution}
@@ -133,7 +136,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
         </div>
       </CaseSection>
 
-      <CaseSection index="08" title="Results">
+      <CaseSection index="08" title={copy.caseStudy.results}>
         <ul className="space-y-2.5">
           {caseStudy.results.map((result) => (
             <li key={result} className="flex gap-3 text-[0.8125rem] leading-relaxed text-muted-foreground">
@@ -144,7 +147,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
         </ul>
       </CaseSection>
 
-      <CaseSection index="09" title="Lessons learned">
+      <CaseSection index="09" title={copy.caseStudy.lessonsLearned}>
         <ul className="space-y-3">
           {caseStudy.lessons.map((lesson) => (
             <li key={lesson} className="flex gap-3 text-[0.8125rem] leading-relaxed text-muted-foreground">
@@ -155,7 +158,7 @@ export function CaseStudy({ project }: CaseStudyProps) {
         </ul>
       </CaseSection>
 
-      <CaseSection index="10" title="Screenshots & visual demonstrations">
+      <CaseSection index="10" title={copy.caseStudy.screenshots}>
         <div className="space-y-4">
           <figure className="overflow-hidden rounded-xl border border-border bg-muted">
             <img
@@ -168,7 +171,10 @@ export function CaseStudy({ project }: CaseStudyProps) {
               className="w-full object-cover"
             />
             <figcaption className="border-t border-border bg-card px-4 py-3 text-[0.6875rem] leading-relaxed text-muted-foreground">
-              Primary product view — {project.name} {project.category.toLowerCase()}.
+              {interpolate(copy.caseStudy.primaryView, {
+                name: project.name,
+                category: project.category.toLowerCase(),
+              })}
             </figcaption>
           </figure>
 

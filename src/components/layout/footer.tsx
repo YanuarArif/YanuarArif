@@ -4,11 +4,16 @@ import { Link } from 'react-router-dom'
 import { BackToTop } from '@/components/layout/back-to-top'
 import { Logo } from '@/components/layout/logo'
 import { SocialIcon } from '@/components/ui/social-icon'
-import { profile } from '@/data/profile'
-import { navItems } from '@/lib/navigation'
+import { profileContent } from '@/data/profile'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
+import { navItemsContent } from '@/lib/navigation'
+import { interpolate } from '@/lib/utils'
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const profile = useLocalized(profileContent)
+  const navItems = useLocalized(navItemsContent)
+  const copy = useUICopy()
 
   return (
     <footer className="border-t border-border bg-muted/35">
@@ -17,7 +22,7 @@ export function Footer() {
           <div className="max-w-sm">
             <Logo size="lg" />
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              {profile.tagline} Based in {profile.location}, working with teams anywhere.
+              {profile.tagline} {interpolate(copy.footer.tagline, { location: profile.location })}
             </p>
             <p className="mt-4 flex items-center gap-1.5 font-mono text-[0.625rem] tracking-[0.1em] text-muted-foreground uppercase">
               <MapPin className="size-3" aria-hidden="true" />
@@ -25,8 +30,8 @@ export function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Footer navigation">
-            <h2 className="eyebrow">Explore</h2>
+          <nav aria-label={copy.nav.footer}>
+            <h2 className="eyebrow">{copy.footer.explore}</h2>
             <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 md:grid-cols-1">
               {navItems.map((item) => (
                 <li key={item.href}>
@@ -42,7 +47,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="eyebrow">Connect</h2>
+            <h2 className="eyebrow">{copy.footer.connect}</h2>
             <ul className="mt-4 space-y-2.5">
               {profile.socials.map((social) => (
                 <li key={social.platform}>
@@ -77,11 +82,9 @@ export function Footer() {
         <div className="mt-12 flex flex-col gap-5 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground">
-              © {year} {profile.name}. All rights reserved.
+              {interpolate(copy.footer.rights, { year, name: profile.name })}
             </p>
-            <p className="text-[0.6875rem] text-muted-foreground/70">
-              Built with React, TypeScript, Tailwind CSS, and Vite.
-            </p>
+            <p className="text-[0.6875rem] text-muted-foreground/70">{copy.footer.builtWith}</p>
           </div>
           <BackToTop />
         </div>

@@ -1,10 +1,13 @@
 import { NotFoundContent } from '@/components/layout/not-found-content'
+import { useUICopy } from '@/hooks/use-locale'
 import { useSEO } from '@/hooks/use-seo'
 
 export default function NotFoundPage() {
+  const copy = useUICopy()
+
   useSEO({
-    title: 'Page not found',
-    description: 'The page you are looking for does not exist on this portfolio.',
+    title: copy.notFound.seoTitle,
+    description: copy.notFound.seoDescription,
     path: '/404',
     noIndex: true,
   })

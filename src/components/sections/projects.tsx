@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom'
 import { ProjectCard } from '@/components/projects/project-card'
 import { SectionHeading } from '@/components/sections/section-heading'
 import { Reveal } from '@/components/ui/reveal'
-import { featuredProjects } from '@/data/projects'
+import { getFeaturedProjects } from '@/data/projects'
+import { useLocale, useUICopy } from '@/hooks/use-locale'
 
 export function Projects() {
+  const { locale } = useLocale()
+  const copy = useUICopy()
+  const featuredProjects = getFeaturedProjects(locale)
+
   return (
     <section
       id="projects"
@@ -19,12 +24,12 @@ export function Projects() {
             <SectionHeading
               id="projects-title"
               index="04"
-              label="Projects"
-              title="Selected work, end to end."
-              description="Projects that show how I think about product decisions, interface details, and the systems underneath — from the first schema to the last empty state."
+              label={copy.projects.label}
+              title={copy.projects.title}
+              description={copy.projects.description}
             />
             <p className="shrink-0 font-mono text-[0.625rem] tracking-[0.1em] text-muted-foreground uppercase md:pb-1">
-              {String(featuredProjects.length).padStart(2, '0')} case studies
+              {String(featuredProjects.length).padStart(2, '0')} {copy.projects.caseStudies}
             </p>
           </div>
         </Reveal>
@@ -39,15 +44,12 @@ export function Projects() {
 
         <Reveal>
           <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-muted/30 px-5 py-5 sm:flex-row sm:items-center sm:px-6">
-            <p className="text-sm text-muted-foreground">
-              Curious how these were built? I&rsquo;m happy to walk through the decisions and
-              trade-offs.
-            </p>
+            <p className="text-sm text-muted-foreground">{copy.projects.curious}</p>
             <Link
               to="/#contact"
               className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
             >
-              Start a conversation
+              {copy.projects.startConversation}
               <ArrowUpRight
                 className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"

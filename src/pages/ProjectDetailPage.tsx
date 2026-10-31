@@ -18,16 +18,21 @@ import { GitHubIcon } from '@/components/ui/brand-icons'
 import { Button } from '@/components/ui/button'
 import { TechIcon } from '@/components/ui/tech-icon'
 import { getAdjacentProjects, getProjectBySlug } from '@/data/projects'
+import { useLocale, useUICopy } from '@/hooks/use-locale'
 import { useSEO } from '@/hooks/use-seo'
 
 export default function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>()
-  const project = slug ? getProjectBySlug(slug) : undefined
-  const adjacent = slug ? getAdjacentProjects(slug) : { previous: undefined, next: undefined }
+  const { locale } = useLocale()
+  const copy = useUICopy()
+  const project = slug ? getProjectBySlug(slug, locale) : undefined
+  const adjacent = slug ? getAdjacentProjects(slug, locale) : { previous: undefined, next: undefined }
 
   useSEO({
-    title: project ? `${project.name} — Case study` : 'Project not found',
-    description: project?.description ?? 'This project could not be found.',
+    title: project
+      ? `${project.name} — ${copy.projectDetail.caseStudy}`
+      : copy.projectDetail.notFound,
+    description: project?.description ?? copy.projectDetail.notFoundDescription,
     path: project ? `/projects/${project.slug}` : '/404',
     type: 'article',
     image: project?.thumbnail ?? '/og-image.png',
@@ -39,10 +44,10 @@ export default function ProjectDetailPage() {
   }
 
   const facts = [
-    { label: 'Role', value: project.role, icon: UserRound },
-    { label: 'Timeline', value: project.duration, icon: Clock3 },
-    { label: 'Year', value: project.year, icon: CalendarDays },
-    { label: 'Category', value: project.category, icon: Layers3 },
+    { label: copy.projectDetail.role, value: project.role, icon: UserRound },
+    { label: copy.projectDetail.timeline, value: project.duration, icon: Clock3 },
+    { label: copy.projectDetail.year, value: project.year, icon: CalendarDays },
+    { label: copy.projectDetail.category, value: project.category, icon: Layers3 },
   ]
 
   return (
@@ -53,14 +58,14 @@ export default function ProjectDetailPage() {
           aria-hidden="true"
         />
         <div className="container-page relative py-10 md:py-14">
-          <nav aria-label="Breadcrumb">
+          <nav aria-label={copy.meta.breadcrumb}>
             <ol className="flex flex-wrap items-center gap-1.5 font-mono text-[0.625rem] tracking-[0.06em] text-muted-foreground">
               <li>
                 <Link
                   to="/"
                   className="rounded-sm transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 >
-                  Home
+                  {copy.projectDetail.home}
                 </Link>
               </li>
               <li aria-hidden="true">
@@ -71,7 +76,7 @@ export default function ProjectDetailPage() {
                   to="/#projects"
                   className="rounded-sm transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 >
-                  Projects
+                  {copy.projectDetail.projects}
                 </Link>
               </li>
               <li aria-hidden="true">
@@ -87,7 +92,7 @@ export default function ProjectDetailPage() {
             <Badge variant="accent">{project.category}</Badge>
             <Badge variant="outline">{project.year}</Badge>
             <span className="font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-              Case study
+              {copy.projectDetail.caseStudy}
             </span>
           </div>
 
@@ -103,14 +108,14 @@ export default function ProjectDetailPage() {
             <Button asChild>
               <a href={project.links.demo} target="_blank" rel="noreferrer">
                 <MonitorPlay aria-hidden="true" />
-                Live demo
+                {copy.projectDetail.liveDemo}
                 <ArrowUpRight aria-hidden="true" />
               </a>
             </Button>
             <Button asChild variant="secondary">
               <a href={project.links.repository} target="_blank" rel="noreferrer">
                 <GitHubIcon />
-                Repository
+                {copy.projectDetail.repository}
                 <ArrowUpRight aria-hidden="true" />
               </a>
             </Button>
@@ -158,28 +163,34 @@ export default function ProjectDetailPage() {
           <div className="space-y-4">
             <div className="rounded-2xl border border-border bg-card p-5">
               <h2 className="font-mono text-[0.5625rem] tracking-[0.12em] text-muted-foreground uppercase">
-                At a glance
+                {copy.projectDetail.atAGlance}
               </h2>
               <dl className="mt-4 space-y-3">
                 <div className="flex items-start justify-between gap-4">
-                  <dt className="text-[0.6875rem] text-muted-foreground">Role</dt>
+                  <dt className="text-[0.6875rem] text-muted-foreground">
+                    {copy.projectDetail.role}
+                  </dt>
                   <dd className="max-w-[9rem] text-right text-[0.6875rem] font-medium leading-relaxed">
                     {project.role}
                   </dd>
                 </div>
                 <div className="flex items-start justify-between gap-4 border-t border-border/70 pt-3">
-                  <dt className="text-[0.6875rem] text-muted-foreground">Duration</dt>
+                  <dt className="text-[0.6875rem] text-muted-foreground">
+                    {copy.projectDetail.duration}
+                  </dt>
                   <dd className="text-right text-[0.6875rem] font-medium">{project.duration}</dd>
                 </div>
                 <div className="flex items-start justify-between gap-4 border-t border-border/70 pt-3">
-                  <dt className="text-[0.6875rem] text-muted-foreground">Year</dt>
+                  <dt className="text-[0.6875rem] text-muted-foreground">
+                    {copy.projectDetail.year}
+                  </dt>
                   <dd className="text-right text-[0.6875rem] font-medium">{project.year}</dd>
                 </div>
               </dl>
 
               <div className="mt-5 border-t border-border/70 pt-4">
                 <h3 className="font-mono text-[0.5625rem] tracking-[0.12em] text-muted-foreground uppercase">
-                  Technologies
+                  {copy.projectDetail.technologies}
                 </h3>
                 <ul className="mt-3 flex flex-wrap gap-1.5">
                   {project.tech.map((tech) => (
@@ -198,14 +209,14 @@ export default function ProjectDetailPage() {
                 <Button asChild variant="secondary" size="sm">
                   <a href={project.links.demo} target="_blank" rel="noreferrer">
                     <MonitorPlay aria-hidden="true" />
-                    Live demo
+                    {copy.projectDetail.liveDemo}
                     <ArrowUpRight className="ml-auto" aria-hidden="true" />
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="sm">
                   <a href={project.links.repository} target="_blank" rel="noreferrer">
                     <GitHubIcon />
-                    Repository
+                    {copy.projectDetail.repository}
                     <ArrowUpRight className="ml-auto" aria-hidden="true" />
                   </a>
                 </Button>
@@ -229,7 +240,7 @@ export default function ProjectDetailPage() {
                 <div className="flex items-center justify-between gap-3 p-4">
                   <div>
                     <p className="font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                      Next case study
+                      {copy.projectDetail.nextCaseStudy}
                     </p>
                     <p className="mt-1 text-sm font-semibold group-hover:text-primary">
                       {adjacent.next.name}
@@ -248,13 +259,16 @@ export default function ProjectDetailPage() {
               className="inline-flex items-center gap-1.5 px-1 text-xs text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
             >
               <ArrowLeft className="size-3" aria-hidden="true" />
-              All projects
+              {copy.projectDetail.allProjects}
             </Link>
           </div>
         </aside>
       </div>
 
-      <nav aria-label="Project navigation" className="border-t border-border bg-muted/30">
+      <nav
+        aria-label={copy.projectDetail.projectNavigation}
+        className="border-t border-border bg-muted/30"
+      >
         <div className="container-page grid sm:grid-cols-2">
           {adjacent.previous ? (
             <Link
@@ -266,7 +280,7 @@ export default function ProjectDetailPage() {
                   className="size-3 transition-transform group-hover:-translate-x-0.5"
                   aria-hidden="true"
                 />
-                Previous project
+                {copy.projectDetail.previousProject}
               </span>
               <span className="text-lg font-semibold tracking-[-0.02em] transition-colors group-hover:text-primary">
                 {adjacent.previous.name}
@@ -283,7 +297,7 @@ export default function ProjectDetailPage() {
               className="group flex flex-col gap-1.5 py-7 sm:items-end sm:pl-6 sm:text-right"
             >
               <span className="flex items-center gap-1.5 font-mono text-[0.5625rem] tracking-[0.12em] text-muted-foreground uppercase">
-                Next project
+                {copy.projectDetail.nextProject}
                 <ArrowRight
                   className="size-3 transition-transform group-hover:translate-x-0.5"
                   aria-hidden="true"

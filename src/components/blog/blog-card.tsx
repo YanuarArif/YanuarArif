@@ -1,7 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-import { profile } from '@/data/profile'
+import { profileContent } from '@/data/profile'
+import { useLocale, useLocalized, useUICopy } from '@/hooks/use-locale'
 import { cn, formatDate, getReadingTime } from '@/lib/utils'
 import type { BlogPost } from '@/types'
 
@@ -11,6 +12,9 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post, featured = false }: BlogCardProps) {
+  const profile = useLocalized(profileContent)
+  const { locale } = useLocale()
+  const copy = useUICopy()
   const readingTime = getReadingTime(post.content)
 
   return (
@@ -52,9 +56,11 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
 
         <div className={cn('flex flex-1 flex-col p-5', featured && 'md:justify-center md:p-8')}>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[0.5625rem] tracking-[0.08em] text-muted-foreground uppercase">
-            <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+            <time dateTime={post.publishedAt}>{formatDate(post.publishedAt, locale)}</time>
             <span className="size-0.5 rounded-full bg-border" aria-hidden="true" />
-            <span>{readingTime} min read</span>
+            <span>
+              {readingTime} {copy.blog.minRead}
+            </span>
           </div>
 
           <h3
@@ -91,7 +97,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
               <span className="text-[0.6875rem] text-muted-foreground">{profile.name}</span>
             </span>
             <span className="inline-flex items-center gap-1.5 text-[0.6875rem] font-semibold text-foreground">
-              Read more
+              {copy.blog.readMore}
               <ArrowUpRight
                 className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"

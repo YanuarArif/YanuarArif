@@ -1,5 +1,5 @@
-import { blogPosts, sortedBlogPosts } from '@/data/blog'
-import type { ArticleBlock, BlogPost } from '@/types'
+import { blogPostsContent } from '@/data/blog'
+import type { ArticleBlock, BlogPost, Locale } from '@/types'
 
 export interface TableOfContentsItem {
   id: string
@@ -24,31 +24,40 @@ export function getTableOfContents(content: ArticleBlock[]): TableOfContentsItem
   )
 }
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.slug === slug)
+export function getSortedPosts(locale: Locale): BlogPost[] {
+  return [...blogPostsContent[locale]].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  )
 }
 
-export function getLatestPosts(limit = 3): BlogPost[] {
-  return sortedBlogPosts.slice(0, limit)
+export function getPostBySlug(slug: string, locale: Locale): BlogPost | undefined {
+  return blogPostsContent[locale].find((post) => post.slug === slug)
 }
 
-export function getRelatedPosts(post: BlogPost, limit = 2): BlogPost[] {
-  const others = sortedBlogPosts.filter((item) => item.slug !== post.slug)
+export function getLatestPosts(limit: number, locale: Locale): BlogPost[] {
+  return getSortedPosts(locale).slice(0, limit)
+}
+
+export function getRelatedPosts(post: BlogPost, limit: number, locale: Locale): BlogPost[] {
+  const others = getSortedPosts(locale).filter((item) => item.slug !== post.slug)
   const sameCategory = others.filter((item) => item.category === post.category)
   const remaining = others.filter((item) => item.category !== post.category)
 
   return [...sameCategory, ...remaining].slice(0, limit)
 }
 
-export function getAdjacentPosts(slug: string): {
+interface AdjacentPosts {
   previous: BlogPost | undefined
   next: BlogPost | undefined
-} {
-  const index = sortedBlogPosts.findIndex((post) => post.slug === slug)
+}
+
+export function getAdjacentPosts(slug: string, locale: Locale): AdjacentPosts {
+  const posts = getSortedPosts(locale)
+  const index = posts.findIndex((post) => post.slug === slug)
   if (index === -1) return { previous: undefined, next: undefined }
 
   return {
-    previous: sortedBlogPosts[index + 1],
-    next: sortedBlogPosts[index - 1],
+    previous: posts[index + 1],
+    next: posts[index - 1],
   }
 }

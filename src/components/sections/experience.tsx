@@ -9,8 +9,9 @@ import {
 
 import { SectionHeading } from '@/components/sections/section-heading'
 import { Reveal } from '@/components/ui/reveal'
-import { certifications, education } from '@/data/education'
-import { experience, experienceKindLabels } from '@/data/experience'
+import { certificationsContent, educationContent } from '@/data/education'
+import { experienceContent, experienceKindLabelsContent } from '@/data/experience'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
 import type { TimelineKind } from '@/types'
 
 const kindIcons = {
@@ -21,11 +22,17 @@ const kindIcons = {
   certification: BadgeCheck,
 } satisfies Record<TimelineKind, typeof BriefcaseBusiness>
 
-const sortedExperience = [...experience].sort(
-  (a, b) => Number.parseInt(b.start, 10) - Number.parseInt(a.start, 10),
-)
-
 export function Experience() {
+  const experience = useLocalized(experienceContent)
+  const experienceKindLabels = useLocalized(experienceKindLabelsContent)
+  const education = useLocalized(educationContent)
+  const certifications = useLocalized(certificationsContent)
+  const copy = useUICopy()
+
+  const sortedExperience = [...experience].sort(
+    (a, b) => Number.parseInt(b.start, 10) - Number.parseInt(a.start, 10),
+  )
+
   return (
     <section
       id="experience"
@@ -37,9 +44,9 @@ export function Experience() {
           <SectionHeading
             id="experience-title"
             index="05"
-            label="Experience"
-            title="A path through product teams."
-            description="Teams and products I've worked with, the independent practice that keeps me learning, and the fundamentals underneath it all."
+            label={copy.experience.label}
+            title={copy.experience.title}
+            description={copy.experience.description}
           />
         </Reveal>
 
@@ -131,7 +138,7 @@ export function Experience() {
                       <GraduationCap className="size-4" aria-hidden="true" />
                     </span>
                     <span className="font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                      Education
+                      {copy.experience.education}
                     </span>
                     <span className="ml-auto font-mono text-[0.5625rem] text-muted-foreground">
                       {item.start} — {item.end}
@@ -165,7 +172,7 @@ export function Experience() {
                     <BadgeCheck className="size-4" aria-hidden="true" />
                   </span>
                   <span className="font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                    Certifications
+                    {copy.experience.certifications}
                   </span>
                 </div>
                 <ul className="mt-4 divide-y divide-border/70">

@@ -5,12 +5,16 @@ import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/ui/reveal'
 import { SocialIcon } from '@/components/ui/social-icon'
 import { TechIcon } from '@/components/ui/tech-icon'
-import { profile } from '@/data/profile'
+import { profileContent } from '@/data/profile'
+import { useLocalized, useUICopy } from '@/hooks/use-locale'
 import { cn } from '@/lib/utils'
 
 const heroStack = ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker']
 
 export function Hero() {
+  const profile = useLocalized(profileContent)
+  const copy = useUICopy()
+
   return (
     <section
       id="home"
@@ -73,13 +77,13 @@ export function Hero() {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button asChild size="lg">
                   <Link to="/#projects">
-                    View projects
+                    {copy.hero.viewProjects}
                     <ArrowRight aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild variant="secondary" size="lg">
                   <Link to="/#contact">
-                    Contact me
+                    {copy.hero.contactMe}
                     <ArrowDownRight aria-hidden="true" />
                   </Link>
                 </Button>
@@ -184,7 +188,7 @@ export function Hero() {
                     <span className="text-foreground">focus</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-[#a25a35] dark:text-[#e8a77e]">
-                      'clarity, speed, access'
+                      {`'${copy.hero.focusValue}'`}
                     </span>
                     <span className="text-muted-foreground">,</span>
                     {'\n'}
@@ -212,7 +216,10 @@ export function Hero() {
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border bg-muted/25 px-5 py-4">
-                <div className="flex items-center gap-1.5" aria-label="Core technologies">
+                <div
+                  className="flex items-center gap-1.5"
+                  aria-label={copy.hero.coreTechnologies}
+                >
                   {heroStack.map((tech) => (
                     <span
                       key={tech}
@@ -242,9 +249,9 @@ export function Hero() {
               </span>
               <span className="leading-tight">
                 <span className="block font-mono text-[0.5625rem] tracking-[0.1em] text-muted-foreground uppercase">
-                  Currently exploring
+                  {copy.hero.currentlyExploring}
                 </span>
-                <span className="mt-0.5 block text-xs font-medium">Local-first data sync</span>
+                <span className="mt-0.5 block text-xs font-medium">{copy.hero.exploringTopic}</span>
               </span>
             </div>
           </Reveal>

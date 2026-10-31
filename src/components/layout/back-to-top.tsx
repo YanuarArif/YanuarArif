@@ -1,5 +1,6 @@
 import { ArrowUp } from 'lucide-react'
 
+import { useUICopy } from '@/hooks/use-locale'
 import { cn } from '@/lib/utils'
 
 interface BackToTopProps {
@@ -7,6 +8,8 @@ interface BackToTopProps {
 }
 
 export function BackToTop({ className }: BackToTopProps) {
+  const copy = useUICopy()
+
   const scrollToTop = () => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
@@ -21,7 +24,7 @@ export function BackToTop({ className }: BackToTopProps) {
         className,
       )}
     >
-      Back to top
+      {copy.footer.backToTop}
       <ArrowUp
         className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5"
         aria-hidden="true"
