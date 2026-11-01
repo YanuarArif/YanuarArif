@@ -34,9 +34,23 @@ export function About() {
     <section
       id="about"
       aria-labelledby="about-title"
-      className="section-anchor border-t border-border py-20 md:py-28"
+      className="section-anchor relative border-t border-border py-20 md:py-28"
     >
-      <div className="container-page">
+      {/*
+       * Background: neutral hairline geometry only — concentric rings drawn
+       * from the portrait side, like a technical drawing. No colour and no
+       * blur, so it reads as linework instead of a smudge. The wrapper owns
+       * the clipping so the section keeps `overflow: visible`, which the
+       * sticky portrait column below depends on.
+       */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 ring-backdrop [mask-image:radial-gradient(78%_68%_at_26%_42%,black,transparent_74%)]" />
+      </div>
+
+      <div className="container-page relative">
         <Reveal>
           <SectionHeading
             id="about-title"

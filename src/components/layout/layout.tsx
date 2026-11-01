@@ -16,7 +16,7 @@ export function Layout() {
         {copy.meta.skipToContent}
       </a>
       <Navbar />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 scroll-mt-20">
         <Outlet />
       </main>
       <Footer />

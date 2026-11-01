@@ -111,7 +111,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -183,8 +182,14 @@
   }
 }
 
+/*
+ * Clears the fixed navbar (h-16 + 1px border = 65px) when a hash link scrolls
+ * to a section. This is the ONLY anchor offset in the app: never also set
+ * `scroll-padding-top` on <html>, because the browser adds the two together
+ * and the section would land twice as far down.
+ */
 @utility section-anchor {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: 5rem;
 }
 
 @utility grid-backdrop {
@@ -192,6 +197,22 @@
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 56px 56px;
+}
+
+/* Concentric hairlines, drawn from the portrait side of the About section. */
+@utility ring-backdrop {
+  background-image: repeating-radial-gradient(
+    circle at 26% 42%,
+    var(--border) 0 1px,
+    transparent 1px 84px
+  );
+}
+
+/* Sparse diamond hairline mesh, used behind the Skills section. */
+@utility mesh-backdrop {
+  background-image:
+    repeating-linear-gradient(45deg, var(--border) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(-45deg, var(--border) 0 1px, transparent 1px 120px);
 }
 
 @utility eyebrow {

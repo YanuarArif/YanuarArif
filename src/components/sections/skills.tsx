@@ -38,9 +38,21 @@ export function Skills() {
     <section
       id="skills"
       aria-labelledby="skills-title"
-      className="section-anchor border-t border-border bg-muted/25 py-20 md:py-28"
+      className="section-anchor relative border-t border-border bg-muted/25 py-20 md:py-28"
     >
-      <div className="container-page">
+      {/*
+       * Background: a sparse diamond hairline mesh. Same language as the About
+       * section — neutral 1px lines, no colour, no blur — but geometric
+       * instead of circular, to match this section's tooling theme.
+       */}
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 mesh-backdrop [mask-image:radial-gradient(90%_75%_at_50%_8%,black,transparent_85%)]" />
+      </div>
+
+      <div className="container-page relative">
         <Reveal>
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <SectionHeading
