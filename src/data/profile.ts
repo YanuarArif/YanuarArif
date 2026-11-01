@@ -27,7 +27,7 @@ export const profileContent: Localized<Profile> = {
     availability: {
       available: true,
       label: "Available for new projects",
-      detail: "Freelance or full-time, remote is fine",
+      detail: "	Freelance & Full-time (Remote)",
     },
     socials: [
       {
@@ -52,9 +52,9 @@ export const profileContent: Localized<Profile> = {
     firstName: "Yanuar",
     initials: "YA",
     role: "Full-Stack Developer",
-    tagline: "Merakit produk web, dari basis data hingga tampilan akhir.",
+    tagline: "Membangun aplikasi web dari awal hingga siap digunakan.",
     intro:
-      "Saya seorang full-stack developer. Saya mengubah ide produk yang rumit menjadi aplikasi web yang cepat dan intuitif, dengan arsitektur API dan basis data yang tetap rapi seiring berjalannya waktu. Saya peduli pada kenyamanan pengguna sekaligus kemudahan perawatan kode bagi tim.",
+      "Saya seorang Full-Stack Developer yang senang membangun aplikasi web. Saya fokus pada performa, pengalaman pengguna, dan kode yang mudah dikembangkan.",
     location: "Purbalingga, Indonesia",
     locationShort: "Purbalingga, ID",
     timezone: "WIB · UTC+7",
@@ -64,8 +64,8 @@ export const profileContent: Localized<Profile> = {
       "Yanuar Lukman Arif adalah full-stack developer asal Purbalingga, Indonesia. Berfokus membangun aplikasi web yang cepat dan ramah pengguna dengan React, TypeScript, dan Node.js.",
     availability: {
       available: true,
-      label: "Terbuka untuk proyek baru",
-      detail: "Freelance maupun penuh waktu (remote)",
+      label: "Siap Mengerjakan Project Baru",
+      detail: "Freelance & Full-time (Remote)",
     },
     socials: [
       {
@@ -102,53 +102,41 @@ export const aboutContent: Localized<About> = {
       "I started in frontend, but I always liked the layer just below it more: data models, API boundaries, and the small frictions that make an app tiring to use. These days I’m comfortable with React and TypeScript on the client, Node.js and PostgreSQL on the server, and the deployment pipeline in between.",
       "I like teams that think clearly and skip the ceremony. I write things down, pick the boring solution when it fits, and treat accessibility and performance as part of the requirements, not a cleanup job for later. Outside the editor I’m usually out on a long walk with a camera, reading about typography, or making a tiny mechanical keyboard project more complicated than it needs to be.",
     ],
-    interests: [
-      "Design systems and component architecture",
-      "Accessible, keyboard-first interfaces",
-      "Web performance and Core Web Vitals",
-      "Product discovery and technical writing",
-    ],
-    goals: [
-      "Join a product team that treats engineering quality as a long-term investment.",
-      "Lead frontend architecture for a product that thousands of people use every day.",
-      "Stay a generalist while going deeper on distributed systems.",
-      "Mentor newer developers through code review and pairing.",
-    ],
-    learning: [
-      {
-        title: "Rust for small tools",
-        description:
-          "Writing a small image-processing CLI to learn ownership and error handling outside TypeScript.",
-      },
-      {
-        title: "PostgreSQL performance",
-        description:
-          "Reading query plans and trying out indexes and partitioning on realistic data.",
-      },
-      {
-        title: "Motion design",
-        description:
-          "Looking at how timing and easing can make an interface easier to follow without adding noise.",
-      },
-    ],
+    // Empty on purpose: the About section only renders the interests block
+    // when this list has items. Restore the entries from git history if you
+    // want it back.
+    interests: [],
+    // Empty on purpose: the About section only renders the goals block when
+    // this list has items. The contact link below it stays visible.
+    goals: [],
+    // Empty on purpose: the About section only renders its "currently learning"
+    // card when this list has items. Restore the entries from git history if
+    // you want the card back.
+    learning: [],
     highlights: [
       {
-        title: "Product-minded",
+        title: "Tidy, fast interfaces",
         description:
-          "I’m good at taking a vague problem, cutting it down to a small piece that can ship, and improving it from real feedback.",
-        icon: "compass",
+          "I build React and TypeScript interfaces that stay tidy, responsive, and comfortable to use on modest devices.",
+        icon: "layout",
       },
       {
-        title: "Accessibility by default",
+        title: "Shipped for real clients",
         description:
-          "Semantic markup, keyboard paths, reduced motion, and contrast checks go into the first version instead of waiting for an audit.",
-        icon: "accessibility",
+          "I’ve built websites for merchants, schools, and business owners, from gathering requirements through to release.",
+        icon: "store",
       },
       {
-        title: "End-to-end ownership",
+        title: "Backend and data",
         description:
-          "Data model, API, interface polish, tests, deployment, and the docs that go with them.",
-        icon: "layers",
+          "I connect the interface to Node.js and PostgreSQL, including the data models and API flow behind it.",
+        icon: "database",
+      },
+      {
+        title: "Quick to learn, open to feedback",
+        description:
+          "I pick up new tools on my own, including AI experiments, and I’m glad to get feedback on the work I ship.",
+        icon: "brain",
       },
     ],
   },
@@ -158,57 +146,40 @@ export const aboutContent: Localized<About> = {
       alt: "Foto Yanuar Lukman Arif",
     },
     paragraphs: [
-      "Selama enam tahun terakhir, saya merakit berbagai produk web untuk startup dan studio produk. Pekerjaan saya biasanya dimulai langsung dari akar masalah: berdiskusi dengan pengguna, membuat sketsa alur (wireframe), menyusun kesepakatan API, lalu memastikan aplikasi nyaman dan mulus saat digunakan.",
-      "Berawal dari frontend, saya menyadari minat besar saya pada fondasi di baliknya—seperti model data, alur API, dan detail kecil yang memengaruhi kenyamanan pengguna. Saat ini saya aktif menggunakan React dan TypeScript di frontend, Node.js dan PostgreSQL di backend, serta mengelola alur deployment.",
-      "Saya menyukai alur kerja yang lugas dan efisien. Saya terbiasa mendokumentasikan proses, memilih solusi yang teruji, serta memprioritaskan performa dan aksesibilitas sejak awal pengembangan. Di luar urusan koding, saya suka berjalan santai sambil membawa kamera, membaca tentang tipografi, atau mengutak-atik rakitan mechanical keyboard.",
+      "Selama lebih dari satu tahun terakhir, saya membuat website untuk pedagang, sekolahan dan pembisnis lainnya. Saya juga telah membuat aplikasi ringan berkaitan dengan Artificial Intelligence atau Ai.",
+      "Berawal dari frontend, saya menyadari minat besar saya pada pondasi di baliknya—seperti database, alur API, dan detail kecil yang ada di dalamnya yang memengaruhi kenyamanan pengguna. Saat ini saya aktif menggunakan React dan TypeScript di frontend, Node.js dan PostgreSQL di backend, serta mengelola alur deployment.",
+      "Saya menyukai alur kerja yang lugas dan efisien. Saya terbiasa mendokumentasikan proses, memilih solusi yang teruji, serta memprioritaskan performa dan aksesibilitas sejak awal pengembangan. Di luar urusan koding, saya suka membaca hal baru di luar pemograman.",
     ],
-    interests: [
-      "Design system dan arsitektur komponen",
-      "Antarmuka aksesibel berbasis navigasi keyboard",
-      "Performa web dan Core Web Vitals",
-      "Product discovery dan penulisan teknis",
-    ],
-    goals: [
-      "Bergabung dengan tim yang memandang kualitas rekayasa sebagai investasi jangka panjang.",
-      "Memimpin arsitektur frontend untuk produk yang digunakan ribuan orang tiap hari.",
-      "Tetap menjadi generalis sambil mendalami sistem terdistribusi.",
-      "Membimbing developer lain melalui code review dan pair programming.",
-    ],
-    learning: [
-      {
-        title: "Rust untuk perkakas CLI",
-        description:
-          "Membuat CLI pemrosesan gambar untuk mempelajari ownership dan error handling di luar ekosistem TypeScript.",
-      },
-      {
-        title: "Optimasi PostgreSQL",
-        description:
-          "Menganalisis query plan serta menguji penggunaan indeks dan partisi pada himpunan data nyata.",
-      },
-      {
-        title: "Motion design",
-        description:
-          "Mempelajari timing dan easing agar alur antarmuka lebih alami tanpa terasa mengganggu.",
-      },
-    ],
+    // Empty on purpose, same as the English list above.
+    interests: [],
+    // Empty on purpose, same as the English list above.
+    goals: [],
+    // Empty on purpose, same as the English list above.
+    learning: [],
     highlights: [
       {
-        title: "Pola Pikir Berbasis Produk",
+        title: "Antarmuka Rapi dan Cepat",
         description:
-          "Terbiasa memecah masalah kompleks menjadi potongan fitur siap rilis, lalu mengembangkannya berdasarkan masukan pengguna.",
-        icon: "compass",
+          "Membangun antarmuka dengan React dan TypeScript yang rapi, responsif, serta tetap nyaman dipakai di perangkat sederhana.",
+        icon: "layout",
       },
       {
-        title: "Aksesibilitas Sejak Awal",
+        title: "Terbiasa Proyek Nyata",
         description:
-          "Markup semantik, navigasi keyboard, mode reduced motion, dan uji kontras warna langsung diterapkan sejak versi awal.",
-        icon: "accessibility",
+          "Sudah mengerjakan website untuk pedagang, sekolah, dan pemilik usaha—dari menggali kebutuhan sampai rilis.",
+        icon: "store",
       },
       {
-        title: "Tanggung Jawab Menyeluruh (End-to-End)",
+        title: "Backend dan Basis Data",
         description:
-          "Menangani seluruh alur: mulai dari model data, API, tampilan antarmuka, pengujian, deployment, hingga dokumentasinya.",
-        icon: "layers",
+          "Menghubungkan tampilan ke Node.js dan PostgreSQL, termasuk merancang model data dan alur API di belakangnya.",
+        icon: "database",
+      },
+      {
+        title: "Cepat Belajar, Terbuka Masukan",
+        description:
+          "Terbiasa mempelajari perkakas baru secara mandiri, termasuk eksplorasi AI, dan senang menerima masukan atas hasil kerja.",
+        icon: "brain",
       },
     ],
   },
