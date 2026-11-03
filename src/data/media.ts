@@ -4,18 +4,20 @@ import hooksCover from '@/assets/images/blog/react-hooks.svg'
 import scalableCover from '@/assets/images/blog/scalable-react.svg'
 import typescriptCover from '@/assets/images/blog/typescript-patterns.svg'
 import portraitPhoto from '@/assets/images/portrait-yanuararif.jpg'
-import fintrackCover from '@/assets/images/projects/fintrack-cover.svg'
-import fintrackDetail from '@/assets/images/projects/fintrack-detail.svg'
-import fitlifeCover from '@/assets/images/projects/fitlife-cover.svg'
-import fitlifeDetail from '@/assets/images/projects/fitlife-detail.svg'
-import shopeaseCover from '@/assets/images/projects/shopease-cover.svg'
-import shopeaseDetail from '@/assets/images/projects/shopease-detail.svg'
-import taskflowCover from '@/assets/images/projects/taskflow-cover.svg'
-import taskflowDetail from '@/assets/images/projects/taskflow-detail.svg'
+import kivaposCover from '@/assets/images/projects/kivapos-cover.webp'
+import kivaposPlans from '@/assets/images/projects/kivapos-plans.webp'
+import kivaposReports from '@/assets/images/projects/kivapos-reports.webp'
+import saletafoodCover from '@/assets/images/projects/saletafood-cover.webp'
+import saletafoodProducts from '@/assets/images/projects/saletafood-products.webp'
 
 /**
  * Shared media. Both language versions of the content point at the same
  * files, so the imports live here instead of being duplicated per locale.
+ *
+ * Project screenshots are real captures from the live applications, stored as
+ * WebP at 1600px wide so a retina card stays sharp without shipping the
+ * original multi-megabyte PNGs. The untouched sources live in
+ * `public/images/projects/`.
  *
  * The portrait is the author's own 1885x2303 crop of
  * profile-yanuararif-crop.jpg, resized to 900x1100 (9:11) with no further
@@ -25,10 +27,15 @@ import taskflowDetail from '@/assets/images/projects/taskflow-detail.svg'
 export const portraitImage = portraitPhoto
 
 export const projectMedia = {
-  taskflow: { cover: taskflowCover, detail: taskflowDetail },
-  shopease: { cover: shopeaseCover, detail: shopeaseDetail },
-  fintrack: { cover: fintrackCover, detail: fintrackDetail },
-  fitlife: { cover: fitlifeCover, detail: fitlifeDetail },
+  kivapos: {
+    cover: kivaposCover,
+    reports: kivaposReports,
+    plans: kivaposPlans,
+  },
+  saletafood: {
+    cover: saletafoodCover,
+    products: saletafoodProducts,
+  },
 } as const
 
 export const blogMedia = {

@@ -134,9 +134,14 @@ export interface ProjectCaseStudy {
   screenshots: ProjectScreenshot[];
 }
 
+/**
+ * Outbound links for a project. Both are optional: a private or client-owned
+ * build may have no public demo or repository, and the UI hides the control
+ * instead of rendering a dead link.
+ */
 export interface ProjectLinks {
-  demo: string;
-  repository: string;
+  demo?: string;
+  repository?: string;
 }
 
 export interface Project {

@@ -15,6 +15,7 @@ import {
   siHtml5,
   siJavascript,
   siLinux,
+  siNextdotjs,
   siNginx,
   siNodedotjs,
   siPostgresql,
@@ -42,6 +43,7 @@ import type { SimpleIcon } from 'simple-icons'
 const icons: Record<string, SimpleIcon> = {
   React: siReact,
   'React Native': siReact,
+  'Next.js': siNextdotjs,
   TypeScript: siTypescript,
   JavaScript: siJavascript,
   Vite: siVite,

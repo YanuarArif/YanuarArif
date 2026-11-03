@@ -7,9 +7,9 @@ sections, project case studies, a typed blog, and honest contact-form integratio
 **The interface and all content ship in English (`en`) and Indonesian (`id`).** A toggle in the
 header (and the mobile sheet) switches every label, section heading, and content record at once.
 
-> **The projects, employers, articles, and certifications are fictional demonstration content.**
-> They are placeholders written for a portfolio, not real work history. Replace them — details are
-> below.
+> **The projects are real applications** built by the site owner; the case studies and screenshots
+> in `src/data/projects.*.ts` describe them. **Employers, articles, and certifications are still
+> fictional demonstration content** — replace them with real work history. Details are below.
 
 ---
 
@@ -99,8 +99,8 @@ status messages, keyboard-operable cards and navigation, and decorative artwork 
 **Performance** — self-hosted fonts with no render-blocking third-party requests: the Poppins
 woff2 files live in `src/assets/fonts/` (latin + latin-ext, split by `unicode-range` so the browser
 fetches only the subset it needs), and JetBrains Mono is loaded for code blocks via Fontsource.
-Vector artwork (no raster payloads in the app), route-level code splitting, lazy section rendering
-below the fold, and vendor chunking in `vite.config.ts`.
+Project screenshots are optimised WebP (1600 px wide, ~50–150 KB each), route-level code splitting,
+lazy section rendering below the fold, and vendor chunking in `vite.config.ts`.
 
 ---
 
@@ -111,12 +111,13 @@ below the fold, and vendor chunking in `vite.config.ts`.
 ├── public/
 │   ├── _redirects            # Netlify-style SPA fallback
 │   ├── favicon.svg
+│   ├── images/projects/      # untouched source screenshots (PNG)
 │   ├── og-image.png          # 1200×630 social card
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── src/
 │   ├── assets/fonts/         # self-hosted Poppins woff2 (latin, latin-ext) + OFL license
-│   ├── assets/images/        # local SVG artwork (portrait, projects, blog covers)
+│   ├── assets/images/        # portrait (JPG), project screenshots (WebP), blog covers (SVG)
 │   ├── components/
 │   │   ├── blog/             # article-content, blog-card
 │   │   ├── layout/           # navbar, mobile-nav, footer, logo, layout,
@@ -233,8 +234,9 @@ lives in `index.html` (title, description, canonical, Open Graph, JSON-LD); the 
 Projects live in `src/data/projects.en.ts` and `src/data/projects.id.ts`, combined into a
 `Localized<Project[]>` in `src/data/projects.ts`. To add one:
 
-1. Drop a cover and a detail image in `src/assets/images/projects/` and register both in
-   `src/data/media.ts` — the artwork is shared by both languages.
+1. Add the screenshot to `src/assets/images/projects/` (WebP, 1600 px wide is enough for the 16:10
+   card) and register it in `src/data/media.ts` — the artwork is shared by both languages. Keep the
+   untouched original outside `src/` if you need it later.
 2. Copy an existing object in **both** locale files, reusing the same `slug` (the card and the case
    study route both key off it, so it must match across languages).
 3. Fill in `name`, `category`, `summary`, `description`, `year`, `role`, `duration`, `thumbnail`,
@@ -243,8 +245,9 @@ Projects live in `src/data/projects.en.ts` and `src/data/projects.id.ts`, combin
 4. Add the new path to `public/sitemap.xml`.
 
 To remove a project, delete its object from both locale files (and its artwork if unused). Setting
-`featured: false` keeps it reachable by URL but removes it from the home grid. Demo and repository
-links are plain strings — point them at real URLs or leave the placeholder values.
+`featured: false` keeps it reachable by URL but removes it from the home grid. `links.demo` and
+`links.repository` are optional: fill in only the destinations that exist publicly, and the card
+and case-study page will hide the button that would otherwise be a dead link.
 
 ## Adding a blog article
 
@@ -308,10 +311,12 @@ and `og:locale` reflecting the active choice.
 
 ## Manual setup still required
 
-- Replace the demonstration employers, projects, articles, and certifications with your own, in
-  both `en` and `id` files. Keep the slugs identical across languages.
-- Point the demo/repository/social links at real destinations; project demos still use
-  `example.com`.
+- Replace the demonstration employers, articles, and certifications with your own, in both `en` and
+  `id` files. Keep the slugs identical across languages.
+- Fill in `links.demo` / `links.repository` for KivaPOS and Saleta Food once those destinations are
+  public, and point the social links at real destinations.
+- Verify the stack, year, and duration fields on each project — they are the easiest details to get
+  out of date.
 - Set a real contact endpoint if you want the form to deliver messages.
 - Confirm `siteUrl` matches your real deployed domain — Vercel projects are served from
   `<project>.vercel.app`. Keep `index.html`, `sitemap.xml`, and `robots.txt` in step with it.

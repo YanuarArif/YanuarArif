@@ -104,22 +104,28 @@ export default function ProjectDetailPage() {
             {project.summary}
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <Button asChild>
-              <a href={project.links.demo} target="_blank" rel="noreferrer">
-                <MonitorPlay aria-hidden="true" />
-                {copy.projectDetail.liveDemo}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </Button>
-            <Button asChild variant="secondary">
-              <a href={project.links.repository} target="_blank" rel="noreferrer">
-                <GitHubIcon />
-                {copy.projectDetail.repository}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </Button>
-          </div>
+          {project.links.demo || project.links.repository ? (
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              {project.links.demo ? (
+                <Button asChild>
+                  <a href={project.links.demo} target="_blank" rel="noreferrer">
+                    <MonitorPlay aria-hidden="true" />
+                    {copy.projectDetail.liveDemo}
+                    <ArrowUpRight aria-hidden="true" />
+                  </a>
+                </Button>
+              ) : null}
+              {project.links.repository ? (
+                <Button asChild variant="secondary">
+                  <a href={project.links.repository} target="_blank" rel="noreferrer">
+                    <GitHubIcon />
+                    {copy.projectDetail.repository}
+                    <ArrowUpRight aria-hidden="true" />
+                  </a>
+                </Button>
+              ) : null}
+            </div>
+          ) : null}
 
           <dl className="mt-9 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-6 sm:grid-cols-4">
             {facts.map((fact) => {
@@ -205,22 +211,28 @@ export default function ProjectDetailPage() {
                 </ul>
               </div>
 
-              <div className="mt-5 grid gap-2 border-t border-border/70 pt-4">
-                <Button asChild variant="secondary" size="sm">
-                  <a href={project.links.demo} target="_blank" rel="noreferrer">
-                    <MonitorPlay aria-hidden="true" />
-                    {copy.projectDetail.liveDemo}
-                    <ArrowUpRight className="ml-auto" aria-hidden="true" />
-                  </a>
-                </Button>
-                <Button asChild variant="outline" size="sm">
-                  <a href={project.links.repository} target="_blank" rel="noreferrer">
-                    <GitHubIcon />
-                    {copy.projectDetail.repository}
-                    <ArrowUpRight className="ml-auto" aria-hidden="true" />
-                  </a>
-                </Button>
-              </div>
+              {project.links.demo || project.links.repository ? (
+                <div className="mt-5 grid gap-2 border-t border-border/70 pt-4">
+                  {project.links.demo ? (
+                    <Button asChild variant="secondary" size="sm">
+                      <a href={project.links.demo} target="_blank" rel="noreferrer">
+                        <MonitorPlay aria-hidden="true" />
+                        {copy.projectDetail.liveDemo}
+                        <ArrowUpRight className="ml-auto" aria-hidden="true" />
+                      </a>
+                    </Button>
+                  ) : null}
+                  {project.links.repository ? (
+                    <Button asChild variant="outline" size="sm">
+                      <a href={project.links.repository} target="_blank" rel="noreferrer">
+                        <GitHubIcon />
+                        {copy.projectDetail.repository}
+                        <ArrowUpRight className="ml-auto" aria-hidden="true" />
+                      </a>
+                    </Button>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
 
             {adjacent.next ? (

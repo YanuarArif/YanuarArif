@@ -88,27 +88,31 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-border/70 pt-4">
           <div className="flex items-center gap-1">
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full px-2 py-1.5 text-[0.6875rem] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-            >
-              <MonitorPlay className="size-3.5" aria-hidden="true" />
-              {copy.projects.liveDemo}
-              <span className="sr-only"> {copy.meta.opensInNewTab}</span>
-            </a>
-            <a
-              href={project.links.repository}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full px-2 py-1.5 text-[0.6875rem] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-            >
-              <GitHubIcon className="size-3.5" />
-              {copy.projects.code}
-              <ArrowUpRight className="size-2.5 opacity-60" aria-hidden="true" />
-              <span className="sr-only"> {copy.meta.opensInNewTab}</span>
-            </a>
+            {project.links.demo ? (
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full px-2 py-1.5 text-[0.6875rem] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              >
+                <MonitorPlay className="size-3.5" aria-hidden="true" />
+                {copy.projects.liveDemo}
+                <span className="sr-only"> {copy.meta.opensInNewTab}</span>
+              </a>
+            ) : null}
+            {project.links.repository ? (
+              <a
+                href={project.links.repository}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full px-2 py-1.5 text-[0.6875rem] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              >
+                <GitHubIcon className="size-3.5" />
+                {copy.projects.code}
+                <ArrowUpRight className="size-2.5 opacity-60" aria-hidden="true" />
+                <span className="sr-only"> {copy.meta.opensInNewTab}</span>
+              </a>
+            ) : null}
           </div>
           <Link
             to={`/projects/${project.slug}`}
