@@ -55,6 +55,10 @@ export interface AboutHighlight {
 export interface LearningItem {
   title: string;
   description: string;
+  /** Where the learning is at, e.g. "In progress". */
+  status: string;
+  /** Short topic tags, e.g. ["Python", "AI fundamentals"]. */
+  topics?: string[];
 }
 
 export interface About {
@@ -65,7 +69,6 @@ export interface About {
   paragraphs: string[];
   interests: string[];
   goals: string[];
-  learning: LearningItem[];
   highlights: AboutHighlight[];
 }
 
@@ -154,43 +157,107 @@ export interface Project {
   caseStudy: ProjectCaseStudy;
 }
 
-export type TimelineKind =
-  | "work"
-  | "freelance"
-  | "education"
-  | "certification"
-  | "development";
+/**
+ * What a timeline entry represents. Drives the icon, the type chip, and the
+ * card treatment, so a break never reads like a job.
+ */
+export type ExperienceKind = "role" | "break";
 
-export interface TimelineEntry {
+/**
+ * Employment arrangement. `parallel` is for two roles that genuinely ran at
+ * the same time; the dates are never adjusted to hide the overlap.
+ */
+export type EmploymentType =
+  | "full-time"
+  | "part-time"
+  | "freelance"
+  | "self-employed"
+  | "parallel";
+
+/**
+ * How precise a date is. `year` is used when only the year is confirmed, so the
+ * UI shows "2023" instead of inventing a month.
+ */
+export type DatePrecision = "month" | "year";
+
+/**
+ * One entry on the career timeline: a job, or a deliberate break between jobs.
+ *
+ * Field per language rather than per locale record, because the label, summary,
+ * and duration are prose. `organisation` and `role` are optional on purpose:
+ * some early jobs had no public title, and a missing value must stay missing
+ * instead of being invented.
+ */
+export interface WorkExperience {
   id: string;
-  kind: TimelineKind;
-  title: string;
-  organisation: string;
+  kind: ExperienceKind;
+  /** Company, shop, or team. Omitted for a break. */
+  organisation?: string;
+  /** Job title. Omitted when no title can be stated honestly. */
+  role?: string;
+  /** City (and country) or work arrangement, when it is known. */
   location?: string;
+  /** Employment arrangement, omitted for a career break. */
+  type?: EmploymentType;
+  /**
+   * `YYYY-MM`, or `YYYY` when `precision` is `"year"`. Sortable either way.
+   */
   start: string;
-  end: string;
+  /**
+   * Keys use the same shape as `start`. `null` means the entry is still
+   * running, so its duration is computed at render time instead of stored.
+   */
+  end: string | null;
+  /** Defaults to `"month"` when omitted. */
+  precision?: DatePrecision;
+  /** Short chip label for the entry, e.g. "Career break". */
+  labels: Localized<string>;
+  /**
+   * Stored duration for completed entries. Left empty for a year-precision or
+   * ongoing entry, whose duration is derived from its dates instead.
+   */
+  duration?: Localized<string>;
   summary: string;
-  highlights?: string[];
-  tags?: string[];
 }
 
 export interface Education {
   id: string;
-  degree: string;
-  institution: string;
+  /** Qualification level, e.g. "Vocational High School (SMK)". */
+  level: string;
+  /** Programme or major, e.g. "Computer and Network Engineering (TKJ)". */
+  program: string;
+  /** School name. Left undefined when it is unknown — never guessed. */
+  institution?: string;
   location: string;
-  start: string;
-  end: string;
+  /** Graduation year, when it is known. */
+  year?: string;
+  /** Short status note, e.g. "Vocational education". */
+  note: string;
   summary: string;
-  coursework: string[];
+  /** Subjects from the curriculum, shown as tags. Not certifications. */
+  subjects: string[];
 }
 
-export interface Certification {
+/**
+ * One entry in the Learning Journey. Self-directed study, never employment and
+ * never a formal qualification, so it has no employer and no credential.
+ */
+export interface LearningTopic {
   id: string;
-  title: string;
-  issuer: string;
-  year: string;
-  summary: string;
+  /** Technology or topic that was studied. */
+  topic: string;
+  description: string;
+  /**
+   * Period label for a finished learning block, e.g. "2021 — 2023". Omitted
+   * for an ongoing topic, which uses `status` instead.
+   */
+  period?: string;
+  /** Status label, e.g. "Currently learning". */
+  status: string;
+  /** True while the topic is still in progress. */
+  ongoing?: boolean;
+  /** Concepts covered, shown as tags. No proficiency levels. */
+  focus: string[];
 }
 
 export type ArticleBlock =
@@ -247,6 +314,7 @@ export interface UICopy {
     skills: string;
     projects: string;
     experience: string;
+    learning: string;
     blog: string;
     contact: string;
     openToWork: string;
@@ -295,12 +363,59 @@ export interface UICopy {
     curious: string;
     startConversation: string;
   };
-  experience: {
+  work: {
     label: string;
     title: string;
     description: string;
+    overview: string;
+    /** Label for the total span metric, e.g. "Experience". */
+    experienceSummary: string;
+    /** Label for the number of employment entries, e.g. "Roles". */
+    rolesCount: string;
+    /** `{years}` is interpolated with the rounded total. */
+    years: string;
+    present: string;
+    period: string;
+    duration: string;
+    location: string;
+    currentRole: string;
+    /** Heading used for a break entry, which has no employer name. */
+    breakLabel: string;
+    employmentTypes: Record<EmploymentType, string>;
     education: string;
+    /** Placeholder shown when a school name has not been added yet. */
+    institutionNotSpecified: string;
+    subjects: string;
     certifications: string;
+    certificationsEmpty: string;
+    certificationsEmptyHint: string;
+    learning: string;
+    /** Locale-aware wording for the dynamically computed durations. */
+    durationUnits: {
+      /** Template with `{years}` and `{months}`, e.g. "{years} yr {months} mo". */
+      both: string;
+      /** Template with `{years}`. */
+      years: string;
+      /** Template with `{months}`. */
+      months: string;
+      /** Prefix used when only the start year is known, e.g. "{years}+ yr". */
+      approximateYears: string;
+    };
+  };
+  learning: {
+    label: string;
+    title: string;
+    description: string;
+    /** Shown above the completed self-directed block. */
+    selfDirected: string;
+    /** Shown above the ongoing block. */
+    ongoing: string;
+    /** `{period}` is interpolated, e.g. "Studied during {period}". */
+    studiedDuring: string;
+    /** Honest framing: learning is not employment or a qualification. */
+    note: string;
+    /** Label for the focus-area tags. */
+    focusAreas: string;
   };
   blog: {
     label: string;

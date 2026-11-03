@@ -17,6 +17,7 @@ export const navItemsContent: Localized<NavItem[]> = {
     { label: 'Skills', href: '/#skills', sectionId: 'skills' },
     { label: 'Projects', href: '/#projects', sectionId: 'projects' },
     { label: 'Experience', href: '/#experience', sectionId: 'experience' },
+    { label: 'Learning', href: '/#learning', sectionId: 'learning' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/#contact', sectionId: 'contact' },
   ],
@@ -26,6 +27,7 @@ export const navItemsContent: Localized<NavItem[]> = {
     { label: 'Keahlian', href: '/#skills', sectionId: 'skills' },
     { label: 'Proyek', href: '/#projects', sectionId: 'projects' },
     { label: 'Pengalaman', href: '/#experience', sectionId: 'experience' },
+    { label: 'Belajar', href: '/#learning', sectionId: 'learning' },
     { label: 'Blog', href: '/blog' },
     { label: 'Kontak', href: '/#contact', sectionId: 'contact' },
   ],
@@ -37,6 +39,7 @@ export const homeSectionIds = [
   'skills',
   'projects',
   'experience',
+  'learning',
   'blog',
   'contact',
 ] as const

@@ -155,7 +155,7 @@ export function Contact() {
               <div className="relative">
                 <SectionHeading
                   id="contact-title"
-                  index="07"
+                  index="08"
                   label={copy.contact.label}
                   title={copy.contact.title}
                   description={copy.contact.description}

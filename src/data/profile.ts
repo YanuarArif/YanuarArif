@@ -109,10 +109,6 @@ export const aboutContent: Localized<About> = {
     // Empty on purpose: the About section only renders the goals block when
     // this list has items. The contact link below it stays visible.
     goals: [],
-    // Empty on purpose: the About section only renders its "currently learning"
-    // card when this list has items. Restore the entries from git history if
-    // you want the card back.
-    learning: [],
     highlights: [
       {
         title: "Tidy, fast interfaces",
@@ -154,8 +150,6 @@ export const aboutContent: Localized<About> = {
     interests: [],
     // Empty on purpose, same as the English list above.
     goals: [],
-    // Empty on purpose, same as the English list above.
-    learning: [],
     highlights: [
       {
         title: "Antarmuka Rapi dan Cepat",

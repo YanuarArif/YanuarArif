@@ -1,172 +1,300 @@
-import type { Localized, TimelineEntry, TimelineKind } from "@/types";
+import type { Locale, Localized, WorkExperience } from "@/types";
 
 /**
- * Fictional sample history — replace with your own roles.
- * `kind` controls the icon used by the timeline and is translated through
- * `experienceKindLabelsContent`.
+ * ─────────────────────────────────────────────────────────────
+ *  CAREER TIMELINE — the source of truth for the Experience section.
+ *
+ *  Rules kept here on purpose:
+ *  • Dates are the real ones and are never adjusted, even where two roles
+ *    overlap (BaBe and JalanTikus.com). The timeline renders newest first via
+ *    `sortNewestFirst()`, which is ordering only — no date is touched.
+ *  • The freelance start month has not been confirmed, so that entry is
+ *    year-only (`precision: "year"`) and its duration is shown as a lower
+ *    bound rather than an invented precise figure.
+ *  • `duration` is stored only for completed, month-precise entries. Ongoing
+ *    entries compute it at render time, so the current role keeps counting.
+ *  • Visual Advertising and DascoMart carry no `role`, because no job title is
+ *    known for them. Nothing is invented to fill the gap.
+ *  • A career break is a timeline entry with `kind: "break"`: no employment
+ *    type, presented as a deliberate gap. Learning that happened during the
+ *    break lives in the separate Learning Journey section, not here.
+ * ─────────────────────────────────────────────────────────────
  */
-export const experienceContent: Localized<TimelineEntry[]> = {
+export const workExperienceContent: Localized<WorkExperience[]> = {
   en: [
     {
-      id: "northlight",
-      kind: "work",
-      title: "Senior Full-Stack Developer",
-      organisation: "Northlight Studio",
-      location: "Copenhagen · Hybrid",
-      start: "2023",
-      end: "Present",
-      summary:
-        "A product studio building web apps for early-stage teams. I lead the frontend architecture and stay close to API design and releases.",
-      highlights: [
-        "Led the rebuild of a client’s analytics product, moving it from a legacy dashboard to a React app with route-based code splitting.",
-        "Introduced a shared design system and a typed API client that four client projects now use.",
-        "Shortened CI feedback time by splitting the test suites and caching dependency installs.",
-        "Mentored two mid-level developers through structured code reviews and pairing sessions.",
-      ],
-      tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "Design systems"],
-    },
-    {
-      id: "cobalt",
-      kind: "work",
-      title: "Full-Stack Developer",
-      organisation: "Cobalt Systems",
-      location: "Berlin · Remote",
-      start: "2020",
-      end: "2023",
-      summary:
-        "A B2B analytics platform for operations teams. I worked across the React client, the Node services, and the reporting data model.",
-      highlights: [
-        "Designed the permissions model and API that every workspace role relies on.",
-        "Built a filterable reporting screen that keeps complex query state in the URL.",
-        "Made pages load faster by shrinking the client bundle and deferring the heavy chart modules.",
-        "Added integration tests around the billing and export flows, which broke most often.",
-      ],
-      tags: ["React", "TypeScript", "REST APIs", "Prisma", "PostgreSQL"],
-    },
-    {
       id: "freelance",
-      kind: "freelance",
-      title: "Freelance Web Developer",
-      organisation: "Independent",
+      kind: "role",
+      organisation: "Freelance",
+      role: "Full-Stack Web Developer",
       location: "Remote",
-      start: "2019",
-      end: "2020",
+      type: "self-employed",
+      start: "2023",
+      end: null,
+      precision: "year",
+      labels: { en: "Engineering", id: "Rekayasa" },
       summary:
-        "Designed and built focused websites and small online shops for independent studios and local businesses.",
-      highlights: [
-        "Delivered responsive marketing sites and lightweight storefronts from start to finish.",
-        "Set up a repeatable handoff for content editing and analytics.",
-        "Learned to scope work around the outcome the client wants, not a list of features.",
-      ],
-      tags: ["JavaScript", "CSS", "Accessibility", "CMS"],
+        "Building full-stack websites and web applications for freelance projects, focusing on practical solutions, maintainable code, and modern web technologies.",
     },
     {
-      id: "open-source",
-      kind: "development",
-      title: "Open-source & technical writing",
-      organisation: "Independent practice",
-      location: "Remote",
-      start: "2022",
-      end: "Present",
+      id: "career-break",
+      kind: "break",
+      location: "Purbalingga, Indonesia",
+      start: "2021-09",
+      end: "2023-08",
+      labels: { en: "Personal break", id: "Jeda pribadi" },
+      duration: { en: "2 years", id: "2 tahun" },
       summary:
-        "My way of learning in public: small utilities, careful code reviews, and notes on interface engineering.",
-      highlights: [
-        "Maintain a small TypeScript utility for typed form validation.",
-        "Write practical articles on React architecture, accessibility, and developer experience.",
-        "Send the occasional documentation or accessibility fix to projects I use.",
-      ],
-      tags: ["Open source", "Writing", "TypeScript", "Accessibility"],
+        "A personal career break before transitioning into freelance web development.",
+    },
+    {
+      id: "barlingreload",
+      kind: "role",
+      organisation: "BarlingReload",
+      role: "Server Administrator",
+      location: "Purbalingga, Indonesia",
+      type: "full-time",
+      start: "2019-10",
+      end: "2021-08",
+      labels: { en: "Server operations", id: "Operasional server" },
+      duration: { en: "1 year, 11 months", id: "1 tahun 11 bulan" },
+      summary:
+        "Maintained game server operations through installation, configuration, routine maintenance, and troubleshooting issues reported by players and staff.",
+    },
+    {
+      id: "jalantikus",
+      kind: "role",
+      organisation: "JalanTikus.com",
+      role: "Content Writer",
+      location: "Remote",
+      type: "parallel",
+      start: "2017-12",
+      end: "2018-10",
+      labels: { en: "Content", id: "Konten" },
+      duration: { en: "11 months", id: "11 bulan" },
+      summary:
+        "Wrote technology articles for Indonesian readers, from researching topics and preparing drafts to publishing content.",
+    },
+    {
+      id: "babe",
+      kind: "role",
+      organisation: "BaBe",
+      role: "Content Writer",
+      location: "Remote",
+      type: "parallel",
+      start: "2016-09",
+      end: "2018-01",
+      labels: { en: "Content", id: "Konten" },
+      duration: { en: "1 year, 5 months", id: "1 tahun 5 bulan" },
+      summary:
+        "Prepared daily editorial content, from initial drafts to editing and publication.",
+    },
+    {
+      id: "dascomart",
+      kind: "role",
+      organisation: "DascoMart",
+      location: "Bobotsari, Indonesia",
+      start: "2015-11",
+      end: "2016-03",
+      labels: { en: "Retail", id: "Ritel" },
+      duration: { en: "5 months", id: "5 bulan" },
+      summary:
+        "Worked in a local retail environment, assisting with customer service and daily store operations.",
+    },
+    {
+      id: "visual-advertising",
+      kind: "role",
+      organisation: "Visual Advertising",
+      location: "Purbalingga, Indonesia",
+      start: "2015-09",
+      end: "2015-11",
+      labels: { en: "Advertising", id: "Periklanan" },
+      duration: { en: "3 months", id: "3 bulan" },
+      summary:
+        "An early three-month role in a small advertising team, supporting the work the team handled.",
     },
   ],
   id: [
     {
-      id: "northlight",
-      kind: "work",
-      title: "Developer Full-Stack Senior",
-      organisation: "Northlight Studio",
-      location: "Kopenhagen · Hybrid",
-      start: "2023",
-      end: "Sekarang",
-      summary:
-        "Studio produk yang membuat aplikasi web untuk tim tahap awal. Saya memimpin arsitektur frontend dan tetap ikut di desain API serta proses rilis.",
-      highlights: [
-        "Memimpin pembangunan ulang produk analitik milik klien, dari dashboard lama menjadi aplikasi React dengan code splitting per rute.",
-        "Memperkenalkan design system bersama dan klien API bertipe yang sekarang dipakai di empat proyek klien.",
-        "Mempersingkat waktu tunggu CI dengan memecah rangkaian tes dan meng-cache instalasi dependensi.",
-        "Membimbing dua developer level menengah lewat code review terstruktur dan sesi pairing.",
-      ],
-      tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "Design system"],
-    },
-    {
-      id: "cobalt",
-      kind: "work",
-      title: "Developer Full-Stack",
-      organisation: "Cobalt Systems",
-      location: "Berlin · Remote",
-      start: "2020",
-      end: "2023",
-      summary:
-        "Platform analitik B2B untuk tim operasional. Saya mengerjakan klien React, layanan Node, dan model data untuk pelaporan.",
-      highlights: [
-        "Merancang model izin dan API yang dipakai oleh setiap peran di workspace.",
-        "Membangun halaman laporan dengan filter yang menyimpan state query kompleks di URL.",
-        "Membuat halaman lebih cepat dimuat dengan memperkecil bundle klien dan menunda modul grafik yang berat.",
-        "Menambahkan integration test di alur penagihan dan ekspor, dua bagian yang paling sering bermasalah.",
-      ],
-      tags: ["React", "TypeScript", "REST API", "Prisma", "PostgreSQL"],
-    },
-    {
       id: "freelance",
-      kind: "freelance",
-      title: "Developer Web Freelance",
-      organisation: "Independen",
+      kind: "role",
+      organisation: "Freelance",
+      role: "Developer Web Full-Stack",
       location: "Remote",
-      start: "2019",
-      end: "2020",
+      type: "self-employed",
+      start: "2023",
+      end: null,
+      precision: "year",
+      labels: { en: "Engineering", id: "Rekayasa" },
       summary:
-        "Merancang dan membangun situs web yang fokus serta toko online kecil untuk studio independen dan bisnis lokal.",
-      highlights: [
-        "Mengerjakan situs pemasaran responsif dan toko ringan dari awal sampai selesai.",
-        "Menyusun alur serah terima yang bisa diulang untuk pengelolaan konten dan pemasangan analitik.",
-        "Belajar menentukan lingkup kerja dari hasil yang diinginkan klien, bukan dari daftar fitur.",
-      ],
-      tags: ["JavaScript", "CSS", "Aksesibilitas", "CMS"],
+        "Membangun situs dan aplikasi web full-stack untuk proyek freelance, dengan fokus pada solusi praktis, kode yang mudah dirawat, dan teknologi web modern.",
     },
     {
-      id: "open-source",
-      kind: "development",
-      title: "Open-source & penulisan teknis",
-      organisation: "Praktik independen",
-      location: "Remote",
-      start: "2022",
-      end: "Sekarang",
+      id: "career-break",
+      kind: "break",
+      location: "Purbalingga, Indonesia",
+      start: "2021-09",
+      end: "2023-08",
+      labels: { en: "Personal break", id: "Jeda pribadi" },
+      duration: { en: "2 years", id: "2 tahun" },
       summary:
-        "Cara saya belajar di depan umum: utilitas kecil, code review yang teliti, dan catatan seputar rekayasa antarmuka.",
-      highlights: [
-        "Merawat utilitas TypeScript kecil untuk validasi formulir bertipe.",
-        "Menulis artikel praktis soal arsitektur React, aksesibilitas, dan developer experience.",
-        "Sesekali mengirim perbaikan dokumentasi atau aksesibilitas ke proyek yang saya pakai.",
-      ],
-      tags: ["Open source", "Penulisan", "TypeScript", "Aksesibilitas"],
+        "Jeda karier pribadi sebelum beralih ke pengembangan web freelance.",
+    },
+    {
+      id: "barlingreload",
+      kind: "role",
+      organisation: "BarlingReload",
+      role: "Administrator Server",
+      location: "Purbalingga, Indonesia",
+      type: "full-time",
+      start: "2019-10",
+      end: "2021-08",
+      labels: { en: "Server operations", id: "Operasional server" },
+      duration: { en: "1 year, 11 months", id: "1 tahun 11 bulan" },
+      summary:
+        "Menjaga operasional server game lewat instalasi, konfigurasi, perawatan rutin, dan penanganan masalah yang dilaporkan pemain maupun staf.",
+    },
+    {
+      id: "jalantikus",
+      kind: "role",
+      organisation: "JalanTikus.com",
+      role: "Penulis Konten",
+      location: "Remote",
+      type: "parallel",
+      start: "2017-12",
+      end: "2018-10",
+      labels: { en: "Content", id: "Konten" },
+      duration: { en: "11 months", id: "11 bulan" },
+      summary:
+        "Menulis artikel teknologi untuk pembaca Indonesia, mulai dari riset topik dan penyusunan draf sampai penerbitan konten.",
+    },
+    {
+      id: "babe",
+      kind: "role",
+      organisation: "BaBe",
+      role: "Penulis Konten",
+      location: "Remote",
+      type: "parallel",
+      start: "2016-09",
+      end: "2018-01",
+      labels: { en: "Content", id: "Konten" },
+      duration: { en: "1 year, 5 months", id: "1 tahun 5 bulan" },
+      summary:
+        "Menyiapkan konten editorial harian, dari draf awal sampai penyuntingan dan penerbitan.",
+    },
+    {
+      id: "dascomart",
+      kind: "role",
+      organisation: "DascoMart",
+      location: "Bobotsari, Indonesia",
+      start: "2015-11",
+      end: "2016-03",
+      labels: { en: "Retail", id: "Ritel" },
+      duration: { en: "5 months", id: "5 bulan" },
+      summary:
+        "Bekerja di lingkungan ritel lokal, membantu pelayanan pelanggan dan operasional toko sehari-hari.",
+    },
+    {
+      id: "visual-advertising",
+      kind: "role",
+      organisation: "Visual Advertising",
+      location: "Purbalingga, Indonesia",
+      start: "2015-09",
+      end: "2015-11",
+      labels: { en: "Advertising", id: "Periklanan" },
+      duration: { en: "3 months", id: "3 bulan" },
+      summary:
+        "Peran awal selama tiga bulan di tim periklanan kecil, membantu pekerjaan yang ditangani tim.",
     },
   ],
 };
 
-export const experienceKindLabelsContent: Localized<
-  Record<TimelineKind, string>
-> = {
-  en: {
-    work: "Full-time",
-    freelance: "Freelance",
-    education: "Education",
-    certification: "Certification",
-    development: "Personal development",
-  },
-  id: {
-    work: "Penuh waktu",
-    freelance: "Freelance",
-    education: "Pendidikan",
-    certification: "Sertifikasi",
-    development: "Pengembangan pribadi",
-  },
+/* ── Display formatting ─────────────────────────────────────────────── */
+
+/** Month names written the way the timeline label reads them. */
+const monthNames: Record<Locale, readonly string[]> = {
+  en: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ],
+  id: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "Mei",
+    "Jun",
+    "Jul",
+    "Agu",
+    "Sep",
+    "Okt",
+    "Nov",
+    "Des",
+  ],
 };
+
+/**
+ * Turns a date key into its display label. A `null` key means the entry is
+ * still running, so an empty string is returned and the caller supplies its
+ * localized "present" label. A `YYYY` key stays year-only — no month invented.
+ */
+export function formatPeriodDate(key: string | null, locale: Locale): string {
+  if (!key) {
+    return "";
+  }
+
+  const [year, month] = key.split("-");
+
+  if (!month) {
+    return year;
+  }
+
+  const monthName = monthNames[locale][Number(month) - 1];
+
+  return monthName ? `${monthName} ${year}` : year;
+}
+
+/** Sort key for a date key (`YYYY-MM` or `YYYY`). A missing value sorts last. */
+export function periodSortKey(key: string | null): number {
+  if (!key) {
+    return 0;
+  }
+
+  const [year, month] = key.split("-");
+
+  return Number(year) * 100 + (month ? Number(month) : 12);
+}
+
+/**
+ * Newest first, with ongoing entries pinned above finished ones. The end date
+ * breaks ties so overlapping roles stay in a stable, sensible order.
+ *
+ * Ordering only: this never rewrites a date, so the BaBe / JalanTikus.com
+ * overlap survives exactly as recorded.
+ */
+export function sortNewestFirst<T extends WorkExperience>(
+  entries: readonly T[],
+): T[] {
+  return [...entries].sort((a, b) => {
+    const ongoingDelta = Number(b.end === null) - Number(a.end === null)
+
+    if (ongoingDelta !== 0) {
+      return ongoingDelta
+    }
+
+    return (
+      periodSortKey(b.start) - periodSortKey(a.start) ||
+      periodSortKey(b.end) - periodSortKey(a.end)
+    )
+  })
+}

@@ -1,5 +1,4 @@
 import {
-  BookOpen,
   Brain,
   Database,
   LayoutGrid,
@@ -163,41 +162,6 @@ export function About() {
                 );
               })}
             </div>
-
-            {/* Hidden while `about.learning` is empty. Add items back to show it again. */}
-            {about.learning.length > 0 ? (
-              <Reveal delay={0.16}>
-                <div className="mt-10 rounded-2xl border border-border bg-muted/30 p-5 sm:p-6">
-                  <div className="flex items-center gap-2">
-                    <BookOpen
-                      className="size-4 text-primary"
-                      aria-hidden="true"
-                    />
-                    <h3 className="text-sm font-semibold">
-                      {copy.about.currentlyLearning}
-                    </h3>
-                  </div>
-                  <ul className="mt-4 divide-y divide-border/70">
-                    {about.learning.map((item, index) => (
-                      <li
-                        key={item.title}
-                        className="flex gap-4 py-3 first:pt-0 last:pb-0"
-                      >
-                        <span className="mt-0.5 font-mono text-[0.625rem] text-muted-foreground/70">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div>
-                          <p className="text-xs font-medium">{item.title}</p>
-                          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                            {item.description}
-                          </p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ) : null}
           </div>
         </div>
 

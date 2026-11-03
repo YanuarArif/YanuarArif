@@ -23,7 +23,7 @@ export function BlogPreview() {
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeading
               id="blog-title"
-              index="06"
+              index="07"
               label={copy.blog.label}
               title={copy.blog.title}
               description={copy.blog.description}
