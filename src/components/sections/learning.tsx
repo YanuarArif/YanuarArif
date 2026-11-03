@@ -1,10 +1,11 @@
-import { BookOpen, Sprout } from 'lucide-react'
+import { BookOpen, Clock3, Sprout } from 'lucide-react'
 
 import { SectionHeading } from '@/components/sections/section-heading'
 import { Reveal } from '@/components/ui/reveal'
 import { learningJourneyContent } from '@/data/education'
-import { useLocalized, useUICopy } from '@/hooks/use-locale'
-import { cn, interpolate } from '@/lib/utils'
+import { formatPeriodDate } from '@/data/experience'
+import { useLocale, useLocalized, useUICopy } from '@/hooks/use-locale'
+import { cn, formatDuration, getDurationMonths, interpolate } from '@/lib/utils'
 
 /**
  * The Learning Journey stands on its own: self-directed study is neither
@@ -12,6 +13,7 @@ import { cn, interpolate } from '@/lib/utils'
  * being folded into the timeline or the education card.
  */
 export function Learning() {
+  const { locale } = useLocale()
   const topics = useLocalized(learningJourneyContent)
   const copy = useUICopy()
 
@@ -35,6 +37,18 @@ export function Learning() {
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {topics.map((topic, index) => {
             const Icon = topic.ongoing ? Sprout : BookOpen
+            const start = formatPeriodDate(topic.start, locale) || topic.start
+            const end = topic.end
+              ? formatPeriodDate(topic.end, locale)
+              : copy.work.present
+            // An ongoing topic keeps counting, so its duration is derived here
+            // instead of being frozen in the data file.
+            const duration = topic.ongoing
+              ? formatDuration(
+                  getDurationMonths(topic.start, null),
+                  copy.work.durationUnits,
+                )
+              : (topic.duration?.[locale] ?? '')
 
             return (
               <Reveal key={topic.id} delay={index * 0.06}>
@@ -83,15 +97,20 @@ export function Learning() {
                   </h3>
 
                   <p className="mt-1.5 font-mono text-[0.625rem] tracking-[0.08em] text-muted-foreground uppercase">
-                    {topic.period
-                      ? interpolate(copy.learning.studiedDuring, {
-                          period: topic.period,
-                        })
-                      : copy.learning.ongoing}
+                    {topic.ongoing
+                      ? interpolate(copy.learning.startedAt, { period: start })
+                      : interpolate(copy.learning.studiedDuring, {
+                          period: `${start} — ${end}`,
+                        })}
                   </p>
 
                   <p className="mt-3 text-[0.8125rem] leading-relaxed text-muted-foreground">
                     {topic.description}
+                  </p>
+
+                  <p className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.625rem] tracking-[0.06em] text-muted-foreground uppercase">
+                    <Clock3 className="size-3 shrink-0" aria-hidden="true" />
+                    {duration}
                   </p>
 
                   <div className="mt-auto pt-5">

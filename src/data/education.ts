@@ -61,15 +61,31 @@ export const educationContent: Localized<Education[]> = {
 /**
  * The Learning Journey. Self-directed study only: not employment, not a
  * qualification, and deliberately without progress percentages.
+ *
+ * Periods are inclusive, e.g. September 2023 to January 2025 is 17 months.
+ * Python for AI started in October 2026 and is still running, so its card
+ * shows a start month plus the "currently learning" badge rather than an end
+ * date that does not exist yet.
  */
 export const learningJourneyContent: Localized<LearningTopic[]> = {
   en: [
     {
+      id: "python-ai",
+      topic: "Python for AI",
+      start: "2026-10",
+      end: null,
+      status: "Currently learning",
+      ongoing: true,
+      focus: ["Python fundamentals", "AI fundamentals"],
+      description:
+        "Currently learning Python and exploring its applications in artificial intelligence, focusing on programming fundamentals and building practical knowledge of AI development.",
+    },
+    {
       id: "web-foundations",
       topic: "JavaScript, TypeScript & React",
-      description:
-        "Self-directed study during the career break, working through programming fundamentals, modern JavaScript, static typing with TypeScript, and component-based interfaces with React.",
-      period: "2021 — 2023",
+      start: "2023-09",
+      end: "2025-01",
+      duration: { en: "1 year, 5 months", id: "1 tahun 5 bulan" },
       status: "Self-directed",
       focus: [
         "Programming fundamentals",
@@ -79,24 +95,28 @@ export const learningJourneyContent: Localized<LearningTopic[]> = {
         "Component-based UI",
         "React fundamentals",
       ],
-    },
-    {
-      id: "python-ai",
-      topic: "Python for AI",
       description:
-        "Currently learning Python and exploring its applications in artificial intelligence, focusing on programming fundamentals and building practical knowledge of AI development.",
-      status: "Currently learning",
-      ongoing: true,
-      focus: ["Python fundamentals", "AI fundamentals"],
+        "Self-directed study before moving into freelance work, working through programming fundamentals, modern JavaScript, static typing with TypeScript, and component-based interfaces with React.",
     },
   ],
   id: [
     {
+      id: "python-ai",
+      topic: "Python untuk AI",
+      start: "2026-10",
+      end: null,
+      status: "Sedang dipelajari",
+      ongoing: true,
+      focus: ["Dasar Python", "Dasar AI"],
+      description:
+        "Sedang mempelajari Python dan mengeksplorasi penerapannya di bidang kecerdasan buatan, dengan fokus pada dasar pemrograman dan pemahaman praktis pengembangan AI.",
+    },
+    {
       id: "web-foundations",
       topic: "JavaScript, TypeScript & React",
-      description:
-        "Belajar mandiri selama jeda karier: dasar-dasar pemrograman, JavaScript modern, pengetikan statis dengan TypeScript, dan antarmuka berbasis komponen dengan React.",
-      period: "2021 — 2023",
+      start: "2023-09",
+      end: "2025-01",
+      duration: { en: "1 year, 5 months", id: "1 tahun 5 bulan" },
       status: "Belajar mandiri",
       focus: [
         "Dasar pemrograman",
@@ -106,15 +126,8 @@ export const learningJourneyContent: Localized<LearningTopic[]> = {
         "UI berbasis komponen",
         "Dasar React",
       ],
-    },
-    {
-      id: "python-ai",
-      topic: "Python untuk AI",
       description:
-        "Sedang mempelajari Python dan mengeksplorasi penerapannya di bidang kecerdasan buatan, dengan fokus pada dasar pemrograman dan pemahaman praktis pengembangan AI.",
-      status: "Sedang dipelajari",
-      ongoing: true,
-      focus: ["Dasar Python", "Dasar AI"],
+        "Belajar mandiri sebelum masuk ke pekerjaan freelance: dasar-dasar pemrograman, JavaScript modern, pengetikan statis dengan TypeScript, dan antarmuka berbasis komponen dengan React.",
     },
   ],
 };

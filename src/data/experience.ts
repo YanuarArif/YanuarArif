@@ -29,9 +29,8 @@ export const workExperienceContent: Localized<WorkExperience[]> = {
       role: "Full-Stack Web Developer",
       location: "Remote",
       type: "self-employed",
-      start: "2023",
+      start: "2025-02",
       end: null,
-      precision: "year",
       labels: { en: "Engineering", id: "Rekayasa" },
       summary:
         "Building full-stack websites and web applications for freelance projects, focusing on practical solutions, maintainable code, and modern web technologies.",
@@ -122,9 +121,8 @@ export const workExperienceContent: Localized<WorkExperience[]> = {
       role: "Developer Web Full-Stack",
       location: "Remote",
       type: "self-employed",
-      start: "2023",
+      start: "2025-02",
       end: null,
-      precision: "year",
       labels: { en: "Engineering", id: "Rekayasa" },
       summary:
         "Membangun situs dan aplikasi web full-stack untuk proyek freelance, dengan fokus pada solusi praktis, kode yang mudah dirawat, dan teknologi web modern.",

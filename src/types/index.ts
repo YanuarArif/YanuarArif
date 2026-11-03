@@ -247,11 +247,15 @@ export interface LearningTopic {
   /** Technology or topic that was studied. */
   topic: string;
   description: string;
+  /** `YYYY-MM`. Only the month the study actually started with. */
+  start: string;
+  /** `YYYY-MM`, or `null` while the topic is still in progress. */
+  end: string | null;
   /**
-   * Period label for a finished learning block, e.g. "2021 — 2023". Omitted
-   * for an ongoing topic, which uses `status` instead.
+   * Duration for a completed block. An ongoing block omits it and has the
+   * figure computed at render time, so it keeps counting up on its own.
    */
-  period?: string;
+  duration?: Localized<string>;
   /** Status label, e.g. "Currently learning". */
   status: string;
   /** True while the topic is still in progress. */
@@ -412,6 +416,8 @@ export interface UICopy {
     ongoing: string;
     /** `{period}` is interpolated, e.g. "Studied during {period}". */
     studiedDuring: string;
+    /** `{period}` is interpolated for an ongoing topic, e.g. "Started {period}". */
+    startedAt: string;
     /** Honest framing: learning is not employment or a qualification. */
     note: string;
     /** Label for the focus-area tags. */
